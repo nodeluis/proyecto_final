@@ -56,7 +56,7 @@ const camion={
             alterado:Number,
             conPasajero:Number,
             sinConocimientoRuta:Number,
-            Nuevo:Number,
+            nuevo:Number,
             reporteFalso:Number,
             descripcion:String
           }]
