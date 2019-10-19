@@ -351,6 +351,24 @@ desired effect
       </div>
       <!-- horarios de conduccion final-->
 
+      <!-- tabla check list extintores del camion -->
+      <div class="row" id="tablaExt">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Check lis de los extintores</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body" id="bodyExt">
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- tabla check list extintores del camion fin -->
+
       <!-- formulario extintores del camion -->
       <form role="form" id="formExtint">
         <div class="box box-default collapsed-box">
@@ -607,24 +625,6 @@ desired effect
         </div>
       </form>
       <!-- formulario extintores del camion  fin-->
-
-      <!-- tabla check list extintores del camion -->
-      <div class="row" id="tablaExt">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Check lis de los extintores</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body" id="bodyExt">
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- tabla check list extintores del camion fin -->
     </section>
     <!-- /.content -->
   </div>
@@ -861,53 +861,16 @@ desired effect
               daterangenvio=3;
               limpiar();
               $('#map').hide();
-              $('#formExtint').show();
               let postdata={
                 id:dato['id'],
                 i:exinplusign
               };
               $.post('/camion/dataextintor',postdata,function(resp,status){
+                $('#dateRange').show();
+                $('#formExtint').show();
                 $('#tablaExt').show();
                 console.log(resp);
-                let construir='<table id="example4">'
-                              +'<thead>'
-                              +'<tr>'
-                              +'<th>Nro</th>'
-                              +'<th>Lugar</th>'
-                              +'<th>Observaciones</th>'
-                              +'<th>Fecha</th>'
-                              +'<th>Checks</th>'
-                              +'<th>Aplica</th>'
-                              +'</tr>'
-                              +'</thead>'
-                              +'<tbody id="contenidoExc">';
-                let conExt=1;
-                resp.forEach(function(dat){
-                  construir+='<tr>'
-                    +'<td>'+conExt+'</td>'
-                    +'<td>'+dat['lugar']+'</td>'
-                    +'<td>'+dat['observacion']+'</td>'
-                    +'<td>'+dat['fecha']+'</td>'
-                    +'<td>'+dat['check']+'</td>'
-                    +'<td>'+dat['aplica']+'</td>'
-                    +'</tr>';
-                    conExt++;
-                });//aqui hay cambios
-                construir+='</tbody>'
-                          +'<tfoot>'
-                          +'<tr>'
-                          +'<th>Nro</th>'
-                          +'<th>Lugar</th>'
-                          +'<th>Observaciones</th>'
-                          +'<th>Fecha</th>'
-                          +'<th>Checks</th>'
-                          +'<th>Aplica</th>'
-                          +'</tr>'
-                          +'</tfoot>'
-                          +'</table>';
-                $(construir).appendTo('#bodyExt');
-                $('#example4').addClass('table table-bordered table-hover');
-                $('#example4').DataTable();
+                llenarTablas(resp,3);
               },'json').fail(function(err){
                 console.log(err);
               });
@@ -983,7 +946,6 @@ desired effect
       });
       $('.select2').select2();
       $('#reservation').daterangepicker();
-      $('#reservationH').daterangepicker();
     }
     function llenarTablas(data,p){
       let conT=1;
@@ -1074,6 +1036,42 @@ desired effect
                   +'</tfoot>'
                   +'</table>';
         $(construir).appendTo('#contenidoHorario');
+        $('#example').addClass('table table-bordered table-hover');
+        $('#example').DataTable();
+      }else if(p==3){
+
+        construir+='<th>Lugar</th>'
+                  +'<th>Observaciones</th>'
+                  +'<th>Fecha</th>'
+                  +'<th>Checks</th>'
+                  +'<th>Aplica</th>'
+                  +'</tr>'
+                  +'</thead>'
+                  +'<tbody id="contenidoExc">';
+        data.forEach(function(dat){
+        construir+='<tr>'
+        +'<td>'+conT+'</td>'
+        +'<td>'+dat['lugar']+'</td>'
+        +'<td>'+dat['observacion']+'</td>'
+        +'<td>'+dat['fecha']+'</td>'
+        +'<td>'+dat['check']+'</td>'
+        +'<td>'+dat['aplica']+'</td>'
+        +'</tr>';
+        conT++;
+        });//aqui hay cambios
+        construir+='</tbody>'
+            +'<tfoot>'
+            +'<tr>'
+            +'<th>Nro</th>'
+            +'<th>Lugar</th>'
+            +'<th>Observaciones</th>'
+            +'<th>Fecha</th>'
+            +'<th>Checks</th>'
+            +'<th>Aplica</th>'
+            +'</tr>'
+            +'</tfoot>'
+            +'</table>';
+        $(construir).appendTo('#bodyExt');
         $('#example').addClass('table table-bordered table-hover');
         $('#example').DataTable();
       }
