@@ -40,6 +40,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
         height: 400px;  /* The height is 400 pixels */
         width: 100%;  /* The width is the width of the web page */
       }
+      #chartdiv {
+        width: 100%;
+        height: 300px;
+      }
+      #chartdiv2 {
+        width: 100%;
+        height: 300px;
+      }
     </style>
 
   <!-- Google Font -->
@@ -625,6 +633,621 @@ desired effect
         </div>
       </form>
       <!-- formulario extintores del camion  fin-->
+
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-6">
+          <!-- general form elements -->
+          <form role="form">
+            <div class="box box-primary">
+              <div class="box-header with-border">
+                <h3 class="box-title">Formulario de desvio/falta factor conductor</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+
+                  <div class="form-group">
+                    <label>Fecha:</label>
+                    <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" class="form-control pull-right">
+                    </div>
+                    <!-- /.input group -->
+                  </div>
+
+                  <!-- checkbox -->
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        No paro en el punto de control
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Uso del equipo de proteccion personal
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        No fue inspeccionado
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        No se reporto
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Incumplimiento de horario en plan de viaje
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Uso de cinturon de seguridad
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Estado de salud
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        No fue inspeccionado
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Conductor sin descansar
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Problemas con la documentacion
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Conductor alterado
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Conductor con pasajero
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Conductor que no conoce la ruta
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Conductor nuevo
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Emision de reporte falso
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Descripcion:</label>
+                    <textarea class="form-control" rows="3" placeholder="Descripcion ..."></textarea>
+                  </div>
+
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+
+            </div>
+          </form>
+
+          <form role="form">
+            <div class="box box-primary collapsed-box">
+              <div class="box-header with-border">
+                <h3 class="box-title">Formulario de desvio/falta factor camion</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+
+                  <div class="form-group">
+                    <label>Fecha:</label>
+                    <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" class="form-control pull-right">
+                    </div>
+                    <!-- /.input group -->
+                  </div>
+
+                  <!-- checkbox -->
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Lider de convoy adelantado
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        GPS inactivo S/GPS
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Estacionamiento inseguro
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Desvio de ruta sin autorizacion
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Robos y hurtos
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Uso de las luces de señalizacion
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Descripcion:</label>
+                    <textarea class="form-control" rows="3" placeholder="Descripcion ..."></textarea>
+                  </div>
+
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+
+            </div>
+          </form>
+
+          <form role="form">
+            <div class="box box-primary collapsed-box">
+              <div class="box-header with-border">
+                <h3 class="box-title">Formulario de problema en las vias</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+
+                  <div class="form-group">
+                    <label>Fecha:</label>
+                    <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" class="form-control pull-right">
+                    </div>
+                    <!-- /.input group -->
+                  </div>
+
+                  <!-- checkbox -->
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Plataforma con baches
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Alto congestionamiento por trafico
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" >
+                        Tramo inestable / resbaladizo
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Descripcion:</label>
+                    <textarea class="form-control" rows="3" placeholder="Descripcion ..."></textarea>
+                  </div>
+
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+
+            </div>
+          </form>
+
+          <form role="form">
+            <div class="box box-primary collapsed-box">
+              <div class="box-header with-border">
+                <h3 class="box-title">Formulario de viajes afectados por problema en las vias</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+
+                  <div class="form-group">
+                    <label>Fecha:</label>
+                    <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" class="form-control pull-right">
+                    </div>
+                    <!-- /.input group -->
+                  </div>
+
+                  <!-- checkbox -->
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Zona geologicamente inestable
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Cierre de ruta
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Bloqueo / manifestaciones
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Descripcion:</label>
+                    <textarea class="form-control" rows="3" placeholder="Descripcion ..."></textarea>
+                  </div>
+
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+
+            </div>
+          </form>
+
+          <form role="form">
+            <div class="box box-primary collapsed-box">
+              <div class="box-header with-border">
+                <h3 class="box-title">Formulario de desvios por factores externos</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+
+                  <div class="form-group">
+                    <label>Fecha:</label>
+                    <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" class="form-control pull-right">
+                    </div>
+                    <!-- /.input group -->
+                  </div>
+
+                  <!-- checkbox -->
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Clima
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Otro
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Descripcion:</label>
+                    <textarea class="form-control" rows="3" placeholder="Descripcion ..."></textarea>
+                  </div>
+
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+
+            </div>
+          </form>
+
+        </div>
+        <!--/.col (left) -->
+        <!-- right column -->
+        <div class="col-md-6">
+          <!-- Horizontal Form -->
+          <form role="form">
+            <div class="box box-success collapsed-box">
+              <div class="box-header with-border">
+                <h3 class="box-title">Formulario de incidentes</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+
+                  <div class="form-group">
+                    <label>Fecha:</label>
+                    <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" class="form-control pull-right">
+                    </div>
+                    <!-- /.input group -->
+                  </div>
+
+                  <!-- checkbox -->
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Fallas electricas
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Fallas en el motor
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Problemas en la caja
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Problemas en los globos
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" >
+                        Problemas en el compresor de aire
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Problemas en los ejes
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Problemas con la manguera de aire
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Problemas con el radiador
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Problemas en los muelles
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Problemas en el alternador
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Fallas en las crucetas
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Problemas en los frenos
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Problemas en la bomba
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Problemas en la corona
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Problemas en el turbo
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Problemas en los rodamientos
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Problemas con la correa
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Problemas en el tanque de combustible
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Problemas en los inyectores
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Problemas en el chasis
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Problemas de direccion
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Descripcion:</label>
+                    <textarea class="form-control" rows="3" placeholder="Descripcion ..."></textarea>
+                  </div>
+
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+
+            </div>
+          </form>
+
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Donut</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+
+              <div class="box-body">
+                <div id="chartdiv"></div>
+              </div>
+              <!-- /.box-body -->
+
+          </div>
+
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Otro</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+
+              <div class="box-body">
+                <div id="chartdiv2"></div>
+              </div>
+              <!-- /.box-body -->
+
+          </div>
+
+          <!-- /.box -->
+        </div>
+        <!--/.col (right) -->
+      </div>
+
     </section>
     <!-- /.content -->
   </div>
@@ -742,6 +1365,10 @@ desired effect
 <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
 <script src="plugins/iCheck/icheck.min.js"></script>
 <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN86jpZSdHSfpwhlKVv272WTd1lBMr6bc"></script>
 <script type="text/javascript" src="javascripts/jquery.googlemap.js"></script>
@@ -946,6 +1573,177 @@ desired effect
       });
       $('.select2').select2();
       $('#reservation').daterangepicker();
+
+      //puebas en los charts
+      am4core.ready(function() {
+
+      // Themes begin
+      am4core.useTheme(am4themes_animated);
+      // Themes end
+
+      var chart = am4core.create("chartdiv", am4charts.XYChart);
+      chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
+
+      chart.data = [
+        {
+          country: "USA",
+          visits: 23725
+        },
+        {
+          country: "China",
+          visits: 1882
+        },
+        {
+          country: "Japan",
+          visits: 1809
+        },
+        {
+          country: "Germany",
+          visits: 1322
+        },
+        {
+          country: "UK",
+          visits: 1122
+        },
+        {
+          country: "France",
+          visits: 1114
+        },
+        {
+          country: "India",
+          visits: 984
+        },
+        {
+          country: "Spain",
+          visits: 711
+        },
+        {
+          country: "Netherlands",
+          visits: 665
+        },
+        {
+          country: "Russia",
+          visits: 580
+        },
+        {
+          country: "South Korea",
+          visits: 443
+        },
+        {
+          country: "Canada",
+          visits: 441
+        }
+      ];
+
+      var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+      categoryAxis.renderer.grid.template.location = 0;
+      categoryAxis.dataFields.category = "country";
+      categoryAxis.renderer.minGridDistance = 40;
+      categoryAxis.fontSize = 11;
+
+      var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+      valueAxis.min = 0;
+      valueAxis.max = 24000;
+      valueAxis.strictMinMax = true;
+      valueAxis.renderer.minGridDistance = 30;
+      // axis break
+      var axisBreak = valueAxis.axisBreaks.create();
+      axisBreak.startValue = 2100;
+      axisBreak.endValue = 22900;
+      axisBreak.breakSize = 0.005;
+
+      // make break expand on hover
+      var hoverState = axisBreak.states.create("hover");
+      hoverState.properties.breakSize = 1;
+      hoverState.properties.opacity = 0.1;
+      hoverState.transitionDuration = 1500;
+
+      axisBreak.defaultState.transitionDuration = 1000;
+      /*
+      // this is exactly the same, but with events
+      axisBreak.events.on("over", function() {
+        axisBreak.animate(
+          [{ property: "breakSize", to: 1 }, { property: "opacity", to: 0.1 }],
+          1500,
+          am4core.ease.sinOut
+        );
+      });
+      axisBreak.events.on("out", function() {
+        axisBreak.animate(
+          [{ property: "breakSize", to: 0.005 }, { property: "opacity", to: 1 }],
+          1000,
+          am4core.ease.quadOut
+        );
+      });*/
+
+      var series = chart.series.push(new am4charts.ColumnSeries());
+      series.dataFields.categoryX = "country";
+      series.dataFields.valueY = "visits";
+      series.columns.template.tooltipText = "{valueY.value}";
+      series.columns.template.tooltipY = 0;
+      series.columns.template.strokeOpacity = 0;
+
+      // as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set
+      series.columns.template.adapter.add("fill", function(fill, target) {
+        return chart.colors.getIndex(target.dataItem.index);
+      });
+
+      });
+
+
+      am4core.ready(function() {
+
+        // Themes begin
+        am4core.useTheme(am4themes_animated);
+        // Themes end
+
+        // Create chart instance
+        var chart = am4core.create("chartdiv2", am4charts.PieChart);
+
+        // Add data
+        chart.data = [ {
+          "country": "Lithuania",
+          "litres": 501.9
+        }, {
+          "country": "Czechia",
+          "litres": 301.9
+        }, {
+          "country": "Ireland",
+          "litres": 201.1
+        }, {
+          "country": "Germany",
+          "litres": 165.8
+        }, {
+          "country": "Australia",
+          "litres": 139.9
+        }, {
+          "country": "Austria",
+          "litres": 128.3
+        }, {
+          "country": "UK",
+          "litres": 99
+        }, {
+          "country": "Belgium",
+          "litres": 60
+        }, {
+          "country": "The Netherlands",
+          "litres": 50
+        } ];
+
+        // Add and configure Series
+        var pieSeries = chart.series.push(new am4charts.PieSeries());
+        pieSeries.dataFields.value = "litres";
+        pieSeries.dataFields.category = "country";
+        pieSeries.slices.template.stroke = am4core.color("#fff");
+        pieSeries.slices.template.strokeWidth = 2;
+        pieSeries.slices.template.strokeOpacity = 1;
+
+        // This creates initial animation
+        pieSeries.hiddenState.properties.opacity = 1;
+        pieSeries.hiddenState.properties.endAngle = -90;
+        pieSeries.hiddenState.properties.startAngle = -90;
+
+      }); // end am
     }
     function llenarTablas(data,p){
       let conT=1;
