@@ -25,10 +25,28 @@ router.get('/probar',(req,res)=>{
     /*var fatos=[{otro:'busca1',lol:'gsrgr'},{otro:'busca1'},{otroqueno:'busca3'}];
     let dat=jsonQuery('[*otro=busca1]',{data:fatos}).value;
     res.json(dat);*/
-    var fatos=[{otro:'busca1',lol:'gsrgr'},{otro:'busca1'},{otroqueno:'busca3'}];
+    /*var fatos=[{otro:'busca1',lol:'gsrgr'},{otro:'busca1'},{otroqueno:'busca3'}];
     var fatos2=[{otro:'busca1',lol:'gsrgr'},{otro:'busca1'},{otroqueno:'busca3'}];
-    fatos=fatos.concat(fatos2);
-    res.json(fatos);
+    fatos=fatos.concat(fatos2);*/
+    /*var arr=[0,1,2,3,4,5];
+    res.json({arr:arr.slice(1,2+1)});*/
+    /*let fin=(new Date()).toLocaleString();
+    let inicio=new Date();
+    inicio.setDate(inicio.getDate()-365);
+    inicio=inicio.toLocaleString();
+    let ini=inicio.split(',');
+    let fi=fin.split(',');
+    console.log(ini[0]);
+    console.log(fi[0]);
+    res.json({
+      inicio:inicio,
+      fin:fin
+    });*/
+    let mostrar={};
+    for (let i = 0; i < 8; i++) {
+      mostrar['data'+i]='data'+i;
+    }
+    res.json(mostrar);
 });
 
 router.patch('/control/:id',(req,res)=>{

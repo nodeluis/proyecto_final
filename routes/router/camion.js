@@ -38,7 +38,7 @@ router.post('/actualizar',async(req,res)=>{
 
     console.log('actualizando datos de '+ pl+' en fecha '+qu);
     //await page.goto('http://200.87.207.36//googleMapsGenerarRecorrido.php?IdMov='+id+'&fechaDesde='+qu+'%2000:01&fechaHasta='+qu+'%2023:59');
-    await page.goto('http://200.87.207.36//googleMapsGenerarRecorrido.php?IdMov='+id+'&fechaDesde=2019-10-13%2000:01&fechaHasta=2019-10-13%2023:59');
+    await page.goto('http://200.87.207.36//googleMapsGenerarRecorrido.php?IdMov='+id+'&fechaDesde=2019-10-17%2000:01&fechaHasta=2019-10-17%2023:59');
     const dataxcamion = await page.evaluate(() => {
     return {
         json: JSON.parse(document.documentElement.outerText)
@@ -234,30 +234,9 @@ router.get('/exceso/:id',async(req,res)=>{
 });
 
 router.post('/fechaE',(req,res)=>{
-    console.log(req.body);
-    let arr=[0,31,28,31,30,31,30,31,31,30,31,30,31];
-    let fi=req.body.fi;
-    let ff=req.body.ff;
     let id=req.body.id;
-    let f1=fi.split('/');
-    let f2=ff.split('/');
-    let t=true;
-    let fecha=[];
-    let i = parseInt(f1[2]);
-    let day=parseInt(f1[1]);
-    for (let j = parseInt(f1[0]);t; j=((j==12)?1:j+1)) {
-      for (let k = day; k <= arr[j]; k++) {
-        if(j==parseInt(f2[0])&&k==parseInt(f2[1])&&i==parseInt(f2[2])){
-          fecha.push(((i<10)?'0'+i:i)+'-'+((j<10)?'0'+j:j)+'-'+((k<10)?'0'+k:k));
-          t=false;
-          break;
-        }else{
-          fecha.push(((i<10)?'0'+i:i)+'-'+((j<10)?'0'+j:j)+'-'+((k<10)?'0'+k:k));
-        }
-      }
-      day=1;
-      if(j==12)i++;
-    }
+    let fecha=rango_fecha(req.body.fi,req.body.ff);
+    console.log(fecha);
     Camion.findOne({id:id},(err,doc)=>{
       if(!empty(doc)){
         let result=[];
@@ -274,29 +253,8 @@ router.post('/fechaE',(req,res)=>{
 });
 
 router.post('/fechaH',(req,res)=>{
-    let arr=[0,31,28,31,30,31,30,31,31,30,31,30,31];
-    let fi=req.body.fi;
-    let ff=req.body.ff;
     let id=req.body.id;
-    let f1=fi.split('/');
-    let f2=ff.split('/');
-    let t=true;
-    let fecha=[];
-    let i = parseInt(f1[2]);
-    let day=parseInt(f1[1]);
-    for (let j = parseInt(f1[0]);t; j=((j==12)?1:j+1)) {
-      for (let k = day; k <= arr[j]; k++) {
-        if(j==parseInt(f2[0])&&k==parseInt(f2[1])&&i==parseInt(f2[2])){
-          fecha.push(((i<10)?'0'+i:i)+'-'+((j<10)?'0'+j:j)+'-'+((k<10)?'0'+k:k));
-          t=false;
-          break;
-        }else{
-          fecha.push(((i<10)?'0'+i:i)+'-'+((j<10)?'0'+j:j)+'-'+((k<10)?'0'+k:k));
-        }
-      }
-      day=1;
-      if(j==12)i++;
-    }
+    let fecha=rango_fecha(req.body.fi,req.body.ff);
     Camion.findOne({id:id},(err,doc)=>{
       if(!empty(doc)){
         let result=[];
@@ -310,15 +268,6 @@ router.post('/fechaH',(req,res)=>{
         res.json({message:'no existe el camion'});
       }
     });
-});
-
-router.get('/borrar',(req,res)=>{
-  Camion.findOne({id:'4634057670'},(err,doc)=>{
-    doc.extintor=[];
-    Camion.findByIdAndUpdate(doc._id,doc,()=>{
-      res.json({message:'borrado'});
-    });
-  });
 });
 
 router.post('/extintor',(req,res)=>{
@@ -385,5 +334,128 @@ router.post('/dataextintor',(req,res)=>{
     });
 });
 
+router.post('/incidente',(req,res)=>{
+    let arr=req.body.data.split(',');
+    let id=req.body.id;
+    Camion.findOne({id:id},(err,doc)=>{
+      if(!empty(doc)){
+        let fe=arr[0].split('/');
+        let obj={
+          fecha:fe[2]+'-'+fe[0]+'-'+fe[1],
+          falta:arr.slice(2,arr.length),
+          desc:arr[1]
+        };
+        console.log(obj);
+        if(!empty(doc.incidente)){
+          doc.incidente.push(obj);
+        }else{
+          let ins=[];
+          ins.push(obj);
+          doc.incidente=ins;
+        }
+        Camion.findByIdAndUpdate(doc._id,doc,()=>{
+          res.json({message:'nuevo incidente insertado'});
+        });
+      }else{
+        res.json({message:'no existe el camion'});
+      }
+    });
+});
+
+router.post('/vistaIncidente',(req,res)=>{
+    let id=req.body.id;
+    Camion.findOne({id:id},(err,doc)=>{
+      if(!empty(doc)){
+        let fin=(new Date()).toLocaleString();
+        let inicio=new Date();
+        inicio.setDate(inicio.getDate()-150);
+        inicio=inicio.toLocaleString();
+        let ini=inicio.split(',');
+        let fi=fin.split(',');
+        let fecha=rango_fecha_mes(ini[0],fi[0]);
+        let result=[];
+        let dataChart=[];
+        console.log(fecha);
+        for (let j = 0; j < fecha.length; j++) {
+          let p=fecha[j];
+          let sum=0;
+          let imso=p[0].split('-');
+          for (let m = 0; m < p.length; m++) {
+            let p2=p[m];
+            let dat=jsonQuery('[*fecha='+p2+']',{data:doc.incidente}).value;
+            result=result.concat(dat);
+            try{
+              dat.forEach((le)=>{
+                sum+=le.falta.length;
+              });
+            }catch(err){
+            }
+          }
+          dataChart.push({
+            fecha:imso[1]+'/'+imso[0],
+            total:sum
+          });
+        }
+        res.json({data1:result,data2:dataChart});
+      }else{
+        res.json({message:'mo existe el camion'});
+      }
+    });
+});
+
+function rango_fecha(inicio,fin){
+  let arr=[0,31,28,31,30,31,30,31,31,30,31,30,31];
+  let fi=inicio;
+  let ff=fin;
+  let f1=fi.split('/');
+  let f2=ff.split('/');
+  let t=true;
+  let fecha=[];
+  let i = parseInt(f1[2]);
+  let day=parseInt(f1[1]);
+  for (let j = parseInt(f1[0]);t; j=((j==12)?1:j+1)) {
+    for (let k = day; k <= arr[j]; k++) {
+      if(j==parseInt(f2[0])&&k==parseInt(f2[1])&&i==parseInt(f2[2])){
+        fecha.push(((i<10)?'0'+i:i)+'-'+((j<10)?'0'+j:j)+'-'+((k<10)?'0'+k:k));
+        t=false;
+        break;
+      }else{
+        fecha.push(((i<10)?'0'+i:i)+'-'+((j<10)?'0'+j:j)+'-'+((k<10)?'0'+k:k));
+      }
+    }
+    day=1;
+    if(j==12)i++;
+  }
+  return fecha;
+}
+
+function rango_fecha_mes(inicio,fin){
+  let arr=[0,31,28,31,30,31,30,31,31,30,31,30,31];
+  let fi=inicio;
+  let ff=fin;
+  let f1=fi.split('/');
+  let f2=ff.split('/');
+  let t=true;
+  let fecha=[];
+  let aux=[];
+  let i = parseInt(f1[2]);
+  let day=parseInt(f1[1]);
+  for (let j = parseInt(f1[0]);t; j=((j==12)?1:j+1)) {
+    for (let k = day; k <= arr[j]; k++) {
+      if(j==parseInt(f2[0])&&k==parseInt(f2[1])&&i==parseInt(f2[2])){
+        aux.push(((i<10)?'0'+i:i)+'-'+((j<10)?'0'+j:j)+'-'+((k<10)?'0'+k:k));
+        t=false;
+        break;
+      }else{
+        aux.push(((i<10)?'0'+i:i)+'-'+((j<10)?'0'+j:j)+'-'+((k<10)?'0'+k:k));
+      }
+    }
+    day=1;
+    if(j==12)i++;
+    fecha.push(aux);
+    aux=[];
+  }
+  return fecha;
+}
 
 module.exports=router;

@@ -48,6 +48,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
         width: 100%;
         height: 300px;
       }
+      #incidenteChartDonut {
+        width: 100%;
+        height: 300px;
+      }
     </style>
 
   <!-- Google Font -->
@@ -634,7 +638,27 @@ desired effect
       </form>
       <!-- formulario extintores del camion  fin-->
 
+
+      <!-- formularios tablas y charts-->
+
       <div class="row" id="estadisticas">
+        <!-- left column -->
+        <div class="col-md-6">
+          <!-- general form elements -->
+
+        </div>
+        <!--/.col (left) -->
+        <!-- right column -->
+        <div class="col-md-6">
+          <!-- Horizontal Form -->
+
+
+          <!-- /.box -->
+        </div>
+        <!--/.col (right) -->
+      </div>
+
+      <div class="row" id="estadisticas2">
         <!-- left column -->
         <div class="col-md-6">
           <!-- general form elements -->
@@ -1031,12 +1055,57 @@ desired effect
         <!-- right column -->
         <div class="col-md-6">
           <!-- Horizontal Form -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Donut</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+
+              <div class="box-body">
+                <div id="chartdiv"></div>
+              </div>
+              <!-- /.box-body -->
+
+          </div>
+
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Otro</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+
+              <div class="box-body">
+                <div id="chartdiv2"></div>
+              </div>
+              <!-- /.box-body -->
+
+          </div>
+
+          <!-- /.box -->
+        </div>
+        <!--/.col (right) -->
+      </div>
+
+      <div class="row" id="estadisticas3">
+        <!-- left column -->
+        <div class="col-md-6">
+          <!-- general form elements -->
           <form role="form" id="formIncidente">
-            <div class="box box-success collapsed-box">
+            <div class="box box-primary">
               <div class="box-header with-border">
                 <h3 class="box-title">Formulario de incidentes</h3>
                 <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
                 </div>
               </div>
@@ -1051,7 +1120,7 @@ desired effect
                       <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                       </div>
-                      <input type="text" class="form-control pull-right">
+                      <input type="text" class="form-control pull-right" id="fechaIncidente">
                     </div>
                     <!-- /.input group -->
                   </div>
@@ -1188,7 +1257,7 @@ desired effect
 
                   <div class="form-group">
                     <label>Descripcion:</label>
-                    <textarea class="form-control" rows="3" placeholder="Descripcion ..."></textarea>
+                    <textarea class="form-control" rows="3" placeholder="Descripcion ..." id="descripcionIncidente"></textarea>
                   </div>
 
                 </div>
@@ -1200,8 +1269,12 @@ desired effect
 
             </div>
           </form>
-
-          <div class="box box-primary">
+        </div>
+        <!--/.col (left) -->
+        <!-- right column -->
+        <div class="col-md-6">
+          <!-- Horizontal Form -->
+          <div class="box box-info">
             <div class="box-header with-border">
               <h3 class="box-title">Donut</h3>
               <div class="box-tools pull-right">
@@ -1213,15 +1286,20 @@ desired effect
             <!-- form start -->
 
               <div class="box-body">
-                <div id="chartdiv"></div>
+                <div id="incidenteChartDonut"></div>
               </div>
               <!-- /.box-body -->
 
           </div>
 
-          <div class="box box-primary">
+          <!-- /.box -->
+        </div>
+        <!--/.col (right) -->
+
+        <div class="col-xs-12">
+          <div class="box box-warning">
             <div class="box-header with-border">
-              <h3 class="box-title">Otro</h3>
+              <h3 class="box-title">Donut</h3>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
@@ -1231,17 +1309,28 @@ desired effect
             <!-- form start -->
 
               <div class="box-body">
-                <div id="chartdiv2"></div>
               </div>
               <!-- /.box-body -->
 
           </div>
-
           <!-- /.box -->
         </div>
-        <!--/.col (right) -->
+
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Tabla Indicadores finales</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body" id="tablaEstadistica3">
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
       </div>
 
+      <!-- formularios tablas y charts-->
     </section>
     <!-- /.content -->
   </div>
@@ -1507,7 +1596,7 @@ desired effect
             // extintores final
 
             //Exposicion
-            /*$('#'+i+'exposicion').on('click', function(e){
+            $('#'+i+'exposicion').on('click', function(e){
               e.preventDefault();
               id=dato['id'];
               placa=dato['placa'];
@@ -1524,7 +1613,7 @@ desired effect
               placa=dato['placa'];
               limpiar();
               $('#map').hide();
-              $('#estadisticas').show();
+              $('#estadisticas2').show();
             });
             //intermedios final
 
@@ -1535,9 +1624,16 @@ desired effect
               placa=dato['placa'];
               limpiar();
               $('#map').hide();
-              $('#estadisticas').show();
+              $.post('/camion/vistaIncidente',{id:dato['id']},function(resp,status){
+                $('#estadisticas3').show();
+                console.log(resp);
+                llenarTablas(resp.data1,4);
+                llenarchart(resp.data2,3);
+              },'json').fail(function(err){
+                console.log(err);
+              });
             });
-            //finales final*/
+            //finales final
           }
 
       });
@@ -1575,11 +1671,18 @@ desired effect
       //formulario incidentes
       $('#formIncidente').submit(function(e) {
         e.preventDefault();
-
+        let inc=[];
+        inc.push($('#fechaIncidente').val());
+        inc.push($('#descripcionIncidente').val());
         $('input[type=checkbox]:checked',$(this)).each(function() {
-            console.log($(this).val());
+            inc.push($(this).val());
         });
+        $.post('/camion/incidente',{data:inc+'',id:id},function(resp,status){
+          console.log(resp);
 
+        },'json').fail(function(err){
+          console.log(err);
+        });
         $(this).trigger("reset");
       });
       //formulario incidentes final
@@ -1592,7 +1695,6 @@ desired effect
         $('input[type=checkbox]:checked',$(this)).each(function() {
             console.log($(this).val());
         });
-
         $(this).trigger("reset");
       });
       //formulario desvio conductor Final
@@ -1656,9 +1758,12 @@ desired effect
       $('#dateRange').hide();
       $('#excesosDiv').hide();
       $('#horarioDiv').hide();
-      //$('#estadisticas').hide();
+      $('#estadisticas').hide();
+      $('#estadisticas2').hide();
+      $('#estadisticas3').hide();
       $('#contenidoExceso').empty();
       $('#contenidoHorario').empty();
+      $('#tablaEstadistica3').empty()
       $('#bodyExt').empty();
     }
     function inicializar(){
@@ -1681,6 +1786,9 @@ desired effect
       $('#fechaFactExt').datepicker({
         autoclose: true
       });
+      $('#fechaIncidente').datepicker({
+        autoclose: true
+      });
       //iCheck for checkbox and radio inputs
       $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
         checkboxClass: 'icheckbox_minimal-blue',
@@ -1700,175 +1808,121 @@ desired effect
       $('#reservation').daterangepicker();
 
       //puebas en los charts
-      am4core.ready(function() {
-
-      // Themes begin
-      am4core.useTheme(am4themes_animated);
-      // Themes end
-
-      var chart = am4core.create("chartdiv", am4charts.XYChart);
-      chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
-
-      chart.data = [
-        {
-          country: "China",
-          visits: 1882
-        },
-        {
-          country: "Japan",
-          visits: 1809
-        },
-        {
-          country: "Germany",
-          visits: 1322
-        },
-        {
-          country: "UK",
-          visits: 1122
-        },
-        {
-          country: "USA",
-          visits: 23725
-        },
-        {
-          country: "France",
-          visits: 1114
-        },
-        {
-          country: "India",
-          visits: 984
-        },
-        {
-          country: "Spain",
-          visits: 711
-        },
-        {
-          country: "Netherlands",
-          visits: 665
-        },
-        {
-          country: "Russia",
-          visits: 580
-        },
-        {
-          country: "South Korea",
-          visits: 443
-        },
-        {
-          country: "Canada",
-          visits: 441
-        }
-      ];
-
-      var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-      categoryAxis.renderer.grid.template.location = 0;
-      categoryAxis.dataFields.category = "country";
-      categoryAxis.renderer.minGridDistance = 40;
-      categoryAxis.fontSize = 11;
-
-      var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-      valueAxis.min = 0;
-      valueAxis.max = 24000;
-      valueAxis.strictMinMax = true;
-      valueAxis.renderer.minGridDistance = 30;
-      // axis break
-      var axisBreak = valueAxis.axisBreaks.create();
-      axisBreak.startValue = 2100;
-      axisBreak.endValue = 22900;
-      axisBreak.breakSize = 0.005;
-
-      // make break expand on hover
-      var hoverState = axisBreak.states.create("hover");
-      hoverState.properties.breakSize = 1;
-      hoverState.properties.opacity = 0.1;
-      hoverState.transitionDuration = 1500;
-
-      axisBreak.defaultState.transitionDuration = 1000;
-      /*
-      // this is exactly the same, but with events
-      axisBreak.events.on("over", function() {
-        axisBreak.animate(
-          [{ property: "breakSize", to: 1 }, { property: "opacity", to: 0.1 }],
-          1500,
-          am4core.ease.sinOut
-        );
-      });
-      axisBreak.events.on("out", function() {
-        axisBreak.animate(
-          [{ property: "breakSize", to: 0.005 }, { property: "opacity", to: 1 }],
-          1000,
-          am4core.ease.quadOut
-        );
-      });*/
-
-      var series = chart.series.push(new am4charts.ColumnSeries());
-      series.dataFields.categoryX = "country";
-      series.dataFields.valueY = "visits";
-      series.columns.template.tooltipText = "{valueY.value}";
-      series.columns.template.tooltipY = 0;
-      series.columns.template.strokeOpacity = 0;
-
-      // as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set
-      series.columns.template.adapter.add("fill", function(fill, target) {
-        return chart.colors.getIndex(target.dataItem.index);
-      });
-
-      });
-
 
       am4core.ready(function() {
 
         // Themes begin
         am4core.useTheme(am4themes_animated);
         // Themes end
+        var chart = am4core.create("chartdiv", am4charts.XYChart);
+        chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
 
-        // Create chart instance
-        var chart = am4core.create("chartdiv2", am4charts.PieChart);
+        chart.data = [
+          {
+            country: "China",
+            visits: 1882
+          },
+          {
+            country: "Japan",
+            visits: 1809
+          },
+          {
+            country: "Germany",
+            visits: 1322
+          },
+          {
+            country: "UK",
+            visits: 1122
+          },
+          {
+            country: "USA",
+            visits: 23725
+          },
+          {
+            country: "France",
+            visits: 1114
+          },
+          {
+            country: "India",
+            visits: 984
+          },
+          {
+            country: "Spain",
+            visits: 711
+          },
+          {
+            country: "Netherlands",
+            visits: 665
+          },
+          {
+            country: "Russia",
+            visits: 580
+          },
+          {
+            country: "South Korea",
+            visits: 443
+          },
+          {
+            country: "Canada",
+            visits: 441
+          }
+        ];
 
-        // Add data
-        chart.data = [ {
-          "country": "Lithuania",
-          "litres": 501.9
-        }, {
-          "country": "Czechia",
-          "litres": 301.9
-        }, {
-          "country": "Ireland",
-          "litres": 201.1
-        }, {
-          "country": "Germany",
-          "litres": 165.8
-        }, {
-          "country": "Australia",
-          "litres": 139.9
-        }, {
-          "country": "Austria",
-          "litres": 128.3
-        }, {
-          "country": "UK",
-          "litres": 99
-        }, {
-          "country": "Belgium",
-          "litres": 60
-        }, {
-          "country": "The Netherlands",
-          "litres": 50
-        } ];
+        var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+        categoryAxis.renderer.grid.template.location = 0;
+        categoryAxis.dataFields.category = "country";
+        categoryAxis.renderer.minGridDistance = 40;
+        categoryAxis.fontSize = 11;
 
-        // Add and configure Series
-        var pieSeries = chart.series.push(new am4charts.PieSeries());
-        pieSeries.dataFields.value = "litres";
-        pieSeries.dataFields.category = "country";
-        pieSeries.slices.template.stroke = am4core.color("#fff");
-        pieSeries.slices.template.strokeWidth = 2;
-        pieSeries.slices.template.strokeOpacity = 1;
+        var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+        valueAxis.min = 0;
+        valueAxis.max = 24000;
+        valueAxis.strictMinMax = true;
+        valueAxis.renderer.minGridDistance = 30;
+        // axis break
+        var axisBreak = valueAxis.axisBreaks.create();
+        axisBreak.startValue = 2100;
+        axisBreak.endValue = 22900;
+        axisBreak.breakSize = 0.005;
 
-        // This creates initial animation
-        pieSeries.hiddenState.properties.opacity = 1;
-        pieSeries.hiddenState.properties.endAngle = -90;
-        pieSeries.hiddenState.properties.startAngle = -90;
+        // make break expand on hover
+        var hoverState = axisBreak.states.create("hover");
+        hoverState.properties.breakSize = 1;
+        hoverState.properties.opacity = 0.1;
+        hoverState.transitionDuration = 1500;
 
-      }); // end am
+        axisBreak.defaultState.transitionDuration = 1000;
+        /*
+        // this is exactly the same, but with events
+        axisBreak.events.on("over", function() {
+          axisBreak.animate(
+            [{ property: "breakSize", to: 1 }, { property: "opacity", to: 0.1 }],
+            1500,
+            am4core.ease.sinOut
+          );
+        });
+        axisBreak.events.on("out", function() {
+          axisBreak.animate(
+            [{ property: "breakSize", to: 0.005 }, { property: "opacity", to: 1 }],
+            1000,
+            am4core.ease.quadOut
+          );
+        });*/
+
+        var series = chart.series.push(new am4charts.ColumnSeries());
+        series.dataFields.categoryX = "country";
+        series.dataFields.valueY = "visits";
+        series.columns.template.tooltipText = "{valueY.value}";
+        series.columns.template.tooltipY = 0;
+        series.columns.template.strokeOpacity = 0;
+
+        // as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set
+        series.columns.template.adapter.add("fill", function(fill, target) {
+          return chart.colors.getIndex(target.dataItem.index);
+        });
+
+      });
+      //end chart
     }
     function llenarTablas(data,p){
       let conT=1;
@@ -1997,6 +2051,36 @@ desired effect
         $(construir).appendTo('#bodyExt');
         $('#example').addClass('table table-bordered table-hover');
         $('#example').DataTable();
+      }else if(p==4){
+        construir+='<th>Descripcion</th>'
+                  +'<th>Infracciones</th>'
+                  +'<th>Fecha</th>'
+                  +'</tr>'
+                  +'</thead>'
+                  +'<tbody id="contenidoExc">';
+        data.forEach(function(dat){
+        construir+='<tr>'
+        +'<td>'+conT+'</td>'
+        +'<td>'+dat['desc']+'</td>'
+        //+'<td>'+dat['falta']+'</td>'
+        +'<td>Un texto es</td>'
+        +'<td>'+dat['fecha']+'</td>'
+        +'</tr>';
+        conT++;
+        });//aqui hay cambios
+        construir+='</tbody>'
+            +'<tfoot>'
+            +'<tr>'
+            +'<th>Nro</th>'
+            +'<th>Descripcion</th>'
+            +'<th>Infracciones</th>'
+            +'<th>Fecha</th>'
+            +'</tr>'
+            +'</tfoot>'
+            +'</table>';
+        $(construir).appendTo('#tablaEstadistica3');
+        $('#example').addClass('table table-bordered table-hover');
+        $('#example').DataTable();
       }
     }
     function selectRequest(p){
@@ -2011,6 +2095,7 @@ desired effect
         $.post('/camion/fechaE', postdata, function(response,status) {
           $('#excesosDiv').show();
           $('#dateRange').show();
+          console.log(response);
           try{
             llenarTablas(response,1);
           }catch(error){
@@ -2033,6 +2118,36 @@ desired effect
         },'json').fail(function(err){
           console.log(err);
         });
+      }
+    }
+    function llenarchart(data,p){
+      if(p==3){
+        am4core.ready(function() {
+
+          // Themes begin
+          am4core.useTheme(am4themes_animated);
+          // Themes end
+
+          // Create chart instance
+          var chart = am4core.create("incidenteChartDonut", am4charts.PieChart);
+
+          // Add data
+          chart.data = data;
+
+          // Add and configure Series
+          var pieSeries = chart.series.push(new am4charts.PieSeries());
+          pieSeries.dataFields.value = "total";
+          pieSeries.dataFields.category = "fecha";
+          pieSeries.slices.template.stroke = am4core.color("#fff");
+          pieSeries.slices.template.strokeWidth = 2;
+          pieSeries.slices.template.strokeOpacity = 1;
+
+          // This creates initial animation
+          pieSeries.hiddenState.properties.opacity = 1;
+          pieSeries.hiddenState.properties.endAngle = -90;
+          pieSeries.hiddenState.properties.startAngle = -90;
+
+        }); // end am
       }
     }
 </script>
