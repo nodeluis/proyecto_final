@@ -375,7 +375,6 @@ router.post('/vistaIncidente',(req,res)=>{
         let fecha=rango_fecha_mes(ini[0],fi[0]);
         let result=[];
         let dataChart=[];
-        console.log(fecha);
         for (let j = 0; j < fecha.length; j++) {
           let p=fecha[j];
           let sum=0;
@@ -401,6 +400,57 @@ router.post('/vistaIncidente',(req,res)=>{
         res.json({message:'mo existe el camion'});
       }
     });
+});
+
+router.post('/coleccionChartIncidente',(req,res)=>{
+    let inicio='';
+    let fin='';
+    let env=[];
+    let id=req.body.id;
+    try {
+      inicio=req.body.fi;
+      fin=req.body.ff;
+      let fecha=rango_fecha(inicio,fin);
+      Camion.findOne({id:id},(err,doc)=>{
+        if(!empty(doc)){
+          let sum=0;
+          for (let m = 0; m < fecha.length; m++) {
+            let p=fecha[m];
+            let que=jsonQuery('[*fecha='+p+']',{data:doc.incidente}).value;
+            try {
+              que.forEach((dat)=>{
+                sum+=dat.falta.length;
+              });
+            } catch (e){}
+          }
+          env.push({
+            desc:'Frecuencia total de incidentes',
+            total:sum
+          });
+          res.json(env);
+        }else{
+          res.json({message:'camion no existe'});
+        }
+      });
+    } catch (e) {
+      Camion.findOne({id:id},(err,doc)=>{
+        if(!empty(doc)){
+          let sum=0;
+          try {
+            doc.incidente.forEach((dat)=>{
+              sum+=dat.falta.length;
+            });
+          } catch (e) {}
+          env.push({
+            desc:'Frecuencia total de incidentes',
+            total:sum
+          });
+          res.json(env);
+        }else{
+          res.json({message:'camion no existe'});
+        }
+      });
+    }
 });
 
 function rango_fecha(inicio,fin){
@@ -457,5 +507,6 @@ function rango_fecha_mes(inicio,fin){
   }
   return fecha;
 }
+
 
 module.exports=router;
