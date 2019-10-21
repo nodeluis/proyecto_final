@@ -124,14 +124,9 @@
         email:$('#em').val(),
         password:$('#pw').val()
       };
-      /*$.get(url, datos, function(response){
-        console.log(response);
-      });*/
       $.post(url, datos, function(response,status) {
-        var url = "/home2?token="+response.token;
+        var url = "/home2";
         $(location).attr('href',url);
-        //console.log(response);
-        //$.get(url, null, function(respo) {});
       },'json').fail(function(err){
         $('#btnp').attr('data-target','#modal-danger');
         $('#textoaviso').text(err.responseJSON['message']);

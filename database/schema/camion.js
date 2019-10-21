@@ -69,6 +69,12 @@ const camion={
       fecha:String,
       falta:[],
       desc:String,
+    }],
+    control:[{
+      fechaInicio:String,
+      fechaFin:String,
+      descripcion:String,
+      ruta:String
     }]
 };
 

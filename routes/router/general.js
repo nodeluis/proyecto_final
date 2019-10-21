@@ -49,14 +49,25 @@ router.get('/probar',(req,res)=>{
     res.json(mostrar);
 });
 
-router.patch('/control/:id',(req,res)=>{
-    let id=req.params.id;
+router.post('/control',(req,res)=>{
+    let id=req.body.id;
     General.findOne({_id:id},(err,doc)=>{
       if(!empty(doc)){
         doc.control=true;
         General.findByIdAndUpdate(id,doc,()=>{
           res.json({message:'camion ahora esta siendo monitoreado'});
         });
+      }else{
+        res.json({message:'error no existe camion'});
+      }
+    });
+});
+
+router.get('/control/:id',(req,res)=>{
+    let id=req.params.id;
+    General.findOne({_id:id},(err,doc)=>{
+      if(!empty(doc)){
+        res.json({control:doc.control});
       }else{
         res.json({message:'error no existe camion'});
       }

@@ -39,6 +39,7 @@ function inicializar(){
   $('.select2').select2();
   $('#reservation').daterangepicker();
   $('#fechaIncidenteChart').daterangepicker();
+  $('#fechaIncidenteDonut').daterangepicker();
 
   //puebas en los charts
   //end chart

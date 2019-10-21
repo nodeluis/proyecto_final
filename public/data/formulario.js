@@ -1,12 +1,3 @@
-//botones de excesos de Velocidad
-$('#enviarDateRange').on('click',function(e){
-  e.preventDefault();
-  limpiar();
-  selectRequest(daterangenvio);
-});
-
-//botones exceso de velocidad fin
-
 ////botones extintores
 $('#formExtint').submit(function(e) {
   e.preventDefault();

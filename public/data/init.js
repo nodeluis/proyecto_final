@@ -33,7 +33,7 @@ $(document).ready(function () {
                   +'<li><a href="#"><i class="fa fa-circle-o"></i>Botiquín</a></li>'
                   +'<li><a href="#" id="'+i+'ext"><i class="fa fa-circle-o"></i>Extintores</a></li>'
                   +'<li><a href="#" id="'+i+'exc"><i class="fa fa-circle-o"></i>excesos de velocidad</a></li>'
-                  +'<li><a href="#" id="'+i+'cont"><i class="fa fa-circle-o"></i>Controlar estado del camion</a></li>'
+                  +'<li><a href="#" id="'+i+'controlar" data-toggle="modal"><i class="fa fa-circle-o"></i>Controlar estado del camion</a></li>'
                   +'</ul>'
                   +'</li>').appendTo('#incamion');
         $('#'+i+'tree').addClass('treeview');
@@ -61,11 +61,6 @@ $(document).ready(function () {
           id=dato['id'];
           placa=dato['placa'];
           daterangenvio=1;
-          $("#map").googleMap({
-            zoom: 8, // Initial zoom level (optional)
-            coords: [-19.578297, -65.758633], // Map center (optional)
-            type: "ROADMAP" // Map type (optional)
-          });
           limpiar();
           let postdata={
             id:dato['id'],
@@ -86,11 +81,6 @@ $(document).ready(function () {
           id=dato['id'];
           placa=dato['placa'];
           daterangenvio=2;
-          $("#map").googleMap({
-            zoom: 8, // Initial zoom level (optional)
-            coords: [-19.578297, -65.758633], // Map center (optional)
-            type: "ROADMAP" // Map type (optional)
-          });
           limpiar();
           let postdata={
             id:dato['id'],
@@ -176,7 +166,21 @@ $(document).ready(function () {
           });
         });
         //finales final
-      }
 
+        //controlar estado del camion
+        $('#'+i+'controlar').on('click', function(e){
+          e.preventDefault();
+          id=dato['id'];
+          placa=dato['placa'];
+          limpiar();
+          $.get( "/general/control/"+dato['_id'], function(resp) {
+            console.log(resp);
+            llenar_modal(resp.control);
+          });
+          $($(this)).attr('data-target','#modal-aviso-control');
+          //$('#aviso-sincontrol').text('Si desea controlar viaje del camion presione el boton');
+        });
+        //controlar estado del camion fin
+      }
   });
 });

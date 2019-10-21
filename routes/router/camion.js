@@ -364,15 +364,22 @@ router.post('/incidente',(req,res)=>{
 
 router.post('/vistaIncidente',(req,res)=>{
     let id=req.body.id;
+    let fecha=[];
+    try {
+      let inicio=req.body.fi;
+      let fin=req.body.ff;
+      fecha=rango_fecha_mes(inicio,fin);
+    } catch (e) {
+      let fin=(new Date()).toLocaleString();
+      let inicio=new Date();
+      inicio.setDate(inicio.getDate()-150);
+      inicio=inicio.toLocaleString();
+      let ini=inicio.split(',');
+      let fi=fin.split(',');
+      fecha=rango_fecha_mes(ini[0],fi[0]);
+    }
     Camion.findOne({id:id},(err,doc)=>{
       if(!empty(doc)){
-        let fin=(new Date()).toLocaleString();
-        let inicio=new Date();
-        inicio.setDate(inicio.getDate()-150);
-        inicio=inicio.toLocaleString();
-        let ini=inicio.split(',');
-        let fi=fin.split(',');
-        let fecha=rango_fecha_mes(ini[0],fi[0]);
         let result=[];
         let dataChart=[];
         for (let j = 0; j < fecha.length; j++) {
@@ -403,13 +410,11 @@ router.post('/vistaIncidente',(req,res)=>{
 });
 
 router.post('/coleccionChartIncidente',(req,res)=>{
-    let inicio='';
-    let fin='';
     let env=[];
     let id=req.body.id;
     try {
-      inicio=req.body.fi;
-      fin=req.body.ff;
+      let inicio=req.body.fi;
+      let fin=req.body.ff;
       let fecha=rango_fecha(inicio,fin);
       Camion.findOne({id:id},(err,doc)=>{
         if(!empty(doc)){
@@ -424,7 +429,7 @@ router.post('/coleccionChartIncidente',(req,res)=>{
             } catch (e){}
           }
           env.push({
-            desc:'Frecuencia total de incidentes',
+            desc:'Frecuencia total de incidentes desde '+inicio+' hasta '+fin,
             total:sum
           });
           res.json(env);
@@ -452,6 +457,7 @@ router.post('/coleccionChartIncidente',(req,res)=>{
       });
     }
 });
+
 
 function rango_fecha(inicio,fin){
   let arr=[0,31,28,31,30,31,30,31,31,30,31,30,31];
