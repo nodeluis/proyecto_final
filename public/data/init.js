@@ -150,6 +150,16 @@ $(document).ready(function () {
           placa=dato['placa'];
           limpiar();
           $('#map').hide();
+          //llenar form
+          let dataIncidente='Fallas electricas,Fallas en el motor,Problemas en la caja,'
+          +'Problemas en la caja,Problemas en los globos,Problemas en el compresor de aire,'
+          +'Problemas en los ejes,Problemas con la manguera de aire,Problemas con el radiador,'
+          +'Problemas en los muelles,Problemas en el alternador,Fallas en las crucetas,Problemas en los frenos,'
+          +'Problemas en la bomba,Problemas en la corona,Problemas en el turbo,Problemas en los rodamientos,'
+          +'Problemas con la correa,Problemas en el tanque de combustible,Problemas en el chasis,Problemas en los inyectores,'
+          +'Problemas de direccion';
+          $(addcheck(dataIncidente)).appendTo('#addIncidente');
+          //llenar form
           $.post('/camion/vistaIncidente',{id:dato['id']},function(resp,status){
             $('#estadisticas3').show();
             console.log(resp);
@@ -173,11 +183,11 @@ $(document).ready(function () {
           id=dato['id'];
           placa=dato['placa'];
           limpiar();
+          $($(this)).attr('data-target','#modal-aviso-control');
           $.get( "/general/control/"+dato['_id'], function(resp) {
             console.log(resp);
             llenar_modal(resp.control);
           });
-          $($(this)).attr('data-target','#modal-aviso-control');
           //$('#aviso-sincontrol').text('Si desea controlar viaje del camion presione el boton');
         });
         //controlar estado del camion fin

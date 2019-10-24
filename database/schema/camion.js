@@ -38,6 +38,28 @@ const camion={
         señalizado:String
       }
     }],
+    //indicador expocision
+    km:[{
+      fecha:String,
+      
+    }],
+    volumen:[{
+      fecha:String,
+
+    }],
+    expocision:[{
+      fecha:String,
+
+    }],
+    cant:[{
+      fecha:String,
+
+    }],
+    frecuencia:[{
+      fecha:String,
+
+    }],
+    //indicador expocision
     //indicador intermedio
     desvioConductor:[{
       fecha:String,
@@ -70,6 +92,18 @@ const camion={
       falta:[],
       desc:String,
     }],
+    fatal:[{
+      fecha:String,
+      falta:[],
+      desc:String,
+    }],
+    medico:[{
+      fecha:String,
+      falta:[],
+      desc:String,
+    }],
+    //indicador final
+    //indicador final
     control:[{
       fechaInicio:String,
       fechaFin:String,

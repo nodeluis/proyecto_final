@@ -5,7 +5,7 @@ function llenar_modal(t){
   $('#buttonModal').empty();
   if(t){
     llen='<p>Este camion ya se encuentra siendo monitoreado por el administrador, si desea parar el monitoreo solo presione Monitoreo(off)</p>';
-    button='<button type="button" class="btn btn-outline" data-dismiss="modal" id="modalDesmonitorear">Monitoreo(off)</button>';
+    button='<button type="button" class="btn btn-outline" data-dismiss="modal" id="buttonDesmonitorear">Monitoreo(off)</button>';
   }else{
     llen+='<div class="box box-info">'
         +'<div class="box-header with-border">'
@@ -28,8 +28,32 @@ function llenar_modal(t){
         +'</div>'
         +'</div>'
         +'</div>';
-    button='<button type="button" class="btn btn-outline" data-dismiss="modal" id="modalMonitorear">Monitoreo(on)</button>';
+    button='<button type="button" class="btn btn-outline" data-dismiss="modal" id="buttonMonitorear">Monitoreo(on)</button>';
   }
   $(llen).appendTo('#modalBody');
   $(button).appendTo('#buttonModal');
+
+  //modal envio
+  $('#buttonMonitorear').on('click',function(e){
+    e.preventDefault();
+    console.log('llega');
+    let select=$('#modalSelect').val();
+    let descrip=$('#modalDescrpcion').val();
+    console.log(select);
+    console.log(descrip);
+  });
+  //modal envio final
+
+  //modal monitoreo off
+  $('#buttonDesmonitorear').on('click',function(e){
+    e.preventDefault();
+    console.log('llega');
+    /*$.post('/general/controlar',{id:dato['id']}, function(response,status) {
+      console.log(response);
+    },'json').fail(function(err){
+      console.log(err);
+    });*/
+  });
+  //modal monitoreo off final
+  
 }

@@ -1,4 +1,5 @@
 const Camion=require('../../database/schema/camion');
+const ruta=require('./rutas');
 const express=require('express');
 const router=express.Router();
 const puppeteer=require('puppeteer');

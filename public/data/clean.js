@@ -16,6 +16,7 @@ function limpiar(){
   $('#incidenteChart').empty();
   $('#incidenteChartDonut').empty();
   $('#incidenteChart').empty();
+  $('#addIncidente').empty();
   //$('#map').googleMap();
   $("#map").googleMap({
     zoom: 8, // Initial zoom level (optional)

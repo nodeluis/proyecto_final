@@ -53,7 +53,11 @@ router.post('/control',(req,res)=>{
     let id=req.body.id;
     General.findOne({_id:id},(err,doc)=>{
       if(!empty(doc)){
-        doc.control=true;
+        if(doc.control){
+          doc.control=false;
+        }else{
+          doc.control=true;
+        }
         General.findByIdAndUpdate(id,doc,()=>{
           res.json({message:'camion ahora esta siendo monitoreado'});
         });

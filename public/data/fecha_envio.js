@@ -49,18 +49,3 @@ $('#incidenteTablaChart').on('click',function(e){
   });
 });
 //boton incidente chart final
-
-//modal envio
-
-$('#modalEnviar').on('click',function(e){
-  e.preventDefault();
-  let select=$('#modalSelect').val();
-  console.log(select);
-  /*$.post('/general/controlar',{id:dato['id']}, function(response,status) {
-    console.log(response);
-  },'json').fail(function(err){
-    console.log(err);
-  });*/
-});
-
-//modal envio final

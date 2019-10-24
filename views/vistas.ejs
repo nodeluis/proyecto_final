@@ -1109,133 +1109,14 @@ desired effect
                     </div>
 
                     <!-- checkbox -->
-                    <div class="form-group">
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="electrica">
-                          Fallas electricas
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="motor">
-                          Fallas en el motor
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="caja">
-                          Problemas en la caja
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="globo">
-                          Problemas en los globos
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="compresorAire">
-                          Problemas en el compresor de aire
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="eje">
-                          Problemas en los ejes
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="magueraAire">
-                          Problemas con la manguera de aire
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="radiador">
-                          Problemas con el radiador
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="muelle">
-                          Problemas en los muelles
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="alternador">
-                          Problemas en el alternador
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="cruceta">
-                          Fallas en las crucetas
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="freno">
-                          Problemas en los frenos
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="bomba">
-                          Problemas en la bomba
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="corona">
-                          Problemas en la corona
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="turbo">
-                          Problemas en el turbo
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="rodamiento">
-                          Problemas en los rodamientos
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="correa">
-                          Problemas con la correa
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="tanqueCombustible">
-                          Problemas en el tanque de combustible
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="inyector">
-                          Problemas en los inyectores
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="chasis">
-                          Problemas en el chasis
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="direccion">
-                          Problemas de direccion
-                        </label>
-                      </div>
+                    <div class="form-group" id="addIncidente">
+                    </div>
+
+                    <div class="input-group margin">
+                      <input type="text" class="form-control" id="plusIncidente">
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-info btn-flat" id="plusIncidenteButton"><i class="fa fa-plus"></i></button>
+                          </span>
                     </div>
 
                     <div class="form-group">
@@ -1368,6 +1249,159 @@ desired effect
           <!-- /.modal-dialog -->
         </div>
         <!-- /.modal -->
+
+        <!-- kilometros-->
+        <div class="row" id="expocision">
+          <!-- left column -->
+          <div class="col-md-6">
+            <!-- general form elements -->
+            <form role="form" id="expocisionForm">
+
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Formulario de incidentes</h3>
+                  <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                  </div>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+
+                  <div class="box-body">
+
+                    <!-- checkbox -->
+                    <div class="form-group">
+                      <label>Seleccione la ruta del viaje:</label>
+                      <select class="form-control select2" multiple="multiple" data-placeholder="Select a State"
+                              style="width: 100%;">
+                        <option>Cbba</option>
+                        <option>La Paz</option>
+                        <option>Oruro</option>
+                        <option>Potosi</option>
+                        <option>Tarija</option>
+                        <option>Santa Cruz</option>
+                        <option>Sucre</option>
+                        <option>Camiri</option>
+                        <option>Monteagudo</option>
+                        <option>Villamontes</option>
+                        <option>Bermejo</option>
+                        <option>Pto. Villarroel</option>
+                        <option>Pto. Villarroel (Por SZC carr ant)</option>
+                        <option>San Jose de Chiquitos</option>
+                        <option>Santa Cruz (carr. Antigua)</option>
+                        <option>Sucre (Por Mizque - Aiquile)</option>
+                        <option>Sucre (por Potosi)</option>
+                        <option>Trinidad</option>
+                        <option>Uyuni</option>
+                        <option>Uyuni (por Potosi)</option>
+                        <option>Villamontes</option>
+                        <option>Villazon</option>
+                        <option>Yacuiba</option>
+                        <option>Yacuiba (carr. antigua)</option>
+                        <option>Bermejo</option>
+                        <option>Tupiza</option>
+                        <option>Camiri</option>
+                        <option>Monteagudo</option>
+                        <option>Potosi (carr. Antigua)</option>
+                        <option>Pto. Suarez (corto)</option>
+                        <option>Pto. Suarez (largo)</option>
+                        <option>Sanjose (corto)</option>
+                        <option>Sanjose (largo)</option>
+                        <option>Sucre (por Mizque - Aiquile)</option>
+                        <option>Tupiza (carr. antigua)</option>
+                        <option>Uyuni (carr. antigua)</option>
+                        <option>Uyuni (por Potosi)</option>
+                        <option>Villazon (carr. antigua)</option>
+                        <option>Cbba (crudo reducido)</option>
+                        <option>Pto. Suarez (carr. antigua)</option>
+                        <option>Pto. Villarroel</option>
+                        <option>Pto. Villarroel (por SCZ carr. antigua)</option>
+                        <option>Trinidad (carr. antigua)</option>
+                        <option>Gyrm</option>
+                        <option>Cobija (Brasil)</option>
+                        <option>Cobija (Peru y Brasil)</option>
+                        <option>Cobija (Bolivia)</option>
+                        <option>Riberalta (automotriz)</option>
+                        <option>Riberalta (Aviacion)</option>
+                        <option>Riberalta</option>
+                        <option>Cobija</option>
+                        <option>Guayaramerin</option>
+                        <option>Guabira</option>
+                        <option>Aguahi</option>
+                      </select>
+                    </div>
+                    <!--<div class="input-group margin">
+                      <input type="text" class="form-control" id="plusIncidente">
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-info btn-flat" id="plusIncidenteButton"><i class="fa fa-plus"></i></button>
+                          </span>
+                    </div>-->
+
+                    <div class="form-group">
+                      <label>Descripcion:</label>
+                      <textarea class="form-control" rows="3" placeholder="Descripcion ..." id="expocisionDescripcion"></textarea>
+                    </div>
+
+                  </div>
+                  <!-- /.box-body -->
+
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+
+              </div>
+            </form>
+          </div>
+          <!--/.col (left) -->
+          <!-- right column -->
+          <div class="col-md-6">
+            <!-- Horizontal Form -->
+
+            <!-- /.box -->
+          </div>
+          <!--/.col (right) -->
+
+          <div class="col-md-12">
+            <!-- Horizontal Form -->
+            <div class="form-group" id="expocisionDate">
+                <label>Date range:</label>
+
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" id="expocisionReservation">
+                    <div class="input-group-addon">
+                      <a href="#" id="expocisionSend">
+                        <i class="fa fa-send"></i>
+                      </a>
+                    </div>
+                </div>
+                <!-- /.input group -->
+            </div>
+
+            <div class="row" id="expocisionTable">
+              <div class="col-xs-12">
+                <div class="box">
+                  <div class="box-header">
+                    <h3 class="box-title">Check lis de los extintores</h3>
+                  </div>
+                  <!-- /.box-header -->
+                  <div class="box-body" id="expocisionBodyTable">
+                  </div>
+                  <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+              </div>
+              <!-- /.col -->
+            </div>
+
+            <!-- /.box -->
+          </div>
+
+        </div>
+        <!-- kilometros fin-->
 
     </section>
     <!-- /.content -->
@@ -1502,6 +1536,7 @@ desired effect
 <script type="text/javascript" src="data/llenar.js"></script>
 <script type="text/javascript" src="data/fecha_envio.js"></script>
 <script type="text/javascript" src="data/modal.js"></script>
+<script type="text/javascript" src="data/addCheck.js"></script>
 
 <script>
     var exinplusign=0;

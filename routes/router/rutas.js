@@ -1,0 +1,13 @@
+module.exports={
+  Camiri:{
+    Monteagudo:126,
+    VillaMontes:162
+  },
+  Cbba:{
+    Bermejo:1030,
+    Camiri:767,
+    La_paz:392,
+    Oruro:208,
+    Potosi:512,
+  }
+};
