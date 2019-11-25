@@ -155,5 +155,49 @@ function llenarTablas(data,p){
     $(construir).appendTo('#tablaEstadistica3');
     $('#example').addClass('table table-bordered table-hover');
     $('#example').DataTable();
+  }else if(p==5){
+        construir+='<th>Fecha inicio</th>'
+                  +'<th>Fecha fin</th>'
+                  +'<th>Excesos</th>'
+                  +'<th>Horario inapropiado</th>'
+                  +'<th>Tiempo de expocision</th>'
+                  +'<th>Ruta</th>'
+                  +'<th>Kilometros</th>'
+                  +'<th>Descripcion</th>'
+                  +'</tr>'
+                  +'</thead>'
+                  +'<tbody>';
+    data.forEach(function(dat){
+      construir+='<tr>'
+        +'<td>'+conT+'</td>'
+        +'<td>'+dat['inicio']+'</td>'
+        +'<td>'+dat['fin']+'</td>'
+        +'<td>'+dat['exceso'].length+'</td>'
+        +'<td>'+dat['horario'].length+'</td>'
+        +'<td>'+dat['expocision']+'</td>'
+        +'<td>'+dat['ruta']+'</td>'
+        +'<td>'+dat['km']+'</td>'
+        +'<td>'+dat['desc']+'</td>'
+        +'</tr>';
+      conT++;
+    });//aqui hay cambios
+    construir+='</tbody>'
+              +'<tfoot>'
+              +'<tr>'
+              +'<th>Nro</th>'
+              +'<th>Fecha inicio</th>'
+              +'<th>Fecha fin</th>'
+              +'<th>Excesos</th>'
+              +'<th>Horario inapropiado</th>'
+              +'<th>Tiempo de expocision</th>'
+              +'<th>Ruta</th>'
+              +'<th>Kilometros</th>'
+              +'<th>Descripcion</th>'
+              +'</tr>'
+              +'</tfoot>'
+              +'</table>';
+    $(construir).appendTo('#controlBodyTable');
+    $('#example').addClass('table table-bordered table-hover');
+    $('#example').DataTable();
   }
 }

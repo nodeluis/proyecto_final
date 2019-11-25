@@ -9,6 +9,10 @@ function limpiar(){
   $('#estadisticas').hide();
   $('#estadisticas2').hide();
   $('#estadisticas3').hide();
+  $('#control').hide();
+  $('#expocision').hide();
+  $('#controlForm1').show();
+  $('#controlForm2').show();
   $('#contenidoExceso').empty();
   $('#contenidoHorario').empty();
   $('#tablaEstadistica3').empty()
@@ -17,6 +21,7 @@ function limpiar(){
   $('#incidenteChartDonut').empty();
   $('#incidenteChart').empty();
   $('#addIncidente').empty();
+  $('#controlBodyTable').empty();
   //$('#map').googleMap();
   $("#map").googleMap({
     zoom: 8, // Initial zoom level (optional)

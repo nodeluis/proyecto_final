@@ -22,9 +22,11 @@ router.get('/probar',(req,res)=>{
     /*General.find().limit(4).skip(0).exec((err,doc)=>{
       res.json(doc);
     });*/
-    /*var fatos=[{otro:'busca1',lol:'gsrgr'},{otro:'busca1'},{otroqueno:'busca3'}];
+    var fatos=[{otro:'busca1',lol:'gsrgr',prueba:'busca1'},
+              {otro:'busca1'},
+              {otroqueno:'busca3',prueba:'busca1'}];
     let dat=jsonQuery('[*otro=busca1]',{data:fatos}).value;
-    res.json(dat);*/
+    res.json(dat);
     /*var fatos=[{otro:'busca1',lol:'gsrgr'},{otro:'busca1'},{otroqueno:'busca3'}];
     var fatos2=[{otro:'busca1',lol:'gsrgr'},{otro:'busca1'},{otroqueno:'busca3'}];
     fatos=fatos.concat(fatos2);*/
@@ -42,11 +44,18 @@ router.get('/probar',(req,res)=>{
       inicio:inicio,
       fin:fin
     });*/
-    let mostrar={};
+    /*let mostrar={};
     for (let i = 0; i < 8; i++) {
       mostrar['data'+i]='data'+i;
     }
-    res.json(mostrar);
+    res.json(mostrar);*/
+    /*try {
+      res.json({message:data});
+    } catch (e) {
+      res.json({message:sdata});
+    } finally {
+      res.json({message:1});
+    }*/
 });
 
 router.post('/control',(req,res)=>{
@@ -69,7 +78,7 @@ router.post('/control',(req,res)=>{
 
 router.get('/control/:id',(req,res)=>{
     let id=req.params.id;
-    General.findOne({_id:id},(err,doc)=>{
+    General.findOne({id:id},(err,doc)=>{
       if(!empty(doc)){
         res.json({control:doc.control});
       }else{

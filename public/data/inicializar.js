@@ -40,6 +40,12 @@ function inicializar(){
   $('#reservation').daterangepicker();
   $('#fechaIncidenteChart').daterangepicker();
   $('#fechaIncidenteDonut').daterangepicker();
+  $('#controlReservation').daterangepicker();
+  $('#fechaKmRecorrido').daterangepicker();
+  $('#fechaHoraCant').daterangepicker();
+  $('#fechaViajeCant').daterangepicker();
+  $('#fechaFrecViaje').daterangepicker();
+  $('#fechaChartExposicion').daterangepicker();
 
   //puebas en los charts
   //end chart

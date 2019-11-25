@@ -113,4 +113,87 @@ $(".select2").on("select2:select", function (evt) {
 
   $(this).trigger("change");
 });
-//ordenar elementos de select multiple fin 
+//ordenar elementos de select multiple fin
+
+//controlform
+$('#controlForm1').submit(function(e) {
+  e.preventDefault();
+  //#expocisionSelect
+
+  let select_button_text = $('#controlSelect option:selected').toArray().map(item => item.value);
+  let textarea=$('#controlDescripcion').val();
+  console.log(textarea);
+  $.get( '/general/control/'+id, function(resp) {
+    console.log(resp);
+    let t=132;
+    if(resp.control){
+      t=2;
+    }else{
+      t=1;
+    }
+    let fech=(new Date()).toLocaleString();
+    fech=manip(fech);
+    let envi={ruta:select_button_text+'',
+              id:id,
+              desc:textarea,
+              t:t,
+              fecha:fech
+            };
+    console.log(envi);
+    $.post('/camion/on',envi,function(resp,status){
+      console.log(resp);
+
+    },'json').fail(function(err){
+      console.log(err);
+    });
+  });
+  $(this).trigger("reset");
+});
+
+$('#controlForm2').submit(function(e) {
+    e.preventDefault();
+    //#expocisionSelect
+
+    $.get( '/general/control/'+id, function(resp) {
+    console.log(resp);
+    let t=132;
+    if(resp.control){
+      t=2;
+    }else{
+      t=1;
+    }
+    let fech=(new Date()).toLocaleString();
+    fech=manip(fech);
+    let envi={id:id,
+              fecha:fech,
+              t:t
+            }
+    $.post('/camion/on',envi,function(resp,status){
+      console.log(resp);
+
+    },'json').fail(function(err){
+      console.log(err);
+    });
+  });
+  $(this).trigger("reset");
+});
+
+function manip(f){
+    let fech=f.split(' ');
+    let fe=fech[0].split('/');
+    let hour=fech[1].split(':');
+    return fe[2]+'-'+fe[1]+'-'+fe[0]+' '+hour[0]+':'+hour[1];
+}
+
+$('#controlSend').on('click', function(e){
+  e.preventDefault();
+  let rep=($('#controlReservation').val()).split(' - ');
+  $.post('/camion/autoMes',{id:id,fi:rep[0],ff:rep[1]},function(resp,status){
+    $('#controlBodyTable').empty();
+    console.log(resp);
+    llenarTablas(resp.data,5);
+  },'json').fail(function(err){
+    console.log(err);
+  });
+});
+//control form Final

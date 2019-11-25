@@ -128,7 +128,32 @@ $(document).ready(function () {
           placa=dato['placa'];
           limpiar();
           $('#map').hide();
-          $('#estadisticas').show();
+          $('#expocision').show();
+          $.post('/camion/autoT',{id:id},function(resp,status){
+            console.log(resp);
+            llenarchart(resp.data.km,2,'DonutKmRecorrido');
+            llenarchart(resp.data.expocision,2,'DonutHoraCant');
+            llenarchart(resp.data.km,2,'DonutViajeCant');
+            llenarchart(resp.data.frecuencia,3,'DonutFrecViaje');
+          },'json').fail(function(err){
+            console.log(err);
+          });
+          $.post('/camion/generalExpocision',{id:id},function(resp,status){
+            console.log(resp);
+            let dataExpo=[{
+              desc:'Cantidad de kilometro recorrido',
+              total:resp.data[0]
+            },{
+              desc:'Total horas de exposicion',
+              total:resp.data[1]
+            },{
+              desc:'Cantidad de viajes',
+              total:resp.data[2]
+            }];
+            llenarchart(dataExpo,1,'ChartExposicion')
+          },'json').fail(function(err){
+            console.log(err);
+          });
         });
         //Exposicion final
 
@@ -183,12 +208,21 @@ $(document).ready(function () {
           id=dato['id'];
           placa=dato['placa'];
           limpiar();
-          $($(this)).attr('data-target','#modal-aviso-control');
-          $.get( "/general/control/"+dato['_id'], function(resp) {
+          $.get( "/general/control/"+dato['id'], function(resp) {
             console.log(resp);
-            llenar_modal(resp.control);
+            if(resp.control){
+              $('#controlForm1').hide();
+            }else{
+              $('#controlForm2').hide();
+            }
           });
-          //$('#aviso-sincontrol').text('Si desea controlar viaje del camion presione el boton');
+          $('#control').show();
+          $.post('/camion/autoMes',{id:dato['id']},function(resp,status){
+            console.log(resp);
+            llenarTablas(resp.data,5);
+          },'json').fail(function(err){
+            console.log(err);
+          });
         });
         //controlar estado del camion fin
       }

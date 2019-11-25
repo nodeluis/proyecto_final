@@ -266,13 +266,13 @@ module.exports=[{
   key:'Santa Cruz-Sucre (por Potosi)',
   value:1134
 },{
-  key:'Cbba-Cbba',
+  key:'Cbba',
   value:10
 },{
-  key:'La Paz-La Paz',
+  key:'La Paz',
   value:9
 },{
-  key:'Santa Cruz-Santa Cruz',
+  key:'Santa Cruz',
   value:16.5
 },{
   key:'Gyrm-Cobija (Brasil)',
@@ -317,7 +317,7 @@ module.exports=[{
   key:'Trinidad-Riberalta',
   value:882
 },{
-  key:'Gyrm-Gyrm',
+  key:'Gyrm',
   value:1
 },{
   key:'Guabira-Santa Cruz',

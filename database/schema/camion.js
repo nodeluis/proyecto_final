@@ -3,20 +3,30 @@ const mongoose=require('../connect');
 const camion={
     id:String,
     placa:String,
-    exceso:[{
-      lat:String,
-      lon:String,
-      lugar:String,
-      velocidad:String,
-      fecha:String,
-      hora:String
-    }],
-    horario:[{
-      lat:String,
-      lon:String,
-      lugar:String,
-      fecha:String,
-      hora:String
+    auto:[{
+      inicio:String,
+      fin:String,
+      ih:String,
+      fh:String,
+      exceso:[{
+        lat:String,
+        lon:String,
+        lugar:String,
+        velocidad:String,
+        fecha:String,
+        hora:String
+      }],
+      horario:[{
+        lat:String,
+        lon:String,
+        lugar:String,
+        fecha:String,
+        hora:String
+      }],
+      expocision:String,
+      ruta:String,
+      km:String,
+      desc:String
     }],
     extintor:[{
       lugar:String,
@@ -38,28 +48,6 @@ const camion={
         señalizado:String
       }
     }],
-    //indicador expocision
-    km:[{
-      fecha:String,
-      
-    }],
-    volumen:[{
-      fecha:String,
-
-    }],
-    expocision:[{
-      fecha:String,
-
-    }],
-    cant:[{
-      fecha:String,
-
-    }],
-    frecuencia:[{
-      fecha:String,
-
-    }],
-    //indicador expocision
     //indicador intermedio
     desvioConductor:[{
       fecha:String,
@@ -94,22 +82,24 @@ const camion={
     }],
     fatal:[{
       fecha:String,
-      falta:[],
+      ruta:String,
+      km:String,
+      accidente:[],
       desc:String,
     }],
     medico:[{
       fecha:String,
-      falta:[],
+      ruta:String,
+      km:String,
+      accidente:[],
       desc:String,
     }],
     //indicador final
-    //indicador final
-    control:[{
-      fechaInicio:String,
-      fechaFin:String,
-      descripcion:String,
-      ruta:String
-    }]
+    //propietarios
+    propietario:String,
+    chofer:String,
+    cedula:String,
+    fono:String
 };
 
 const camionModel=mongoose.model('camion',camion);
