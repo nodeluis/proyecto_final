@@ -135,6 +135,9 @@ $(document).ready(function () {
             llenarchart(resp.data.expocision,2,'DonutHoraCant');
             llenarchart(resp.data.km,2,'DonutViajeCant');
             llenarchart(resp.data.frecuencia,3,'DonutFrecViaje');
+            llenarTablas(resp.data.km,6);
+            llenarTablas(resp.data.expocision,7);
+            llenarTablas(resp.data.frecuencia,8);
           },'json').fail(function(err){
             console.log(err);
           });
@@ -143,14 +146,19 @@ $(document).ready(function () {
             let dataExpo=[{
               desc:'Cantidad de kilometro recorrido',
               total:resp.data[0]
-            },{
+            }];
+            llenarchart([{
+              desc:'Cantidad de kilometro recorrido',
+              total:resp.data[0]
+            }],1,'ChartExposicion');
+            llenarchart([{
               desc:'Total horas de exposicion',
               total:resp.data[1]
-            },{
+            }],1,'ChartExposicion1');
+            llenarchart([{
               desc:'Cantidad de viajes',
               total:resp.data[2]
-            }];
-            llenarchart(dataExpo,1,'ChartExposicion')
+            }],1,'ChartExposicion2');
           },'json').fail(function(err){
             console.log(err);
           });
@@ -164,7 +172,88 @@ $(document).ready(function () {
           placa=dato['placa'];
           limpiar();
           $('#map').hide();
-          $('#estadisticas2').show();
+          $('#intermedio').show();
+          let dataIncidente='No paro en el punto de control,Uso del equipo de proteccion personal,No fue inspeccionado,'
+          +'No se reporto,Incumplimiento de horario en plan de viaje,Uso de cinturon de seguridad,'
+          +'Estado de salud,Conductor sin descansar,Problemas con la documentacion,'
+          +'Conductor alterado,Conductor con pasajero,Conductor que no conoce la ruta,Conductor nuevo,'
+          +'Emision de reporte falso';
+          $(addcheck(dataIncidente)).appendTo('#addFormCond');
+
+          let dataIncidente2='Lider de convoy adelantado,GPS inactivo S/GPS,Estacionamiento inseguro,'
+          +'Robos y hurtos,Uso de las luces de señalizacion,'
+          +'Desvio de ruta sin autorizacion'
+          +'Conductor alterado,Conductor con pasajero,Conductor que no conoce la ruta,Conductor nuevo,'
+          +'Emision de reporte falso';
+          $(addcheck(dataIncidente2)).appendTo('#addFormCam');
+
+          let dataIncidente3='Plataforma con baches,Alto congestionamiento por trafico,'
+          +'Tramo inestable / resbaladizo';
+          $(addcheck(dataIncidente3)).appendTo('#addProbVia');
+
+          let dataIncidente4='Zona geologicamente inestable,Cierre de ruta,'
+          +'Bloqueo / manifestaciones';
+          $(addcheck(dataIncidente4)).appendTo('#addProbViaAf');
+
+          let dataIncidente5='Clima,Otro';
+          $(addcheck(dataIncidente5)).appendTo('#addFormFactExt');
+
+          $.post('/camion/autoT',{id:id},function(resp,status){
+            console.log(resp);
+            llenarchart(resp.data.exceso,2,'DonutExceso');
+            llenarchart(resp.data.horario,2,'DonutHorario');
+          },'json').fail(function(err){
+            console.log(err);
+          });
+
+          $.post('/camion/desvioMes',{id:id},function(resp,status){
+            console.log(resp);
+            llenarchart(resp.data2,2,'DonutDesvio');
+          },'json').fail(function(err){
+            console.log(err);
+          });
+
+          $.post('/camion/desvioCamionMes',{id:id},function(resp,status){
+            console.log(resp);
+            llenarchart(resp.data2,2,'DonutDesvioCam');
+          },'json').fail(function(err){
+            console.log(err);
+          });
+
+          $.post('/camion/viaMes',{id:id},function(resp,status){
+            console.log(resp);
+            llenarchart(resp.data2,2,'DonutFrecVia');
+          },'json').fail(function(err){
+            console.log(err);
+          });
+
+          $.post('/camion/viajeAfectadoMes',{id:id},function(resp,status){
+            console.log(resp);
+            llenarchart(resp.data2,2,'DonutFrecViaAf');
+          },'json').fail(function(err){
+            console.log(err);
+          });
+
+          $.post('/camion/otroMes',{id:id},function(resp,status){
+            console.log(resp);
+            llenarchart(resp.data2,2,'FactExtDonut');
+          },'json').fail(function(err){
+            console.log(err);
+          });
+
+          $.post('/camion/generalIntermedio',{id:id},function(resp,status){
+            console.log(resp);
+            let chartData1=[{desc:'total excesos de velocidad',total:resp.data[0]},
+                            {desc:'total faltas de horario de conduccion',total:resp.data[1]}];
+            let chartData2=[{desc:'total desvios conductor',total:resp.data[2]},
+                            {desc:'total de problemas en las vias',total:resp.data[3]},
+                            {desc:'total viajes afectados por problemas en las vias',total:resp.data[4]},
+                            {desc:'total desvios por factores externos',total:resp.data[6]},];
+            llenarchart(chartData1,1,'ChartIntermedio');
+            llenarchart(chartData2,1,'ChartIntermedio2');
+          },'json').fail(function(err){
+            console.log(err);
+          });
         });
         //intermedios final
 
@@ -184,7 +273,7 @@ $(document).ready(function () {
           +'Problemas con la correa,Problemas en el tanque de combustible,Problemas en el chasis,Problemas en los inyectores,'
           +'Problemas de direccion';
           $(addcheck(dataIncidente)).appendTo('#addIncidente');
-          //llenar form
+          //$('#estadisticas3').show();
           $.post('/camion/vistaIncidente',{id:dato['id']},function(resp,status){
             $('#estadisticas3').show();
             console.log(resp);

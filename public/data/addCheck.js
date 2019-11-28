@@ -13,6 +13,37 @@ function addcheck(str){
   }
   return arm;
 }
+
+$('#plusFormCond').on('click',function(e){
+  e.preventDefault();
+  $(addcheck($('#textFormCond').val())).appendTo('#addFormCond');
+  $('#textFormCond').val('');
+});
+
+$('#plusFormCam').on('click',function(e){
+  e.preventDefault();
+  $(addcheck($('#textFormCam').val())).appendTo('#addFormCam');
+  $('#textFormCam').val('');
+});
+
+$('#plusProbVia').on('click',function(e){
+  e.preventDefault();
+  $(addcheck($('#textProbVia').val())).appendTo('#addProbVia');
+  $('#textProbVia').val('');
+});
+
+$('#plusProbViaAf').on('click',function(e){
+  e.preventDefault();
+  $(addcheck($('#textProbViaAf').val())).appendTo('#addProbViaAf');
+  $('#textProbViaAf').val('');
+});
+
+$('#plusFormFactExt').on('click',function(e){
+  e.preventDefault();
+  $(addcheck($('#textFormFactExt').val())).appendTo('#addFormFactExt');
+  $('#textFormFactExt').val('');
+});
+
 $('#plusIncidenteButton').on('click',function(e){
   e.preventDefault();
   $(addcheck($('#plusIncidente').val())).appendTo('#addIncidente');

@@ -46,6 +46,13 @@ function inicializar(){
   $('#fechaViajeCant').daterangepicker();
   $('#fechaFrecViaje').daterangepicker();
   $('#fechaChartExposicion').daterangepicker();
+  $('#fechaExceso').daterangepicker();
+  $('#fechaHorario').daterangepicker();
+  $('#fechaDonutDesvio').daterangepicker();
+  $('#fechaDonutFrecVia').daterangepicker();
+  $('#fechaDonutfrecViaAf').daterangepicker();
+  $('#fechaFactExtDonut').daterangepicker();
+  $('#fechaChartIntermedio').daterangepicker();
 
   //puebas en los charts
   //end chart

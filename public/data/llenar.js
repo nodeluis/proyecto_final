@@ -199,5 +199,100 @@ function llenarTablas(data,p){
     $(construir).appendTo('#controlBodyTable');
     $('#example').addClass('table table-bordered table-hover');
     $('#example').DataTable();
+  }else if(p==6){
+    construir+='<th>Fecha inicio</th>'
+              +'<th>Fecha fin</th>'
+              +'<th>Km recorrido</th>'
+              +'</tr>'
+              +'</thead>'
+              +'<tbody>';
+    data.forEach(function(dat){
+      let fech=dat.fecha.split(' / ');
+      construir+='<tr>'
+        +'<td>'+conT+'</td>'
+        +'<td>'+fech[0]+'</td>'
+        +'<td>'+fech[1]+'</td>'
+        +'<td>'+dat['total']+'</td>'
+        +'</tr>';
+      conT++;
+    });//aqui hay cambios
+    construir+='</tbody>'
+              +'<tfoot>'
+              +'<tr>'
+              +'<th>Nro</th>'
+              +'<th>Fecha inicio</th>'
+              +'<th>Fecha fin</th>'
+              +'<th>Km recorrido</th>'
+              +'</tr>'
+              +'</tfoot>'
+              +'</table>';
+    $(construir).appendTo('#tablaKmViaje');
+    $('#example').addClass('table table-bordered table-hover');
+    $('#example').DataTable();
+  }else if(p==7){
+    let construir3='<table id="example3">'
+                  +'<thead>'
+                  +'<tr>'
+                  +'<th>Nro</th>';
+    construir3+='<th>Fecha inicio</th>'
+              +'<th>Fecha fin</th>'
+              +'<th>Horas de exposicion</th>'
+              +'</tr>'
+              +'</thead>'
+              +'<tbody>';
+    data.forEach(function(dat){
+      let fech=dat.fecha.split(' / ');
+      construir3+='<tr>'
+        +'<td>'+conT+'</td>'
+        +'<td>'+fech[0]+'</td>'
+        +'<td>'+fech[1]+'</td>'
+        +'<td>'+dat['total']+'</td>'
+        +'</tr>';
+      conT++;
+    });//aqui hay cambios
+    construir3+='</tbody>'
+              +'<tfoot>'
+              +'<tr>'
+              +'<th>Nro</th>'
+              +'<th>Fecha inicio</th>'
+              +'<th>Fecha fin</th>'
+              +'<th>Horas de exposicion</th>'
+              +'</tr>'
+              +'</tfoot>'
+              +'</table>';
+    $(construir3).appendTo('#tablaExposicion');
+    $('#example3').addClass('table table-bordered table-hover');
+    $('#example3').DataTable();
+  }
+  else if(p==8){
+    let construir2='<table id="example2">'
+                  +'<thead>'
+                  +'<tr>'
+                  +'<th>Nro</th>';
+    construir2+='<th>Ruta</th>'
+              +'<th>Cantidad de viajes</th>'
+              +'</tr>'
+              +'</thead>'
+              +'<tbody>';
+    data.forEach(function(dat){
+      construir2+='<tr>'
+        +'<td>'+conT+'</td>'
+        +'<td>'+dat['ruta']+'</td>'
+        +'<td>'+dat['cant']+'</td>'
+        +'</tr>';
+      conT++;
+    });//aqui hay cambios
+    construir2+='</tbody>'
+              +'<tfoot>'
+              +'<tr>'
+              +'<th>Nro</th>'
+              +'<th>Ruta</th>'
+              +'<th>Cantidad de viajes</th>'
+              +'</tr>'
+              +'</tfoot>'
+              +'</table>';
+    $(construir2).appendTo('#tablaRutaViaje');
+    $('#example2').addClass('table table-bordered table-hover');
+    $('#example2').DataTable();
   }
 }

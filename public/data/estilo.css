@@ -20,7 +20,12 @@
  height: 300px;
 }
 #ChartExposicion{
- width: 100%;
+ height: 300px;
+}
+#ChartExposicion1{
+ height: 300px;
+}
+#ChartExposicion2{
  height: 300px;
 }
 #DonutFrecViaje{

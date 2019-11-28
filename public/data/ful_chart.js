@@ -29,10 +29,18 @@ function llenarchart(data,p,contenedor){
   }else if(p==1){
     am4core.ready(function() {
 
+      let pos=0;
+      let maximo=0;
+      for (let k = 0; k < data.length; k++) {
+        if(data[k].total>maximo){
+          pos=k;
+          maximo=data[k].total;
+        }
+      }
       let maxim=0;
       for (let x = 1; x <=10; x++) {
-        if(((data[0].total%10)+x)>=10){
-          maxim=data[0].total+x;
+        if(((data[pos].total%10)+x)>=10){
+          maxim=data[pos].total+x;
           break;
         }
       }

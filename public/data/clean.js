@@ -7,7 +7,7 @@ function limpiar(){
   $('#excesosDiv').hide();
   $('#horarioDiv').hide();
   $('#estadisticas').hide();
-  $('#estadisticas2').hide();
+  $('#intermedio').hide();
   $('#estadisticas3').hide();
   $('#control').hide();
   $('#expocision').hide();
@@ -22,6 +22,31 @@ function limpiar(){
   $('#incidenteChart').empty();
   $('#addIncidente').empty();
   $('#controlBodyTable').empty();
+  $('#DonutKmRecorrido').empty();
+  $('#DonutHoraCant').empty();
+  $('#DonutViajeCant').empty();
+  $('#DonutFrecViaje').empty();
+  $('#ChartExposicion2').empty();
+  $('#ChartExposicion1').empty();
+  $('#ChartExposicion').empty();
+  $('#tablaRutaViaje').empty();
+  $('#tablaExposicion').empty();
+  $('#tablaKmViaje').empty();
+  $('#addFormCond').empty();
+  $('#addFormCam').empty();
+  $('#addProbVia').empty();
+  $('#addProbViaAf').empty();
+  $('#addFormFactExt').empty();
+  $('#DonutExceso').empty();
+  $('#DonutHorario').empty();
+  $('#DonutDesvio').empty();
+  $('#DonutDesvioCam').empty();
+  $('#DonutFrecVia').empty();
+  $('#DonutFrecViaAf').empty();
+  $('#FactExtDonut').empty();
+  $('#ChartIntermedio').empty();
+  $('#ChartIntermedio2').empty();
+
   //$('#map').googleMap();
   $("#map").googleMap({
     zoom: 8, // Initial zoom level (optional)

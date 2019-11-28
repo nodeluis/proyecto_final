@@ -41,10 +41,15 @@ $('#formIncidente').submit(function(e) {
 //formulario desvio conductor
 $('#formDesvCon').submit(function(e) {
   e.preventDefault();
-  console.log($('#fechaDesvCon').val());
-  console.log($('#descripcionDesvCon').val());
+  let inc=[];
   $('input[type=checkbox]:checked',$(this)).each(function() {
-      console.log($(this).val());
+      inc.push($(this).val());
+  });
+  $.post('/camion/desvio',{data:inc+'',id:id,desc:$('#descripcionDesvCon',).val(),fecha:$('#fechaDesvCon').val()},function(resp,status){
+    console.log(resp);
+
+  },'json').fail(function(err){
+    console.log(err);
   });
   $(this).trigger("reset");
 });
@@ -54,8 +59,15 @@ $('#formDesvCon').submit(function(e) {
 $('#formDesvCam').submit(function(e) {
   e.preventDefault();
 
+  let inc=[];
   $('input[type=checkbox]:checked',$(this)).each(function() {
-      console.log($(this).val());
+      inc.push($(this).val());
+  });
+  $.post('/camion/desvioCamion',{data:inc+'',id:id,desc:$('#descripcionDesvCam',).val(),fecha:$('#fechaDesvCam').val()},function(resp,status){
+    console.log(resp);
+
+  },'json').fail(function(err){
+    console.log(err);
   });
 
   $(this).trigger("reset");
@@ -66,8 +78,15 @@ $('#formDesvCam').submit(function(e) {
 $('#formProbVia').submit(function(e) {
   e.preventDefault();
 
+  let inc=[];
   $('input[type=checkbox]:checked',$(this)).each(function() {
-      console.log($(this).val());
+      inc.push($(this).val());
+  });
+  $.post('/camion/via',{data:inc+'',id:id,desc:$('#descripcionProbVia',).val(),fecha:$('#fechaProbVia').val()},function(resp,status){
+    console.log(resp);
+
+  },'json').fail(function(err){
+    console.log(err);
   });
 
   $(this).trigger("reset");
@@ -78,8 +97,15 @@ $('#formProbVia').submit(function(e) {
 $('#formAfecVia').submit(function(e) {
   e.preventDefault();
 
+  let inc=[];
   $('input[type=checkbox]:checked',$(this)).each(function() {
-      console.log($(this).val());
+      inc.push($(this).val());
+  });
+  $.post('/camion/viajeAfectado',{data:inc+'',id:id,desc:$('#descripcionAfecVia',).val(),fecha:$('#fechaAfecVia').val()},function(resp,status){
+    console.log(resp);
+
+  },'json').fail(function(err){
+    console.log(err);
   });
 
   $(this).trigger("reset");
@@ -90,8 +116,15 @@ $('#formAfecVia').submit(function(e) {
 $('#formFactExt').submit(function(e) {
   e.preventDefault();
 
+  let inc=[];
   $('input[type=checkbox]:checked',$(this)).each(function() {
-      console.log($(this).val());
+      inc.push($(this).val());
+  });
+  $.post('/camion/otro',{data:inc+'',id:id,desc:$('#descripcionFactExt',).val(),fecha:$('#fechaFactExt').val()},function(resp,status){
+    console.log(resp);
+
+  },'json').fail(function(err){
+    console.log(err);
   });
 
   $(this).trigger("reset");

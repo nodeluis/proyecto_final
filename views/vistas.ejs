@@ -808,7 +808,88 @@ desired effect
                       <!-- /.input group -->
                   </div>
                   <!-- date range exceso final -->
-                  <div id="ChartExposicion"></div>
+                  <div id="ChartExposicion" class="col-md-6"></div>
+                  <div id="ChartExposicion1" class="col-md-6"></div>
+                  <div id="ChartExposicion2" class="col-md-6"></div>
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+            <!-- /.box -->
+          </div>
+
+          <div class="col-xs-12">
+            <div class="box box-warning">
+              <div class="box-header with-border">
+                <h3 class="box-title">Tabla de kilometros recorridos por viaje:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body" id="tablaKmViaje">
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+            <!-- /.box -->
+          </div>
+          <div class="col-xs-12">
+            <div class="box box-warning">
+              <div class="box-header with-border">
+                <h3 class="box-title">Tabla de horas de exposicion por viaje:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body" id="tablaExposicion">
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+            <!-- /.box -->
+          </div>
+          <div class="col-xs-12">
+            <div class="box box-warning">
+              <div class="box-header with-border">
+                <h3 class="box-title">Tabla de rutas por viaje:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body" id="tablaRutaViaje">
+
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+            <!-- /.box -->
+          </div>
+          <div class="col-xs-12">
+            <div class="box box-warning">
+              <div class="box-header with-border">
+                <h3 class="box-title">Tabla de volumen transportado por viaje:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+
                 </div>
                 <!-- /.box-body -->
 
@@ -818,8 +899,263 @@ desired effect
 
         </div>
 
-        <div class="row" id="estadisticas2">
+        <div class="row" id="intermedio">
           <!-- left column -->
+
+          <div class="col-md-6">
+            <!-- Horizontal Form -->
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Excesos de velocidad por viaje:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+                  <div class="form-group">
+                      <label>Date range:</label>
+
+                      <div class="input-group">
+                          <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="fechaExceso">
+                          <div class="input-group-addon">
+                            <a href="#" id="DonutExcesoEnv">
+                              <i class="fa fa-send"></i>
+                            </a>
+                          </div>
+                      </div>
+                      <!-- /.input group -->
+                  </div>
+                  <!-- date range exceso final -->
+                  <div id="DonutExceso"></div>
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Horarios inapropiados de conduccion por viaje:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+                  <div class="form-group">
+                      <label>Date range:</label>
+
+                      <div class="input-group">
+                          <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="fechaHorario">
+                          <div class="input-group-addon">
+                            <a href="#" id="DonutHorarioEnv">
+                              <i class="fa fa-send"></i>
+                            </a>
+                          </div>
+                      </div>
+                      <!-- /.input group -->
+                  </div>
+                  <!-- date range exceso final -->
+                  <div id="DonutHorario"></div>
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Frecuencia de desvios factor conductor por meses:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+                  <div class="form-group">
+                      <label>Date range:</label>
+
+                      <div class="input-group">
+                          <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="fechaDonutDesvio">
+                          <div class="input-group-addon">
+                            <a href="#" id="DonutDesvioEnv">
+                              <i class="fa fa-send"></i>
+                            </a>
+                          </div>
+                      </div>
+                      <!-- /.input group -->
+                  </div>
+                  <!-- date range exceso final -->
+                  <div id="DonutDesvio"></div>
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Frecuencia de desvios factor camion por meses:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+                  <div class="form-group">
+                      <label>Date range:</label>
+
+                      <div class="input-group">
+                          <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="fechaDonutDesvioCam">
+                          <div class="input-group-addon">
+                            <a href="#" id="DonutDesvioCamEnv">
+                              <i class="fa fa-send"></i>
+                            </a>
+                          </div>
+                      </div>
+                      <!-- /.input group -->
+                  </div>
+                  <!-- date range exceso final -->
+                  <div id="DonutDesvioCam"></div>
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Frecuencia de problema en las vias por meses:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+                  <div class="form-group">
+                      <label>Date range:</label>
+
+                      <div class="input-group">
+                          <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="fechaDonutFrecVia">
+                          <div class="input-group-addon">
+                            <a href="#" id="DonutFrecViaEnv">
+                              <i class="fa fa-send"></i>
+                            </a>
+                          </div>
+                      </div>
+                      <!-- /.input group -->
+                  </div>
+                  <!-- date range exceso final -->
+                  <div id="DonutFrecVia"></div>
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Frecuencia de viajes afectados por problema en las vias por meses:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+                  <div class="form-group">
+                      <label>Date range:</label>
+
+                      <div class="input-group">
+                          <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="fechaDonutfrecViaAf">
+                          <div class="input-group-addon">
+                            <a href="#" id="DonutfrecViaAfEnv">
+                              <i class="fa fa-send"></i>
+                            </a>
+                          </div>
+                      </div>
+                      <!-- /.input group -->
+                  </div>
+                  <!-- date range exceso final -->
+                  <div id="DonutFrecViaAf"></div>
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Frecuencia de desvio por factores externos por meses:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+                  <div class="form-group">
+                      <label>Date range:</label>
+
+                      <div class="input-group">
+                          <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="fechaFactExtDonut">
+                          <div class="input-group-addon">
+                            <a href="#" id="FactExtDonutEnv">
+                              <i class="fa fa-send"></i>
+                            </a>
+                          </div>
+                      </div>
+                      <!-- /.input group -->
+                  </div>
+                  <!-- date range exceso final -->
+                  <div id="FactExtDonut"></div>
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+
+            <!-- /.box -->
+          </div>
+
+
+          <!--/.col (left) -->
+          <!-- right column -->
+
           <div class="col-md-6">
             <!-- general form elements -->
             <form role="form" id="formDesvCon">
@@ -848,91 +1184,14 @@ desired effect
                     </div>
 
                     <!-- checkbox -->
-                    <div class="form-group">
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="puntoControl">
-                          No paro en el punto de control
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="usoProteccionPersonal">
-                          Uso del equipo de proteccion personal
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="noInspeccion">
-                          No fue inspeccionado
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="noReport">
-                          No se reporto
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="incumplimientoHorario">
-                          Incumplimiento de horario en plan de viaje
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="cinturon">
-                          Uso de cinturon de seguridad
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="salud">
-                          Estado de salud
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="sinDescansar">
-                          Conductor sin descansar
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="documentacion">
-                          Problemas con la documentacion
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="alterado">
-                          Conductor alterado
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="conPasajero">
-                          Conductor con pasajero
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="sinConocimientoRuta">
-                          Conductor que no conoce la ruta
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="nuevo">
-                          Conductor nuevo
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="reporteFalso">
-                          Emision de reporte falso
-                        </label>
-                      </div>
+                    <div class="form-group" id="addFormCond">
+                    </div>
+
+                    <div class="input-group margin">
+                      <input type="text" class="form-control" id="textFormCond">
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-info btn-flat" id="plusFormCond"><i class="fa fa-plus"></i></button>
+                          </span>
                     </div>
 
                     <div class="form-group">
@@ -976,43 +1235,14 @@ desired effect
                     </div>
 
                     <!-- checkbox -->
-                    <div class="form-group">
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="convoy">
-                          Lider de convoy adelantado
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="gpsInactivo">
-                          GPS inactivo S/GPS
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="estacionamientoInseguro">
-                          Estacionamiento inseguro
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="desvioRuta">
-                          Desvio de ruta sin autorizacion
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="roboHurto">
-                          Robos y hurtos
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="luces">
-                          Uso de las luces de señalizacion
-                        </label>
-                      </div>
+                    <div class="form-group" id="addFormCam">
+                    </div>
+
+                    <div class="input-group margin">
+                      <input type="text" class="form-control" id="textFormCam">
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-info btn-flat" id="plusFormCam"><i class="fa fa-plus"></i></button>
+                          </span>
                     </div>
 
                     <div class="form-group">
@@ -1056,25 +1286,14 @@ desired effect
                     </div>
 
                     <!-- checkbox -->
-                    <div class="form-group">
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="bache">
-                          Plataforma con baches
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="trafico">
-                          Alto congestionamiento por trafico
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="inestable">
-                          Tramo inestable / resbaladizo
-                        </label>
-                      </div>
+                    <div class="form-group" id="addProbVia">
+                    </div>
+
+                    <div class="input-group margin">
+                      <input type="text" class="form-control" id="textProbVia">
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-info btn-flat" id="plusProbVia"><i class="fa fa-plus"></i></button>
+                          </span>
                     </div>
 
                     <div class="form-group">
@@ -1118,25 +1337,14 @@ desired effect
                     </div>
 
                     <!-- checkbox -->
-                    <div class="form-group">
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="zonaInestable">
-                          Zona geologicamente inestable
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="cierreRuta">
-                          Cierre de ruta
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="bloqueo">
-                          Bloqueo / manifestaciones
-                        </label>
-                      </div>
+                    <div class="form-group" id="addProbViaAf">
+                    </div>
+
+                    <div class="input-group margin">
+                      <input type="text" class="form-control" id="textProbViaAf">
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-info btn-flat" id="plusProbViaAf"><i class="fa fa-plus"></i></button>
+                          </span>
                     </div>
 
                     <div class="form-group">
@@ -1180,19 +1388,14 @@ desired effect
                     </div>
 
                     <!-- checkbox -->
-                    <div class="form-group">
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="clima">
-                          Clima
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="otro">
-                          Otro
-                        </label>
-                      </div>
+                    <div class="form-group" id="addFormFactExt">
+                    </div>
+
+                    <div class="input-group margin">
+                      <input type="text" class="form-control" id="textFormFactExt">
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-info btn-flat" id="plusFormFactExt"><i class="fa fa-plus"></i></button>
+                          </span>
                     </div>
 
                     <div class="form-group">
@@ -1211,13 +1414,13 @@ desired effect
             </form>
 
           </div>
-          <!--/.col (left) -->
-          <!-- right column -->
-          <div class="col-md-6">
-            <!-- Horizontal Form -->
-            <div class="box box-primary">
+
+          <!--/.col (right) -->
+
+          <div class="col-xs-12">
+            <div class="box box-warning">
               <div class="box-header with-border">
-                <h3 class="box-title">Donut</h3>
+                <h3 class="box-title">Cuadro de estadisticas de los indicadores intermedios:</h3>
                 <div class="box-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
@@ -1227,15 +1430,41 @@ desired effect
               <!-- form start -->
 
                 <div class="box-body">
-                  <div id="chartdiv"></div>
+                  <div class="form-group">
+                      <label>Date range:</label>
+
+                      <div class="input-group">
+                          <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="fechaChartIntermedio">
+                          <div class="input-group-addon">
+                            <a href="#" id="IntermedioEnv">
+                              <i class="fa fa-send"></i>
+                            </a>
+                          </div>
+                      </div>
+                      <!-- /.input group -->
+                  </div>
+                  <!-- date range exceso final -->
+                  <div id="ChartIntermedio"></div>
+                  <div id="ChartIntermedio2"></div>
                 </div>
                 <!-- /.box-body -->
 
             </div>
+            <!-- /.box -->
+          </div>
 
-            <div class="box box-primary">
+        </div>
+
+        <div class="row" id="estadisticas3">
+          <!-- left column -->
+          <div class="col-md-6">
+            <!-- Horizontal Form -->
+            <div class="box box-info">
               <div class="box-header with-border">
-                <h3 class="box-title">Otro</h3>
+                <h3 class="box-title">Porcentaje por meses (Incidentes):</h3>
                 <div class="box-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
@@ -1245,7 +1474,24 @@ desired effect
               <!-- form start -->
 
                 <div class="box-body">
-                  <div id="chartdiv2"></div>
+                  <div class="form-group">
+                      <label>Date range:</label>
+
+                      <div class="input-group">
+                          <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="fechaIncidenteDonut">
+                          <div class="input-group-addon">
+                            <a href="#" id="incidenteDonut">
+                              <i class="fa fa-send"></i>
+                            </a>
+                          </div>
+                      </div>
+                      <!-- /.input group -->
+                  </div>
+                  <!-- date range exceso final -->
+                  <div id="incidenteChartDonut"></div>
                 </div>
                 <!-- /.box-body -->
 
@@ -1253,11 +1499,8 @@ desired effect
 
             <!-- /.box -->
           </div>
-          <!--/.col (right) -->
-        </div>
-
-        <div class="row" id="estadisticas3">
-          <!-- left column -->
+          <!--/.col (left) -->
+          <!-- right column -->
           <div class="col-md-6">
             <!-- general form elements -->
             <form role="form" id="formIncidente">
@@ -1311,47 +1554,7 @@ desired effect
               </div>
             </form>
           </div>
-          <!--/.col (left) -->
-          <!-- right column -->
-          <div class="col-md-6">
-            <!-- Horizontal Form -->
-            <div class="box box-info">
-              <div class="box-header with-border">
-                <h3 class="box-title">Porcentaje por meses (Incidentes):</h3>
-                <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
-                </div>
-              </div>
-              <!-- /.box-header -->
-              <!-- form start -->
 
-                <div class="box-body">
-                  <div class="form-group">
-                      <label>Date range:</label>
-
-                      <div class="input-group">
-                          <div class="input-group-addon">
-                              <i class="fa fa-calendar"></i>
-                          </div>
-                          <input type="text" class="form-control pull-right" id="fechaIncidenteDonut">
-                          <div class="input-group-addon">
-                            <a href="#" id="incidenteDonut">
-                              <i class="fa fa-send"></i>
-                            </a>
-                          </div>
-                      </div>
-                      <!-- /.input group -->
-                  </div>
-                  <!-- date range exceso final -->
-                  <div id="incidenteChartDonut"></div>
-                </div>
-                <!-- /.box-body -->
-
-            </div>
-
-            <!-- /.box -->
-          </div>
           <!--/.col (right) -->
 
           <div class="col-xs-12">
@@ -1729,9 +1932,9 @@ desired effect
 <script src="plugins/iCheck/icheck.min.js"></script>
 <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
-<script src="https://www.amcharts.com/lib/4/core.js"></script>
-<script src="https://www.amcharts.com/lib/4/charts.js"></script>
-<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+<script type="text/javascript" src="data/chart/core.js"></script>
+<script type="text/javascript" src="data/chart/charts.js"></script>
+<script type="text/javascript" src="data/chart/animated.js"></script>
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN86jpZSdHSfpwhlKVv272WTd1lBMr6bc"></script>
 <script type="text/javascript" src="javascripts/jquery.googlemap.js"></script>

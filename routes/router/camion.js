@@ -64,19 +64,19 @@ router.post('/autoT',(req,res)=>{
         }
         arr.forEach((dat)=>{
           data.exceso.push({
-            fecha:dat.inicio+'-'+dat.fin,
+            fecha:dat.inicio+' / '+dat.fin,
             total:dat.exceso.length
           });
           data.horario.push({
-            fecha:dat.inicio+'-'+dat.fin,
+            fecha:dat.inicio+' / '+dat.fin,
             total:dat.horario.length
           });
           data.km.push({
-            fecha:dat.inicio+'-'+dat.fin,
+            fecha:dat.inicio+' / '+dat.fin,
             total:parseFloat(dat.km)
           });
           data.expocision.push({
-            fecha:dat.inicio+'-'+dat.fin,
+            fecha:dat.inicio+' / '+dat.fin,
             total:parseFloat(dat.expocision)
           });
           let t=true;
@@ -93,7 +93,6 @@ router.post('/autoT',(req,res)=>{
             });
           }
         });
-        console.log(data);
         res.json({data:data});
       }else{
         res.json({message:'no existe el camion'});
@@ -139,7 +138,7 @@ function filtar(arr,f){
     }else if(f==3){
       arr.forEach((dat)=>{
         dev.push({
-          fecha:dat.inicio+'-'+dat.fin,
+          fecha:dat.inicio+' / '+dat.fin,
           total:parseFloat(dat.km)
         });
       });
@@ -216,14 +215,14 @@ router.post('/desvio',(req,res)=>{
       if(!empty(doc)){
         try {
           doc.desvioConductor.push({
-            fecha:fecha[1]+'-'+fecha[0]+'-'+fecha[2],
+            fecha:fecha[2]+'-'+fecha[0]+'-'+fecha[1],
             falta:data,
             desc:desc
           });
         } catch (e) {
           let aux=[];
           aux.push({
-            fecha:fecha[1]+'-'+fecha[0]+'-'+fecha[2],
+            fecha:fecha[2]+'-'+fecha[0]+'-'+fecha[1],
             falta:data,
             desc:desc
           });
@@ -295,14 +294,14 @@ router.post('/desvioCamion',(req,res)=>{
       if(!empty(doc)){
         try {
           doc.desvioCamion.push({
-            fecha:fecha[1]+'-'+fecha[0]+'-'+fecha[2],
+            fecha:fecha[2]+'-'+fecha[0]+'-'+fecha[1],
             falta:data,
             desc:desc
           });
         } catch (e) {
           let aux=[];
           aux.push({
-            fecha:fecha[1]+'-'+fecha[0]+'-'+fecha[2],
+            fecha:fecha[2]+'-'+fecha[0]+'-'+fecha[1],
             falta:data,
             desc:desc
           });
@@ -374,14 +373,14 @@ router.post('/via',(req,res)=>{
       if(!empty(doc)){
         try {
           doc.via.push({
-            fecha:fecha[1]+'-'+fecha[0]+'-'+fecha[2],
+            fecha:fecha[2]+'-'+fecha[0]+'-'+fecha[1],
             falta:data,
             desc:desc
           });
         } catch (e) {
           let aux=[];
           aux.push({
-            fecha:fecha[1]+'-'+fecha[0]+'-'+fecha[2],
+            fecha:fecha[2]+'-'+fecha[0]+'-'+fecha[1],
             falta:data,
             desc:desc
           });
@@ -453,14 +452,14 @@ router.post('/viajeAfectado',(req,res)=>{
       if(!empty(doc)){
         try {
           doc.viajeAfectado.push({
-            fecha:fecha[1]+'-'+fecha[0]+'-'+fecha[2],
+            fecha:fecha[2]+'-'+fecha[0]+'-'+fecha[1],
             falta:data,
             desc:desc
           });
         } catch (e) {
           let aux=[];
           aux.push({
-            fecha:fecha[1]+'-'+fecha[0]+'-'+fecha[2],
+            fecha:fecha[2]+'-'+fecha[0]+'-'+fecha[1],
             falta:data,
             desc:desc
           });
@@ -532,14 +531,14 @@ router.post('/otro',(req,res)=>{
       if(!empty(doc)){
         try {
           doc.otro.push({
-            fecha:fecha[1]+'-'+fecha[0]+'-'+fecha[2],
+            fecha:fecha[2]+'-'+fecha[0]+'-'+fecha[1],
             falta:data,
             desc:desc
           });
         } catch (e) {
           let aux=[];
           aux.push({
-            fecha:fecha[1]+'-'+fecha[0]+'-'+fecha[2],
+            fecha:fecha[2]+'-'+fecha[0]+'-'+fecha[1],
             falta:data,
             desc:desc
           });
@@ -615,14 +614,14 @@ router.post('/incidente',(req,res)=>{
       if(!empty(doc)){
         try {
           doc.incidente.push({
-            fecha:fecha[1]+'-'+fecha[0]+'-'+fecha[2],
+            fecha:fecha[2]+'-'+fecha[0]+'-'+fecha[1],
             falta:data,
             desc:desc
           });
         } catch (e) {
           let aux=[];
           aux.push({
-            fecha:fecha[1]+'-'+fecha[0]+'-'+fecha[2],
+            fecha:fecha[2]+'-'+fecha[0]+'-'+fecha[1],
             falta:data,
             desc:desc
           });
@@ -709,7 +708,7 @@ router.post('/fatal',(req,res)=>{
         } catch (e) {}
         try {
           doc.fatal.push({
-            fecha:fecha[1]+'-'+fecha[0]+'-'+fecha[2],
+            fecha:fecha[2]+'-'+fecha[0]+'-'+fecha[1],
             ruta:ruta,
             accidente:accidente,
             km:km,
@@ -718,7 +717,7 @@ router.post('/fatal',(req,res)=>{
         } catch (e) {
           let aux=[];
           aux.push({
-            fecha:fecha[1]+'-'+fecha[0]+'-'+fecha[2],
+            fecha:fecha[2]+'-'+fecha[0]+'-'+fecha[1],
             ruta:ruta,
             accidente:accidente,
             km:km,
@@ -807,7 +806,7 @@ router.post('/medico',(req,res)=>{
         } catch (e) {}
         try {
           doc.medico.push({
-            fecha:fecha[1]+'-'+fecha[0]+'-'+fecha[2],
+            fecha:fecha[2]+'-'+fecha[0]+'-'+fecha[1],
             ruta:ruta,
             accidente:accidente,
             km:km,
@@ -816,7 +815,7 @@ router.post('/medico',(req,res)=>{
         } catch (e) {
           let aux=[];
           aux.push({
-            fecha:fecha[1]+'-'+fecha[0]+'-'+fecha[2],
+            fecha:fecha[2]+'-'+fecha[0]+'-'+fecha[1],
             ruta:ruta,
             accidente:accidente,
             km:km,
