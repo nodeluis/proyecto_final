@@ -19,25 +19,6 @@ $('#formExtint').submit(function(e) {
 
 ////botones extintores final
 
-//formulario incidentes
-$('#formIncidente').submit(function(e) {
-  e.preventDefault();
-  let inc=[];
-  inc.push($('#fechaIncidente').val());
-  inc.push($('#descripcionIncidente').val());
-  $('input[type=checkbox]:checked',$(this)).each(function() {
-      inc.push($(this).val());
-  });
-  $.post('/camion/incidente',{data:inc+'',id:id},function(resp,status){
-    console.log(resp);
-
-  },'json').fail(function(err){
-    console.log(err);
-  });
-  $(this).trigger("reset");
-});
-//formulario incidentes final
-
 //formulario desvio conductor
 $('#formDesvCon').submit(function(e) {
   e.preventDefault();
@@ -130,6 +111,58 @@ $('#formFactExt').submit(function(e) {
   $(this).trigger("reset");
 });
 //formulario factores externos Final
+
+//formulario incidentes
+$('#formIncidente').submit(function(e) {
+  e.preventDefault();
+  let inc=[];
+  $('input[type=checkbox]:checked',$(this)).each(function() {
+      inc.push($(this).val());
+  });
+  $.post('/camion/incidente',{data:inc+'',id:id,fecha:$('#fechaIncidente').val(),desc:$('#descripcionIncidente').val()},function(resp,status){
+    console.log(resp);
+
+  },'json').fail(function(err){
+    console.log(err);
+  });
+  $(this).trigger("reset");
+});
+
+$('#formAccidente').submit(function(e) {
+  e.preventDefault();
+
+  let inc=[];
+  $('input[type=checkbox]:checked',$(this)).each(function() {
+      inc.push($(this).val());
+  });
+  let select_button_text = $('#selectAccidente option:selected').toArray().map(item => item.value);
+  $.post('/camion/fatal',{accidente:inc+'',id:id,desc:$('#descripcionAccidente',).val(),fecha:$('#fechaAccidente').val(),ruta:select_button_text+''},function(resp,status){
+    console.log(resp);
+
+  },'json').fail(function(err){
+    console.log(err);
+  });
+
+  $(this).trigger("reset");
+});
+
+
+$('#formMedico').submit(function(e) {
+  e.preventDefault();
+  let inc=[];
+  $('input[type=checkbox]:checked',$(this)).each(function() {
+      inc.push($(this).val());
+  });
+  let select_button_text = $('#selectMedica option:selected').toArray().map(item => item.value);
+  $.post('/camion/medico',{accidente:inc+'',id:id,desc:$('#descripcionMedica',).val(),fecha:$('#fechaMedica').val(),ruta:select_button_text+''},function(resp,status){
+    console.log(resp);
+
+  },'json').fail(function(err){
+    console.log(err);
+  });
+  $(this).trigger("reset");
+});
+//formulario incidentes final
 
 //ordenar elementos de select multiple
 $(".select2").on("select2:select", function (evt) {

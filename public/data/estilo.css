@@ -44,6 +44,10 @@
  width: 100%;
  height: 300px;
 }
+#AccKmChart{
+  width: 100%;
+  height: 500px;
+}
 
 /* Each Result */
 .select2-container--default .select2-selection--multiple .select2-selection__choice {

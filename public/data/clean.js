@@ -46,6 +46,9 @@ function limpiar(){
   $('#FactExtDonut').empty();
   $('#ChartIntermedio').empty();
   $('#ChartIntermedio2').empty();
+  $('#tablaExViaje').empty();
+  $('#tablaHoViaje').empty();
+  $('#tablaDesvCond').empty();
 
   //$('#map').googleMap();
   $("#map").googleMap({

@@ -697,29 +697,29 @@ router.post('/fatal',(req,res)=>{
     });
     Camion.findOne({id:id},(err,doc)=>{
       if(!empty(doc)){
-        try {
-          doc.auto.forEach((dat)=>{
-            km+=parseDouble(dat.km);
-          });
-          if(empty(doc.auto)){
-            km-=parseDouble(doc.fatal[doc.fatal.length-1].km);
-            km=(km<0)?km*(-1):km;
+        if(!empty(doc.fatal)){
+          for (let k = doc.auto.length-1; k >doc.fatal[doc.fatal.length-1].indice; k--) {
+            km+=parseFloat(doc.auto[k].km);
           }
-        } catch (e) {}
-        try {
+          km=(km==0)?doc.fatal[doc.fatal.length-1].km:km;
           doc.fatal.push({
             fecha:fecha[2]+'-'+fecha[0]+'-'+fecha[1],
             ruta:ruta,
             accidente:accidente,
+            indice:doc.auto.length-1,
             km:km,
             desc:desc
           });
-        } catch (e) {
+        }else{
+          for (let k = doc.auto.length-1; k >=0; k--) {
+            km+=parseFloat(doc.auto[k].km);
+          }
           let aux=[];
           aux.push({
             fecha:fecha[2]+'-'+fecha[0]+'-'+fecha[1],
             ruta:ruta,
             accidente:accidente,
+            indice:doc.auto.length-1,
             km:km,
             desc:desc
           });
@@ -764,7 +764,7 @@ router.post('/fatalMes',(req,res)=>{
             result=result.concat(dat);
             try{
               dat.forEach((le)=>{
-                sum+=le.falta.length;
+                sum+=le.accidente.length;
               });
             }catch(err){
             }
@@ -795,29 +795,29 @@ router.post('/medico',(req,res)=>{
     });
     Camion.findOne({id:id},(err,doc)=>{
       if(!empty(doc)){
-        try {
-          doc.auto.forEach((dat)=>{
-            km+=parseDouble(dat.km);
-          });
-          if(!empty(doc.medico)){
-            km-=parseDouble(doc.medico[doc.medico.length-1].km);
-            km=(km<0)?km*(-1):km;
+        if(!empty(doc.medico)){
+          for (let k = doc.auto.length-1; k >doc.medico[doc.medico.length-1].indice; k--) {
+            km+=parseFloat(doc.auto[k].km);
           }
-        } catch (e) {}
-        try {
+          km=(km==0)?doc.medico[doc.medico.length-1].km:km;
           doc.medico.push({
             fecha:fecha[2]+'-'+fecha[0]+'-'+fecha[1],
             ruta:ruta,
             accidente:accidente,
+            indice:doc.auto.length-1,
             km:km,
             desc:desc
           });
-        } catch (e) {
+        }else{
+          for (let k = doc.auto.length-1; k >=0; k--) {
+            km+=parseFloat(doc.auto[k].km);
+          }
           let aux=[];
           aux.push({
             fecha:fecha[2]+'-'+fecha[0]+'-'+fecha[1],
             ruta:ruta,
             accidente:accidente,
+            indice:doc.auto.length-1,
             km:km,
             desc:desc
           });
@@ -862,7 +862,7 @@ router.post('/medicoMes',(req,res)=>{
             result=result.concat(dat);
             try{
               dat.forEach((le)=>{
-                sum+=le.falta.length;
+                sum+=le.accidente.length;
               });
             }catch(err){
             }
@@ -873,6 +873,65 @@ router.post('/medicoMes',(req,res)=>{
           });
         }
         res.json({data1:result,data2:dataChart});
+      }else{
+        res.json({message:'mo existe el camion'});
+      }
+    });
+});
+
+router.post('/accidenteRutaMes',(req,res)=>{
+    let id=req.body.id;
+    let fecha=[];
+    try {
+      let inicio=req.body.fi;
+      let fin=req.body.ff;
+      fecha=rango_fecha_mes(inicio,fin);
+    } catch (e) {
+      let fin=(new Date()).toLocaleString();
+      let inicio=new Date();
+      inicio.setDate(inicio.getDate()-150);
+      inicio=inicio.toLocaleString();
+      let ini=inicio.split(',');
+      let fi=fin.split(',');
+      fecha=rango_fecha_mes(ini[0],fi[0]);
+    }
+    Camion.findOne({id:id},(err,doc)=>{
+      if(!empty(doc)){
+        let result=[];
+        let arr=[];
+        for (let j = 0; j < fecha.length; j++) {
+          let p=fecha[j];
+          let sum=0;
+          let imso=p[0].split('-');
+          for (let m = 0; m < p.length; m++) {
+            let p2=p[m];
+            let dat=jsonQuery('[*fecha='+p2+']',{data:doc.medico}).value;
+            let dat2=jsonQuery('[*fecha='+p2+']',{data:doc.fatal}).value;
+            result=result.concat(dat);
+            result=result.concat(dat2);
+          }
+        }
+        let ac=[];
+        try {
+          result.forEach((dat)=>{
+            let t=true;
+            if(!empty(ac)){
+              ac.forEach((dat2)=>{
+                if(dat.ruta==dat2.ruta){
+                  dat2.cant+=1;
+                  t=false;
+                }
+              });
+            }
+            if(t){
+              ac.push({
+                ruta:dat.ruta,
+                cant:1
+              });
+            }
+          });
+        } catch (e) {}
+        res.json({chart:ac,falta:result});
       }else{
         res.json({message:'mo existe el camion'});
       }

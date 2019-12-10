@@ -202,6 +202,8 @@ $(document).ready(function () {
             console.log(resp);
             llenarchart(resp.data.exceso,2,'DonutExceso');
             llenarchart(resp.data.horario,2,'DonutHorario');
+            llenarTablas(resp.data.exceso,9);
+            llenarTablas(resp.data.horario,10);
           },'json').fail(function(err){
             console.log(err);
           });
@@ -209,6 +211,7 @@ $(document).ready(function () {
           $.post('/camion/desvioMes',{id:id},function(resp,status){
             console.log(resp);
             llenarchart(resp.data2,2,'DonutDesvio');
+            llenarTablas(resp.data1,11);
           },'json').fail(function(err){
             console.log(err);
           });
@@ -216,6 +219,7 @@ $(document).ready(function () {
           $.post('/camion/desvioCamionMes',{id:id},function(resp,status){
             console.log(resp);
             llenarchart(resp.data2,2,'DonutDesvioCam');
+            llenarTablas(resp.data1,12);
           },'json').fail(function(err){
             console.log(err);
           });
@@ -223,6 +227,7 @@ $(document).ready(function () {
           $.post('/camion/viaMes',{id:id},function(resp,status){
             console.log(resp);
             llenarchart(resp.data2,2,'DonutFrecVia');
+            llenarTablas(resp.data1,13);
           },'json').fail(function(err){
             console.log(err);
           });
@@ -230,6 +235,7 @@ $(document).ready(function () {
           $.post('/camion/viajeAfectadoMes',{id:id},function(resp,status){
             console.log(resp);
             llenarchart(resp.data2,2,'DonutFrecViaAf');
+            llenarTablas(resp.data1,14);
           },'json').fail(function(err){
             console.log(err);
           });
@@ -237,6 +243,7 @@ $(document).ready(function () {
           $.post('/camion/otroMes',{id:id},function(resp,status){
             console.log(resp);
             llenarchart(resp.data2,2,'FactExtDonut');
+            llenarTablas(resp.data1,15);
           },'json').fail(function(err){
             console.log(err);
           });
@@ -273,21 +280,169 @@ $(document).ready(function () {
           +'Problemas con la correa,Problemas en el tanque de combustible,Problemas en el chasis,Problemas en los inyectores,'
           +'Problemas de direccion';
           $(addcheck(dataIncidente)).appendTo('#addIncidente');
-          //$('#estadisticas3').show();
-          $.post('/camion/vistaIncidente',{id:dato['id']},function(resp,status){
-            $('#estadisticas3').show();
+
+          let dataIncidente2='Accidente con fatalidad,Accidente sin fatalidad';
+          $(addcheck(dataIncidente2)).appendTo('#addAccidente');
+
+          $('#estadisticas3').show();
+          $.post('/camion/incidenteMes',{id:id},function(resp,status){
             console.log(resp);
-            llenarTablas(resp.data1,4);
             llenarchart(resp.data2,2,'incidenteChartDonut');
+            llenarTablas(resp.data1,16);
           },'json').fail(function(err){
             console.log(err);
           });
-          $.post('/camion/coleccionChartIncidente',{id:dato['id']},function(resp,status){
+
+          $.post('/camion/fatalMes',{id:id},function(resp,status){
+            console.log(resp);
+            llenarchart(resp.data2,2,'FatalChartDonut');
+            llenarTablas(resp.data1,17);
+          },'json').fail(function(err){
+            console.log(err);
+          });
+
+          $.post('/camion/medicoMes',{id:id},function(resp,status){
+            console.log(resp);
+            llenarchart(resp.data2,2,'DonutMedico');
+            llenarTablas(resp.data1,18);
+          },'json').fail(function(err){
+            console.log(err);
+          });
+
+          $.post('/camion/accidenteRutaMes',{id:id},function(resp,status){
+            console.log(resp);
+            llenarchart(resp.chart,3,'DonutRuta');
+            llenarTablas(resp.falta,19);
+          },'json').fail(function(err){
+            console.log(err);
+          });
+
+          /*$.post('/camion/coleccionChartIncidente',{id:dato['id']},function(resp,status){
             console.log(resp);
             llenarchart(resp,1,'incidenteChart');
           },'json').fail(function(err){
             console.log(err);
-          });
+          });*/
+
+          /////////////////probar
+          /* Imports */
+          // Themes begin
+          am4core.useTheme(am4themes_animated);
+          // Themes end
+
+          // Create chart instance
+          var chart = am4core.create("AccKmChart", am4charts.XYChart);
+
+          // Increase contrast by taking evey second color
+          chart.colors.step = 2;
+
+          // Add data
+          chart.data = generateChartData();
+
+          // Create axes
+          var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+          dateAxis.renderer.minGridDistance = 50;
+
+          // Create series
+          function createAxisAndSeries(field, name, opposite, bullet) {
+            var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+
+            var series = chart.series.push(new am4charts.LineSeries());
+            series.dataFields.valueY = field;
+            series.dataFields.dateX = "date";
+            series.strokeWidth = 2;
+            series.yAxis = valueAxis;
+            series.name = name;
+            series.tooltipText = "{name}: [bold]{valueY}[/]";
+            series.tensionX = 0.8;
+
+            var interfaceColors = new am4core.InterfaceColorSet();
+
+            switch(bullet) {
+              case "triangle":
+                var bullet = series.bullets.push(new am4charts.Bullet());
+                bullet.width = 12;
+                bullet.height = 12;
+                bullet.horizontalCenter = "middle";
+                bullet.verticalCenter = "middle";
+
+                var triangle = bullet.createChild(am4core.Triangle);
+                triangle.stroke = interfaceColors.getFor("background");
+                triangle.strokeWidth = 2;
+                triangle.direction = "top";
+                triangle.width = 12;
+                triangle.height = 12;
+                break;
+              case "rectangle":
+                var bullet = series.bullets.push(new am4charts.Bullet());
+                bullet.width = 10;
+                bullet.height = 10;
+                bullet.horizontalCenter = "middle";
+                bullet.verticalCenter = "middle";
+
+                var rectangle = bullet.createChild(am4core.Rectangle);
+                rectangle.stroke = interfaceColors.getFor("background");
+                rectangle.strokeWidth = 2;
+                rectangle.width = 10;
+                rectangle.height = 10;
+                break;
+              default:
+                var bullet = series.bullets.push(new am4charts.CircleBullet());
+                bullet.circle.stroke = interfaceColors.getFor("background");
+                bullet.circle.strokeWidth = 2;
+                break;
+            }
+
+            valueAxis.renderer.line.strokeOpacity = 1;
+            valueAxis.renderer.line.strokeWidth = 2;
+            valueAxis.renderer.line.stroke = series.stroke;
+            valueAxis.renderer.labels.template.fill = series.stroke;
+            valueAxis.renderer.opposite = opposite;
+            valueAxis.renderer.grid.template.disabled = true;
+          }
+
+          createAxisAndSeries("visits", "Visits", false, "circle");
+          createAxisAndSeries("views", "Views", true, "triangle");
+          createAxisAndSeries("hits", "Hits", true, "rectangle");
+
+          // Add legend
+          chart.legend = new am4charts.Legend();
+
+          // Add cursor
+          chart.cursor = new am4charts.XYCursor();
+
+          // generate some random data, quite different range
+          function generateChartData() {
+            var chartData = [];
+            var firstDate = new Date();
+            firstDate.setDate(firstDate.getDate() - 100);
+            firstDate.setHours(0, 0, 0, 0);
+
+            var visits = 1600;
+            var hits = 2900;
+            var views = 8700;
+
+            for (var i = 0; i < 15; i++) {
+              // we create date objects here. In your data, you can have date strings
+              // and then set format of your dates using chart.dataDateFormat property,
+              // however when possible, use date objects, as this will speed up chart rendering.
+              var newDate = new Date(firstDate);
+              newDate.setDate(newDate.getDate() + i);
+
+              visits += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
+              hits += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
+              views += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
+
+              chartData.push({
+                date: newDate,
+                visits: visits,
+                hits: hits,
+                views: views
+              });
+            }
+            return chartData;
+          }
+
         });
         //finales final
 

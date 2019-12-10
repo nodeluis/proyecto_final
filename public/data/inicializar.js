@@ -21,6 +21,13 @@ function inicializar(){
   $('#fechaIncidente').datepicker({
     autoclose: true
   });
+  $('#fechaAccidente').datepicker({
+    autoclose: true
+  });
+  $('#fechaMedica').datepicker({
+    autoclose: true
+  });
+
   //iCheck for checkbox and radio inputs
   $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
     checkboxClass: 'icheckbox_minimal-blue',
@@ -53,7 +60,8 @@ function inicializar(){
   $('#fechaDonutfrecViaAf').daterangepicker();
   $('#fechaFactExtDonut').daterangepicker();
   $('#fechaChartIntermedio').daterangepicker();
-
+  $('#fechaRuta').daterangepicker();
+  $('#fechaAccKmChart').daterangepicker();
   //puebas en los charts
   //end chart
 }

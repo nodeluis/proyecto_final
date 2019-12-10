@@ -263,8 +263,7 @@ function llenarTablas(data,p){
     $(construir3).appendTo('#tablaExposicion');
     $('#example3').addClass('table table-bordered table-hover');
     $('#example3').DataTable();
-  }
-  else if(p==8){
+  }else if(p==8){
     let construir2='<table id="example2">'
                   +'<thead>'
                   +'<tr>'
@@ -294,5 +293,379 @@ function llenarTablas(data,p){
     $(construir2).appendTo('#tablaRutaViaje');
     $('#example2').addClass('table table-bordered table-hover');
     $('#example2').DataTable();
+  }else if(p==9){
+    let construir1='<table id="example1">'
+                  +'<thead>'
+                  +'<tr>'
+                  +'<th>Nro</th>';
+    construir1+='<th>Fecha inicio</th>'
+              +'<th>Fecha fin</th>'
+              +'<th>Cantidad de excesos</th>'
+              +'</tr>'
+              +'</thead>'
+              +'<tbody>';
+    data.forEach(function(dat){
+      let cort=dat.fecha.split(' / ');
+      construir1+='<tr>'
+        +'<td>'+conT+'</td>'
+        +'<td>'+cort[0]+'</td>'
+        +'<td>'+cort[1]+'</td>'
+        +'<td>'+dat.total+'</td>'
+        +'</tr>';
+      conT++;
+    });//aqui hay cambios
+    construir1+='</tbody>'
+              +'<tfoot>'
+              +'<tr>'
+              +'<th>Nro</th>'
+              +'<th>Fecha inicio</th>'
+              +'<th>Fecha fin</th>'
+              +'<th>Cantidad de excesos</th>'
+              +'</tr>'
+              +'</tfoot>'
+              +'</table>';
+    $(construir1).appendTo('#tablaExViaje');
+    $('#example1').addClass('table table-bordered table-hover');
+    $('#example1').DataTable();
+  }else if(p==10){
+    let construir2='<table id="example2">'
+                  +'<thead>'
+                  +'<tr>'
+                  +'<th>Nro</th>';
+    construir2+='<th>Fecha inicio</th>'
+              +'<th>Fecha fin</th>'
+              +'<th>Cantidad de infracciones en el horario</th>'
+              +'</tr>'
+              +'</thead>'
+              +'<tbody>';
+    data.forEach(function(dat){
+      let cort=dat.fecha.split(' / ');
+      construir2+='<tr>'
+        +'<td>'+conT+'</td>'
+        +'<td>'+cort[0]+'</td>'
+        +'<td>'+cort[1]+'</td>'
+        +'<td>'+dat.total+'</td>'
+        +'</tr>';
+      conT++;
+    });//aqui hay cambios
+    construir2+='</tbody>'
+              +'<tfoot>'
+              +'<tr>'
+              +'<th>Nro</th>'
+              +'<th>Fecha inicio</th>'
+              +'<th>Fecha fin</th>'
+              +'<th>Cantidad de infracciones en el horario</th>'
+              +'</tr>'
+              +'</tfoot>'
+              +'</table>';
+    $(construir2).appendTo('#tablaHoViaje');
+    $('#example2').addClass('table table-bordered table-hover');
+    $('#example2').DataTable();
+  }else if(p==11){
+    let construir3='<table id="example3">'
+                  +'<thead>'
+                  +'<tr>'
+                  +'<th>Nro</th>';
+    construir3+='<th>Fecha</th>'
+              +'<th>Faltas</th>'
+              +'<th>Descripcion</th>'
+              +'</tr>'
+              +'</thead>'
+              +'<tbody>';
+    data.forEach(function(dat){
+      construir3+='<tr>'
+        +'<td>'+conT+'</td>'
+        +'<td>'+dat.fecha+'</td>'
+        +'<td>'+dat.falta+''+'</td>'
+        +'<td>'+dat.desc+'</td>'
+        +'</tr>';
+      conT++;
+    });//aqui hay cambios
+    construir3+='</tbody>'
+              +'<tfoot>'
+              +'<tr>'
+              +'<th>Nro</th>'
+              +'<th>Fecha</th>'
+              +'<th>Falta</th>'
+              +'<th>Descripcion</th>'
+              +'</tr>'
+              +'</tfoot>'
+              +'</table>';
+    $(construir3).appendTo('#tablaDesvCond');
+    $('#example3').addClass('table table-bordered table-hover');
+    $('#example3').DataTable();
+  }else if(p==12){
+    let construir4='<table id="example4">'
+                  +'<thead>'
+                  +'<tr>'
+                  +'<th>Nro</th>';
+    construir4+='<th>Fecha</th>'
+              +'<th>Faltas</th>'
+              +'<th>Descripcion</th>'
+              +'</tr>'
+              +'</thead>'
+              +'<tbody>';
+    data.forEach(function(dat){
+      construir4+='<tr>'
+        +'<td>'+conT+'</td>'
+        +'<td>'+dat.fecha+'</td>'
+        +'<td>'+dat.falta+''+'</td>'
+        +'<td>'+dat.desc+'</td>'
+        +'</tr>';
+      conT++;
+    });//aqui hay cambios
+    construir4+='</tbody>'
+              +'<tfoot>'
+              +'<tr>'
+              +'<th>Nro</th>'
+              +'<th>Fecha</th>'
+              +'<th>Falta</th>'
+              +'<th>Descripcion</th>'
+              +'</tr>'
+              +'</tfoot>'
+              +'</table>';
+    $(construir4).appendTo('#tablaDesvCam');
+    $('#example4').addClass('table table-bordered table-hover');
+    $('#example4').DataTable();
+  }else if(p==13){
+    let construir5='<table id="example5">'
+                  +'<thead>'
+                  +'<tr>'
+                  +'<th>Nro</th>';
+    construir5+='<th>Fecha</th>'
+              +'<th>Faltas</th>'
+              +'<th>Descripcion</th>'
+              +'</tr>'
+              +'</thead>'
+              +'<tbody>';
+    data.forEach(function(dat){
+      construir5+='<tr>'
+        +'<td>'+conT+'</td>'
+        +'<td>'+dat.fecha+'</td>'
+        +'<td>'+dat.falta+''+'</td>'
+        +'<td>'+dat.desc+'</td>'
+        +'</tr>';
+      conT++;
+    });//aqui hay cambios
+    construir5+='</tbody>'
+              +'<tfoot>'
+              +'<tr>'
+              +'<th>Nro</th>'
+              +'<th>Fecha</th>'
+              +'<th>Falta</th>'
+              +'<th>Descripcion</th>'
+              +'</tr>'
+              +'</tfoot>'
+              +'</table>';
+    $(construir5).appendTo('#tablaProbVia');
+    $('#example5').addClass('table table-bordered table-hover');
+    $('#example5').DataTable();
+  }else if(p==14){
+    let construir6='<table id="example6">'
+                  +'<thead>'
+                  +'<tr>'
+                  +'<th>Nro</th>';
+    construir6+='<th>Fecha</th>'
+              +'<th>Faltas</th>'
+              +'<th>Descripcion</th>'
+              +'</tr>'
+              +'</thead>'
+              +'<tbody>';
+    data.forEach(function(dat){
+      construir6+='<tr>'
+        +'<td>'+conT+'</td>'
+        +'<td>'+dat.fecha+'</td>'
+        +'<td>'+dat.falta+''+'</td>'
+        +'<td>'+dat.desc+'</td>'
+        +'</tr>';
+      conT++;
+    });//aqui hay cambios
+    construir6+='</tbody>'
+              +'<tfoot>'
+              +'<tr>'
+              +'<th>Nro</th>'
+              +'<th>Fecha</th>'
+              +'<th>Falta</th>'
+              +'<th>Descripcion</th>'
+              +'</tr>'
+              +'</tfoot>'
+              +'</table>';
+    $(construir6).appendTo('#tablaAfecVia');
+    $('#example6').addClass('table table-bordered table-hover');
+    $('#example6').DataTable();
+  }else if(p==15){
+    let construir7='<table id="example7">'
+                  +'<thead>'
+                  +'<tr>'
+                  +'<th>Nro</th>';
+    construir7+='<th>Fecha</th>'
+              +'<th>Faltas</th>'
+              +'<th>Descripcion</th>'
+              +'</tr>'
+              +'</thead>'
+              +'<tbody>';
+    data.forEach(function(dat){
+      construir7+='<tr>'
+        +'<td>'+conT+'</td>'
+        +'<td>'+dat.fecha+'</td>'
+        +'<td>'+dat.falta+''+'</td>'
+        +'<td>'+dat.desc+'</td>'
+        +'</tr>';
+      conT++;
+    });//aqui hay cambios
+    construir7+='</tbody>'
+              +'<tfoot>'
+              +'<tr>'
+              +'<th>Nro</th>'
+              +'<th>Fecha</th>'
+              +'<th>Falta</th>'
+              +'<th>Descripcion</th>'
+              +'</tr>'
+              +'</tfoot>'
+              +'</table>';
+    $(construir7).appendTo('#tablaFactExt');
+    $('#example7').addClass('table table-bordered table-hover');
+    $('#example7').DataTable();
+  }else if(p==16){
+    let construir1='<table id="example1">'
+                  +'<thead>'
+                  +'<tr>'
+                  +'<th>Nro</th>';
+    construir1+='<th>Fecha</th>'
+              +'<th>Faltas</th>'
+              +'<th>Descripcion</th>'
+              +'</tr>'
+              +'</thead>'
+              +'<tbody>';
+    data.forEach(function(dat){
+      construir1+='<tr>'
+        +'<td>'+conT+'</td>'
+        +'<td>'+dat.fecha+'</td>'
+        +'<td>'+dat.falta+''+'</td>'
+        +'<td>'+dat.desc+'</td>'
+        +'</tr>';
+      conT++;
+    });//aqui hay cambios
+    construir1+='</tbody>'
+              +'<tfoot>'
+              +'<tr>'
+              +'<th>Nro</th>'
+              +'<th>Fecha</th>'
+              +'<th>Falta</th>'
+              +'<th>Descripcion</th>'
+              +'</tr>'
+              +'</tfoot>'
+              +'</table>';
+    $(construir1).appendTo('#tablaPorcInc');
+    $('#example1').addClass('table table-bordered table-hover');
+    $('#example1').DataTable();
+  }else if(p==17){
+    let construir2='<table id="example2">'
+                  +'<thead>'
+                  +'<tr>'
+                  +'<th>Nro</th>';
+    construir2+='<th>Fecha</th>'
+              +'<th>Tipo de accidente</th>'
+              +'<th>Ruta</th>'
+              +'<th>Descripcion</th>'
+              +'</tr>'
+              +'</thead>'
+              +'<tbody>';
+    data.forEach(function(dat){
+      construir2+='<tr>'
+        +'<td>'+conT+'</td>'
+        +'<td>'+dat.fecha+'</td>'
+        +'<td>'+dat.accidente+''+'</td>'
+        +'<td>'+dat.ruta+'</td>'
+        +'<td>'+dat.desc+'</td>'
+        +'</tr>';
+      conT++;
+    });//aqui hay cambios
+    construir2+='</tbody>'
+              +'<tfoot>'
+              +'<tr>'
+              +'<th>Nro</th>'
+              +'<th>Fecha</th>'
+              +'<th>Tipo de accidente</th>'
+              +'<th>Ruta</th>'
+              +'<th>Descripcion</th>'
+              +'</tr>'
+              +'</tfoot>'
+              +'</table>';
+    $(construir2).appendTo('#tablaPorAcc');
+    $('#example2').addClass('table table-bordered table-hover');
+    $('#example2').DataTable();
+  }else if(p==18){
+    let construir3='<table id="example3">'
+                  +'<thead>'
+                  +'<tr>'
+                  +'<th>Nro</th>';
+    construir3+='<th>Fecha</th>'
+              +'<th>Tipo de accidente</th>'
+              +'<th>Ruta</th>'
+              +'<th>Descripcion</th>'
+              +'</tr>'
+              +'</thead>'
+              +'<tbody>';
+    data.forEach(function(dat){
+      construir3+='<tr>'
+        +'<td>'+conT+'</td>'
+        +'<td>'+dat.fecha+'</td>'
+        +'<td>'+dat.accidente+''+'</td>'
+        +'<td>'+dat.ruta+'</td>'
+        +'<td>'+dat.desc+'</td>'
+        +'</tr>';
+      conT++;
+    });//aqui hay cambios
+    construir3+='</tbody>'
+              +'<tfoot>'
+              +'<tr>'
+              +'<th>Nro</th>'
+              +'<th>Fecha</th>'
+              +'<th>Tipo de accidente</th>'
+              +'<th>Ruta</th>'
+              +'<th>Descripcion</th>'
+              +'</tr>'
+              +'</tfoot>'
+              +'</table>';
+    $(construir3).appendTo('#tablaAccMed');
+    $('#example3').addClass('table table-bordered table-hover');
+    $('#example3').DataTable();
+  }else if(p==19){
+    let construir4='<table id="example4">'
+                  +'<thead>'
+                  +'<tr>'
+                  +'<th>Nro</th>';
+    construir4+='<th>Fecha</th>'
+              +'<th>Tipo de accidente</th>'
+              +'<th>Ruta</th>'
+              +'<th>Descripcion</th>'
+              +'</tr>'
+              +'</thead>'
+              +'<tbody>';
+    data.forEach(function(dat){
+      construir4+='<tr>'
+        +'<td>'+conT+'</td>'
+        +'<td>'+dat.fecha+'</td>'
+        +'<td>'+dat.accidente+''+'</td>'
+        +'<td>'+dat.ruta+'</td>'
+        +'<td>'+dat.desc+'</td>'
+        +'</tr>';
+      conT++;
+    });//aqui hay cambios
+    construir4+='</tbody>'
+              +'<tfoot>'
+              +'<tr>'
+              +'<th>Nro</th>'
+              +'<th>Fecha</th>'
+              +'<th>Tipo de accidente</th>'
+              +'<th>Ruta</th>'
+              +'<th>Descripcion</th>'
+              +'</tr>'
+              +'</tfoot>'
+              +'</table>';
+    $(construir4).appendTo('#tablaPorRut');
+    $('#example4').addClass('table table-bordered table-hover');
+    $('#example4').DataTable();
   }
 }

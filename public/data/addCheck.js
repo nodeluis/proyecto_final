@@ -49,3 +49,15 @@ $('#plusIncidenteButton').on('click',function(e){
   $(addcheck($('#plusIncidente').val())).appendTo('#addIncidente');
   $('#plusIncidente').val('');
 });
+
+$('#plusAccidenteButton').on('click',function(e){
+  e.preventDefault();
+  $(addcheck($('#plusAccidente').val())).appendTo('#addAccidente');
+  $('#plusAccidente').val('');
+});
+
+$('#plusMedicaButton').on('click',function(e){
+  e.preventDefault();
+  $(addcheck($('#plusMedica').val())).appendTo('#addMedica');
+  $('#plusMedica').val('');
+});
