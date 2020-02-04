@@ -691,40 +691,29 @@ router.post('/fatal',(req,res)=>{
     let desc=req.body.desc;
     let arr=req.body.ruta.split(',');
     let ruta='';
-    let km=0;
     arr.forEach((d)=>{
       ruta=(ruta=='')?d:ruta+'-'+d;
     });
     Camion.findOne({id:id},(err,doc)=>{
       if(!empty(doc)){
         if(!empty(doc.fatal)){
-          for (let k = doc.auto.length-1; k >doc.fatal[doc.fatal.length-1].indice; k--) {
-            km+=parseFloat(doc.auto[k].km);
-          }
-          km=(km==0)?doc.fatal[doc.fatal.length-1].km:km;
           doc.fatal.push({
             fecha:fecha[2]+'-'+fecha[0]+'-'+fecha[1],
             ruta:ruta,
             accidente:accidente,
-            indice:doc.auto.length-1,
-            km:km,
             desc:desc
           });
         }else{
-          for (let k = doc.auto.length-1; k >=0; k--) {
-            km+=parseFloat(doc.auto[k].km);
-          }
           let aux=[];
           aux.push({
             fecha:fecha[2]+'-'+fecha[0]+'-'+fecha[1],
             ruta:ruta,
             accidente:accidente,
-            indice:doc.auto.length-1,
-            km:km,
             desc:desc
           });
           doc.fatal=aux;
         }
+        doc.auto.accFat+=1;
         Camion.findByIdAndUpdate(doc._id,doc,()=>{
           console.log('falta conductor success');
           res.json({message:'axidente fatal insertado'});
@@ -789,40 +778,29 @@ router.post('/medico',(req,res)=>{
     let desc=req.body.desc;
     let arr=req.body.ruta.split(',');
     let ruta='';
-    let km=0;
     arr.forEach((d)=>{
       ruta=(ruta=='')?d:ruta+'-'+d;
     });
     Camion.findOne({id:id},(err,doc)=>{
       if(!empty(doc)){
         if(!empty(doc.medico)){
-          for (let k = doc.auto.length-1; k >doc.medico[doc.medico.length-1].indice; k--) {
-            km+=parseFloat(doc.auto[k].km);
-          }
-          km=(km==0)?doc.medico[doc.medico.length-1].km:km;
           doc.medico.push({
             fecha:fecha[2]+'-'+fecha[0]+'-'+fecha[1],
             ruta:ruta,
             accidente:accidente,
-            indice:doc.auto.length-1,
-            km:km,
             desc:desc
           });
         }else{
-          for (let k = doc.auto.length-1; k >=0; k--) {
-            km+=parseFloat(doc.auto[k].km);
-          }
           let aux=[];
           aux.push({
             fecha:fecha[2]+'-'+fecha[0]+'-'+fecha[1],
             ruta:ruta,
             accidente:accidente,
-            indice:doc.auto.length-1,
-            km:km,
             desc:desc
           });
           doc.medico=aux;
         }
+        doc.auto.accMed+=1;
         Camion.findByIdAndUpdate(doc._id,doc,()=>{
           console.log('falta conductor success');
           res.json({message:'accidente con baja medica insertado'});
@@ -932,6 +910,48 @@ router.post('/accidenteRutaMes',(req,res)=>{
           });
         } catch (e) {}
         res.json({chart:ac,falta:result});
+      }else{
+        res.json({message:'mo existe el camion'});
+      }
+    });
+});
+
+router.post('/kmAcc',(req,res)=>{
+    let id=req.body.id;
+    let fecha=[];
+    try {
+      let inicio=req.body.fi;
+      let fin=req.body.ff;
+      fecha=rango_fecha_mes(inicio,fin);
+    } catch (e) {
+      let fin=(new Date()).toLocaleString();
+      let inicio=new Date();
+      inicio.setDate(inicio.getDate()-150);
+      inicio=inicio.toLocaleString();
+      let ini=inicio.split(',');
+      let fi=fin.split(',');
+      fecha=rango_fecha_mes(ini[0],fi[0]);
+    }
+    Camion.findOne({id:id},(err,doc)=>{
+      if(!empty(doc)){
+        let result=[];
+        let arr=[];
+        for (let j = 0; j < fecha.length; j++) {
+          let p=fecha[j];
+          for (let m = 0; m < p.length; m++) {
+            let p2=p[m];
+            let dat=jsonQuery('[*fin='+p2+']',{data:doc.auto}).value;
+            try {
+                result=result.concat({
+                  data:new Date(dat.fin),
+                  km:parseFloat(dat.km),
+                  accMed:dat.accMed,
+                  accFat:dat.accFat
+                });
+            } catch (e) {}
+          }
+        }
+        res.json({data:result});
       }else{
         res.json({message:'mo existe el camion'});
       }
@@ -1103,7 +1123,14 @@ router.post('/generalFinal',(req,res)=>{
     } catch (e) {
       Camion.findOne({id:id},(err,doc)=>{
         if(!empty(doc)){
-
+          res.json({data:[{
+            desc:'cantidad de incidentes',
+            total:doc.incidente.length},{
+            desc:'cantidad accidentes medicos',
+            total:doc.medico.length},{
+            desc:'cantidad accidentes fatales',
+            total:doc.fatal.length
+          }]});
         }else{
           res.json({message:'camion no existe'});
         }
@@ -1141,7 +1168,9 @@ router.post('/on',(req,res)=>{
             expocision:'',
             ruta:str,
             km:result[0].value,
-            desc:desc
+            desc:desc,
+            accMed:0,
+            accFat:0
           };
           try {
             doc.auto.push(aut);

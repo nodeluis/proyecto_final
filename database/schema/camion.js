@@ -26,7 +26,9 @@ const camion={
       expocision:String,
       ruta:String,
       km:String,
-      desc:String
+      desc:String,
+      accMed:Number,
+      accFat:Number
     }],
     extintor:[{
       lugar:String,
@@ -83,16 +85,12 @@ const camion={
     fatal:[{
       fecha:String,
       ruta:String,
-      km:String,
-      indice:Number,
       accidente:[],
       desc:String,
     }],
     medico:[{
       fecha:String,
       ruta:String,
-      km:String,
-      indice:Number,
       accidente:[],
       desc:String,
     }],

@@ -48,8 +48,16 @@ function limpiar(){
   $('#ChartIntermedio2').empty();
   $('#tablaExViaje').empty();
   $('#tablaHoViaje').empty();
+  $('#tablaDesvCam').empty();
+  $('#tablaProbVia').empty();
+  $('#tablaAfecVia').empty();
+  $('#tablaFactExt').empty();
   $('#tablaDesvCond').empty();
-
+  $('#tablaPorcInc').empty();
+  $('#tablaPorAcc').empty();
+  $('#tablaAccMed').empty();
+  $('#tablaPorRut').empty();
+  $('#indicadorGeneralFinal').empty();
   //$('#map').googleMap();
   $("#map").googleMap({
     zoom: 8, // Initial zoom level (optional)

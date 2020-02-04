@@ -1,4 +1,5 @@
 function inicializar(){
+  
   //Date picker
   $('#ext3').datepicker({
     autoclose: true
