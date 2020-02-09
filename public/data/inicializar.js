@@ -1,5 +1,39 @@
 function inicializar(){
-  
+  let dateObj={
+      "locale": {
+          "format": "MM/DD/YYYY",
+          "separator": " - ",
+          "applyLabel": "Aplicar",
+          "cancelLabel": "Cancelar",
+          "fromLabel": "De",
+          "toLabel": "a",
+          "customRangeLabel": "Personaliza",
+          "daysOfWeek": [
+              "Do",
+              "Lu",
+              "Ma",
+              "Mi",
+              "Ju",
+              "Vi",
+              "Sa"
+          ],
+          "monthNames": [
+              "Enero",
+              "Febrero",
+              "Marzo",
+              "Abril",
+              "Mayo",
+              "Junio",
+              "Julio",
+              "Agosto",
+              "Septiembre",
+              "Octubre",
+              "Noviembre",
+              "Diciembre"
+          ],
+          "firstDay": 1
+      }
+    }
   //Date picker
   $('#ext3').datepicker({
     autoclose: true
@@ -45,24 +79,28 @@ function inicializar(){
     radioClass   : 'iradio_flat-green'
   });
   $('.select2').select2();
-  $('#reservation').daterangepicker();
-  $('#fechaIncidenteChart').daterangepicker();
-  $('#fechaIncidenteDonut').daterangepicker();
-  $('#controlReservation').daterangepicker();
-  $('#fechaKmRecorrido').daterangepicker();
-  $('#fechaHoraCant').daterangepicker();
-  $('#fechaViajeCant').daterangepicker();
-  $('#fechaFrecViaje').daterangepicker();
-  $('#fechaChartExposicion').daterangepicker();
-  $('#fechaExceso').daterangepicker();
-  $('#fechaHorario').daterangepicker();
-  $('#fechaDonutDesvio').daterangepicker();
-  $('#fechaDonutFrecVia').daterangepicker();
-  $('#fechaDonutfrecViaAf').daterangepicker();
-  $('#fechaFactExtDonut').daterangepicker();
-  $('#fechaChartIntermedio').daterangepicker();
-  $('#fechaRuta').daterangepicker();
-  $('#fechaAccKmChart').daterangepicker();
+  $('#reservation').daterangepicker(dateObj);
+  $('#fechaIncidenteChart').daterangepicker(dateObj);
+  $('#fechaIncidenteDonut').daterangepicker(dateObj);
+  $('#controlReservation').daterangepicker(dateObj);
+  $('#fechaKmRecorrido').daterangepicker(dateObj);
+  $('#fechaHoraCant').daterangepicker(dateObj);
+  $('#fechaViajeCant').daterangepicker(dateObj);
+  $('#fechaFrecViaje').daterangepicker(dateObj);
+  $('#fechaChartExposicion').daterangepicker(dateObj);
+  $('#fechaExceso').daterangepicker(dateObj);
+  $('#fechaHorario').daterangepicker(dateObj);
+  $('#fechaDonutDesvio').daterangepicker(dateObj);
+  $('#fechaDonutFrecVia').daterangepicker(dateObj);
+  $('#fechaDonutfrecViaAf').daterangepicker(dateObj);
+  $('#fechaFactExtDonut').daterangepicker(dateObj);
+  $('#fechaChartIntermedio').daterangepicker(dateObj);
+  $('#fechaRuta').daterangepicker(dateObj);
+  $('#fechaAccKmChart').daterangepicker(dateObj);
+  $('#fechaDonutDesvioCam').daterangepicker(dateObj);
+  $('#fechaDonutMedico').daterangepicker(dateObj);
+  $('#fechaFatal').daterangepicker(dateObj);
+  $('#fechaGeneralFinal').daterangepicker(dateObj);
   //puebas en los charts
   //end chart
 }

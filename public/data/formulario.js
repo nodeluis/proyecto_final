@@ -2,19 +2,21 @@
 $('#formExtint').submit(function(e) {
   e.preventDefault();
   var erm=[];
+  var erm2=[];
   for (var ii = 1; ii <=4; ii++) {
-    erm.push($('#ext'+ii).val());
+    erm2.push($('#ext'+ii).val());
   }
   for (var ii = 1; ii <= 12; ii++) {
     erm.push($('input:radio[name=r'+ii+']:checked','#formExtint').val());
   }
-  $.post('/camion/extintor',{data:erm+'',id:id},function(resp,status){
+  $.post('/camion/extintor',{data:erm+'',data2:erm2+'',id:id},function(resp,status){
     console.log(resp);
 
   },'json').fail(function(err){
     console.log(err);
   });
   $(this).trigger("reset");
+  console.log(erm);
 });
 
 ////botones extintores final

@@ -294,22 +294,6 @@ desired effect
         | Your Page Content Here |
         -------------------------->
         <!-- date range exceso -->
-        <div class="form-group" id="dateRange">
-            <label>Date range:</label>
-
-            <div class="input-group">
-                <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                </div>
-                <input type="text" class="form-control pull-right" id="reservation">
-                <div class="input-group-addon">
-                  <a href="#" id="enviarDateRange">
-                    <i class="fa fa-send"></i>
-                  </a>
-                </div>
-            </div>
-            <!-- /.input group -->
-        </div>
         <!-- date range exceso final -->
 
         <div id="map"></div>
@@ -347,278 +331,314 @@ desired effect
         <!-- horarios de conduccion final-->
 
         <!-- tabla check list extintores del camion -->
-        <div class="row" id="tablaExt">
-          <div class="col-xs-12">
-            <div class="box">
-              <div class="box-header">
-                <h3 class="box-title">Check lis de los extintores</h3>
+        <div class="row" id="contExt">
+
+          <div class="form-group col-md-12">
+              <label>Date range:</label>
+
+              <div class="input-group">
+                  <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control pull-right" id="reservation">
+                  <div class="input-group-addon">
+                    <a href="#" id="enviarDateRange">
+                      <i class="fa fa-send"></i>
+                    </a>
+                  </div>
+              </div>
+              <!-- /.input group -->
+          </div>
+
+          <div class="col-md-12">
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <h3 class="box-title">:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
               </div>
               <!-- /.box-header -->
+              <!-- form start -->
+
               <div class="box-body" id="bodyExt">
+
               </div>
-              <!-- /.box-body -->
+                <!-- /.box-body -->
             </div>
             <!-- /.box -->
           </div>
+
           <!-- /.col -->
+          <!-- /.formulario -->
+          <div class="col-md-12">
+            <!-- /.box -->
+            <form role="form" id="formExtint">
+
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Formulario de check list del extintor del camión</h3>
+                  <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                  </div>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+
+                <div class="box-body">
+                  <div class="row">
+                    <div class="col-md-6">
+
+                      <div class="form-group">
+                        <label>Fecha:</label>
+                        <div class="input-group date">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="ext3">
+                        </div>
+                        <!-- /.input group -->
+                      </div>
+
+                      <div class="form-group">
+                        <label>Lugar de inspección:</label>
+                        <input type="text" class="form-control" id="ext1" placeholder="Lugar">
+                      </div>
+
+                      <!-- radio -->
+                      <div class="form-group">
+                        <h4>Estado de la botella:</h4>
+                        <label>
+                          <input type="radio" name="r1" value="Excelente" checked>
+                          Excelente
+                        </label>
+                        <label>
+                          <input type="radio" name="r1" value="Regular">
+                          Regular
+                        </label>
+                        <label>
+                          <input type="radio" name="r1" value="Malo">
+                          Malo
+                        </label>
+                      </div>
+
+                      <div class="form-group">
+                        <h4>Estado de las etiquetas:</h4>
+                        <label>
+                          <input type="radio" name="r2" value="Excelente" checked>
+                          Excelente
+                        </label>
+                        <label>
+                          <input type="radio" name="r2" value="Regular">
+                          Regular
+                        </label>
+                        <label>
+                          <input type="radio" name="r2" value="Malo">
+                          Malo
+                        </label>
+                      </div>
+
+                      <div class="form-group">
+                        <h4>Estado de la manguera:</h4>
+                        <label>
+                          <input type="radio" name="r3" value="Excelente" checked>
+                          Excelente
+                        </label>
+                        <label>
+                          <input type="radio" name="r3" value="Regular">
+                          Regular
+                        </label>
+                        <label>
+                          <input type="radio" name="r3" value="Malo">
+                          Malo
+                        </label>
+                      </div>
+
+                      <div class="form-group">
+                        <h4>Estado de la boquilla:</h4>
+                        <label>
+                          <input type="radio" name="r4" value="Excelente" checked>
+                          Excelente
+                        </label>
+                        <label>
+                          <input type="radio" name="r4" value="Regular">
+                          Regular
+                        </label>
+                        <label>
+                          <input type="radio" name="r4" value="Malo">
+                          Malo
+                        </label>
+                      </div>
+
+                      <div class="form-group">
+                        <h4>Estado de peso del extintor:</h4>
+                        <label>
+                          <input type="radio" name="r5" value="Excelente" checked>
+                          Excelente
+                        </label>
+                        <label>
+                          <input type="radio" name="r5" value="Regular">
+                          Regular
+                        </label>
+                        <label>
+                          <input type="radio" name="r5" value="Malo">
+                          Malo
+                        </label>
+                      </div>
+
+                      <div class="form-group">
+                        <h4>Estado del manometro:</h4>
+                        <label>
+                          <input type="radio" name="r6" value="Excelente" checked>
+                          Excelente
+                        </label>
+                        <label>
+                          <input type="radio" name="r6" value="Regular">
+                          Regular
+                        </label>
+                        <label>
+                          <input type="radio" name="r6" value="Malo">
+                          Malo
+                        </label>
+                      </div>
+
+                      <!-- /.form-group -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-6">
+
+                      <div class="form-group">
+                        <h4>Estado del seguro:</h4>
+                        <label>
+                          <input type="radio" name="r7" value="Excelente" checked>
+                          Excelente
+                        </label>
+                        <label>
+                          <input type="radio" name="r7" value="Regular">
+                          Regular
+                        </label>
+                        <label>
+                          <input type="radio" name="r7" value="Malo">
+                          Malo
+                        </label>
+                      </div>
+
+                      <div class="form-group">
+                        <h4>Ubicación del extintor:</h4>
+                        <label>
+                          <input type="radio" name="r8" value="Excelente" checked>
+                          Excelente
+                        </label>
+                        <label>
+                          <input type="radio" name="r8" value="Regular">
+                          Regular
+                        </label>
+                        <label>
+                          <input type="radio" name="r8" value="Malo">
+                          Malo
+                        </label>
+                      </div>
+
+                      <div class="form-group">
+                        <h4>Limpieza del extintor:</h4>
+                        <label>
+                          <input type="radio" name="r9" value="Excelente" checked>
+                          Excelente
+                        </label>
+                        <label>
+                          <input type="radio" name="r9" value="Regular">
+                          Regular
+                        </label>
+                        <label>
+                          <input type="radio" name="r9" value="Malo">
+                          Malo
+                        </label>
+                      </div>
+
+                      <div class="form-group">
+                        <h4>Área donde se situa el extintor:</h4>
+                        <label>
+                          <input type="radio" name="r10" value="Excelente" checked>
+                          Excelente
+                        </label>
+                        <label>
+                          <input type="radio" name="r10" value="Regular">
+                          Regular
+                        </label>
+                        <label>
+                          <input type="radio" name="r10" value="Malo">
+                          Malo
+                        </label>
+                      </div>
+
+                      <div class="form-group">
+                        <h4>Trabajo en llama abiertar:</h4>
+                        <label>
+                          <input type="radio" name="r11" value="Excelente" checked>
+                          Excelente
+                        </label>
+                        <label>
+                          <input type="radio" name="r11" value="Regular">
+                          Regular
+                        </label>
+                        <label>
+                          <input type="radio" name="r11" value="Malo">
+                          Malo
+                        </label>
+                      </div>
+
+                      <div class="form-group">
+                        <h4>Señalizado:</h4>
+                        <label>
+                          <input type="radio" name="r12" value="Excelente" checked>
+                          Excelente
+                        </label>
+                        <label>
+                          <input type="radio" name="r12" value="Regular">
+                          Regular
+                        </label>
+                        <label>
+                          <input type="radio" name="r12" value="Malo">
+                          Malo
+                        </label>
+                      </div>
+
+                      <div class="form-group">
+                        <label>Cumplimiento del extintor:</label>
+                        <select class="form-control select2" style="width: 100%;" id="ext4">
+                          <option selected="selected">Aplica</option>
+                          <option>No aplica</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label>Observaciones:</label>
+                        <textarea class="form-control" rows="3" placeholder="Observaciones ..." id="ext2"></textarea>
+                      </div>
+
+                      <!-- /.form-group -->
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+                </div>
+                  <!-- /.box-body -->
+
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+
+              </div>
+            </form>
+          </div>
+
         </div>
         <!-- tabla check list extintores del camion fin -->
 
         <!-- formulario extintores del camion -->
-        <form role="form" id="formExtint">
-          <div class="box box-default collapsed-box">
-            <div class="box-header with-border">
-              <h3 class="box-title">Formulario de check list del extintor del camión</h3>
 
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
-              </div>
-            </div>
-
-            <div class="box-body">
-              <div class="row">
-                <div class="col-md-6">
-
-                  <div class="form-group">
-                    <label>Fecha:</label>
-                    <div class="input-group date">
-                      <div class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
-                      </div>
-                      <input type="text" class="form-control pull-right" id="ext3">
-                    </div>
-                    <!-- /.input group -->
-                  </div>
-
-                  <div class="form-group">
-                    <label>Lugar de inspección:</label>
-                    <input type="text" class="form-control" id="ext1" placeholder="Lugar">
-                  </div>
-
-                  <!-- radio -->
-                  <div class="form-group">
-                    <h4>Estado de la botella:</h4>
-                    <label>
-                      <input type="radio" name="r1" value="Excelente" checked>
-                      Excelente
-                    </label>
-                    <label>
-                      <input type="radio" name="r1" value="Regular">
-                      Regular
-                    </label>
-                    <label>
-                      <input type="radio" name="r1" value="Malo">
-                      Malo
-                    </label>
-                  </div>
-
-                  <div class="form-group">
-                    <h4>Estado de las etiquetas:</h4>
-                    <label>
-                      <input type="radio" name="r2" value="Excelente" checked>
-                      Excelente
-                    </label>
-                    <label>
-                      <input type="radio" name="r2" value="Regular">
-                      Regular
-                    </label>
-                    <label>
-                      <input type="radio" name="r2" value="Malo">
-                      Malo
-                    </label>
-                  </div>
-
-                  <div class="form-group">
-                    <h4>Estado de la manguera:</h4>
-                    <label>
-                      <input type="radio" name="r3" value="Excelente" checked>
-                      Excelente
-                    </label>
-                    <label>
-                      <input type="radio" name="r3" value="Regular">
-                      Regular
-                    </label>
-                    <label>
-                      <input type="radio" name="r3" value="Malo">
-                      Malo
-                    </label>
-                  </div>
-
-                  <div class="form-group">
-                    <h4>Estado de la boquilla:</h4>
-                    <label>
-                      <input type="radio" name="r4" value="Excelente" checked>
-                      Excelente
-                    </label>
-                    <label>
-                      <input type="radio" name="r4" value="Regular">
-                      Regular
-                    </label>
-                    <label>
-                      <input type="radio" name="r4" value="Malo">
-                      Malo
-                    </label>
-                  </div>
-
-                  <div class="form-group">
-                    <h4>Estado de peso del extintor:</h4>
-                    <label>
-                      <input type="radio" name="r5" value="Excelente" checked>
-                      Excelente
-                    </label>
-                    <label>
-                      <input type="radio" name="r5" value="Regular">
-                      Regular
-                    </label>
-                    <label>
-                      <input type="radio" name="r5" value="Malo">
-                      Malo
-                    </label>
-                  </div>
-
-                  <div class="form-group">
-                    <h4>Estado del manometro:</h4>
-                    <label>
-                      <input type="radio" name="r6" value="Excelente" checked>
-                      Excelente
-                    </label>
-                    <label>
-                      <input type="radio" name="r6" value="Regular">
-                      Regular
-                    </label>
-                    <label>
-                      <input type="radio" name="r6" value="Malo">
-                      Malo
-                    </label>
-                  </div>
-
-                  <!-- /.form-group -->
-                </div>
-                <!-- /.col -->
-                <div class="col-md-6">
-
-                  <div class="form-group">
-                    <h4>Estado del seguro:</h4>
-                    <label>
-                      <input type="radio" name="r7" value="Excelente" checked>
-                      Excelente
-                    </label>
-                    <label>
-                      <input type="radio" name="r7" value="Regular">
-                      Regular
-                    </label>
-                    <label>
-                      <input type="radio" name="r7" value="Malo">
-                      Malo
-                    </label>
-                  </div>
-
-                  <div class="form-group">
-                    <h4>Ubicación del extintor:</h4>
-                    <label>
-                      <input type="radio" name="r8" value="Excelente" checked>
-                      Excelente
-                    </label>
-                    <label>
-                      <input type="radio" name="r8" value="Regular">
-                      Regular
-                    </label>
-                    <label>
-                      <input type="radio" name="r8" value="Malo">
-                      Malo
-                    </label>
-                  </div>
-
-                  <div class="form-group">
-                    <h4>Limpieza del extintor:</h4>
-                    <label>
-                      <input type="radio" name="r9" value="Excelente" checked>
-                      Excelente
-                    </label>
-                    <label>
-                      <input type="radio" name="r9" value="Regular">
-                      Regular
-                    </label>
-                    <label>
-                      <input type="radio" name="r9" value="Malo">
-                      Malo
-                    </label>
-                  </div>
-
-                  <div class="form-group">
-                    <h4>Área donde se situa el extintor:</h4>
-                    <label>
-                      <input type="radio" name="r10" value="Excelente" checked>
-                      Excelente
-                    </label>
-                    <label>
-                      <input type="radio" name="r10" value="Regular">
-                      Regular
-                    </label>
-                    <label>
-                      <input type="radio" name="r10" value="Malo">
-                      Malo
-                    </label>
-                  </div>
-
-                  <div class="form-group">
-                    <h4>Trabajo en llama abiertar:</h4>
-                    <label>
-                      <input type="radio" name="r11" value="Excelente" checked>
-                      Excelente
-                    </label>
-                    <label>
-                      <input type="radio" name="r11" value="Regular">
-                      Regular
-                    </label>
-                    <label>
-                      <input type="radio" name="r11" value="Malo">
-                      Malo
-                    </label>
-                  </div>
-
-                  <div class="form-group">
-                    <h4>Señalizado:</h4>
-                    <label>
-                      <input type="radio" name="r12" value="Excelente" checked>
-                      Excelente
-                    </label>
-                    <label>
-                      <input type="radio" name="r12" value="Regular">
-                      Regular
-                    </label>
-                    <label>
-                      <input type="radio" name="r12" value="Malo">
-                      Malo
-                    </label>
-                  </div>
-
-                  <div class="form-group">
-                    <label>Cumplimiento del extintor:</label>
-                    <select class="form-control select2" style="width: 100%;" id="ext4">
-                      <option selected="selected">Aplica</option>
-                      <option>No aplica</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group">
-                    <label>Observaciones:</label>
-                    <textarea class="form-control" rows="3" placeholder="Observaciones ..." id="ext2"></textarea>
-                  </div>
-
-                  <!-- /.form-group -->
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-          </div>
-        </form>
         <!-- formulario extintores del camion  fin-->
 
 
@@ -649,7 +669,7 @@ desired effect
                           </div>
                           <input type="text" class="form-control pull-right" id="fechaKmRecorrido">
                           <div class="input-group-addon">
-                            <a href="#" id="incidenteDonut">
+                            <a href="#" id="fechaKmRecorridoEnv">
                               <i class="fa fa-send"></i>
                             </a>
                           </div>
@@ -684,7 +704,7 @@ desired effect
                           </div>
                           <input type="text" class="form-control pull-right" id="fechaHoraCant">
                           <div class="input-group-addon">
-                            <a href="#" id="incidenteDonut">
+                            <a href="#" id="fechaHoraCantEnv">
                               <i class="fa fa-send"></i>
                             </a>
                           </div>
@@ -760,7 +780,7 @@ desired effect
                           </div>
                           <input type="text" class="form-control pull-right" id="fechaFrecViaje">
                           <div class="input-group-addon">
-                            <a href="#" id="incidenteDonut">
+                            <a href="#" id="fechaFrecViajeEnv">
                               <i class="fa fa-send"></i>
                             </a>
                           </div>
@@ -800,7 +820,7 @@ desired effect
                           </div>
                           <input type="text" class="form-control pull-right" id="fechaChartExposicion">
                           <div class="input-group-addon">
-                            <a href="#" id="incidenteTablaChart">
+                            <a href="#" id="fechaChartExposicionEnv">
                               <i class="fa fa-send"></i>
                             </a>
                           </div>
@@ -925,7 +945,7 @@ desired effect
                           </div>
                           <input type="text" class="form-control pull-right" id="fechaExceso">
                           <div class="input-group-addon">
-                            <a href="#" id="DonutExcesoEnv">
+                            <a href="#" id="fechaExcesoEnv">
                               <i class="fa fa-send"></i>
                             </a>
                           </div>
@@ -960,7 +980,7 @@ desired effect
                           </div>
                           <input type="text" class="form-control pull-right" id="fechaHorario">
                           <div class="input-group-addon">
-                            <a href="#" id="DonutHorarioEnv">
+                            <a href="#" id="fechaHorarioEnv">
                               <i class="fa fa-send"></i>
                             </a>
                           </div>
@@ -995,7 +1015,7 @@ desired effect
                           </div>
                           <input type="text" class="form-control pull-right" id="fechaDonutDesvio">
                           <div class="input-group-addon">
-                            <a href="#" id="DonutDesvioEnv">
+                            <a href="#" id="fechaDonutDesvioEnv">
                               <i class="fa fa-send"></i>
                             </a>
                           </div>
@@ -1030,7 +1050,7 @@ desired effect
                           </div>
                           <input type="text" class="form-control pull-right" id="fechaDonutDesvioCam">
                           <div class="input-group-addon">
-                            <a href="#" id="DonutDesvioCamEnv">
+                            <a href="#" id="fechaDonutDesvioCamEnv">
                               <i class="fa fa-send"></i>
                             </a>
                           </div>
@@ -1065,7 +1085,7 @@ desired effect
                           </div>
                           <input type="text" class="form-control pull-right" id="fechaDonutFrecVia">
                           <div class="input-group-addon">
-                            <a href="#" id="DonutFrecViaEnv">
+                            <a href="#" id="fechaDonutFrecViaEnv">
                               <i class="fa fa-send"></i>
                             </a>
                           </div>
@@ -1100,7 +1120,7 @@ desired effect
                           </div>
                           <input type="text" class="form-control pull-right" id="fechaDonutfrecViaAf">
                           <div class="input-group-addon">
-                            <a href="#" id="DonutfrecViaAfEnv">
+                            <a href="#" id="fechaDonutfrecViaAfEnv">
                               <i class="fa fa-send"></i>
                             </a>
                           </div>
@@ -1135,7 +1155,7 @@ desired effect
                           </div>
                           <input type="text" class="form-control pull-right" id="fechaFactExtDonut">
                           <div class="input-group-addon">
-                            <a href="#" id="FactExtDonutEnv">
+                            <a href="#" id="fechaFactExtDonutEnv">
                               <i class="fa fa-send"></i>
                             </a>
                           </div>
@@ -1439,7 +1459,7 @@ desired effect
                           </div>
                           <input type="text" class="form-control pull-right" id="fechaChartIntermedio">
                           <div class="input-group-addon">
-                            <a href="#" id="IntermedioEnv">
+                            <a href="#" id="fechaChartIntermedioEnv">
                               <i class="fa fa-send"></i>
                             </a>
                           </div>
@@ -1623,7 +1643,7 @@ desired effect
                           </div>
                           <input type="text" class="form-control pull-right" id="fechaIncidenteDonut">
                           <div class="input-group-addon">
-                            <a href="#" id="incidenteDonut">
+                            <a href="#" id="fechaIncidenteDonutEnv">
                               <i class="fa fa-send"></i>
                             </a>
                           </div>
@@ -1658,7 +1678,7 @@ desired effect
                           </div>
                           <input type="text" class="form-control pull-right" id="fechaFatal">
                           <div class="input-group-addon">
-                            <a href="#" id="FatalDonut">
+                            <a href="#" id="fechaFatalEnv">
                               <i class="fa fa-send"></i>
                             </a>
                           </div>
@@ -1674,7 +1694,7 @@ desired effect
 
             <div class="box box-info">
               <div class="box-header with-border">
-                <h3 class="box-title">Porcentaje de accidentes c/sin fatalidad por meses:</h3>
+                <h3 class="box-title">Porcentaje de accidentes con baja medica por meses:</h3>
                 <div class="box-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
@@ -1693,7 +1713,7 @@ desired effect
                           </div>
                           <input type="text" class="form-control pull-right" id="fechaDonutMedico">
                           <div class="input-group-addon">
-                            <a href="#" id="DonutMedicoEnv">
+                            <a href="#" id="fechaDonutMedicoEnv">
                               <i class="fa fa-send"></i>
                             </a>
                           </div>
@@ -1728,7 +1748,7 @@ desired effect
                           </div>
                           <input type="text" class="form-control pull-right" id="fechaRuta">
                           <div class="input-group-addon">
-                            <a href="#" id="DonutRutaEnv">
+                            <a href="#" id="fechaRutaEnv">
                               <i class="fa fa-send"></i>
                             </a>
                           </div>
@@ -2088,9 +2108,9 @@ desired effect
                           <div class="input-group-addon">
                               <i class="fa fa-calendar"></i>
                           </div>
-                          <input type="text" class="form-control pull-right" id="fechaIncidenteChart">
+                          <input type="text" class="form-control pull-right" id="fechaGeneralFinal">
                           <div class="input-group-addon">
-                            <a href="#" id="incidenteTablaChart">
+                            <a href="#" id="fechaGeneralFinalEnv">
                               <i class="fa fa-send"></i>
                             </a>
                           </div>
@@ -2363,7 +2383,7 @@ desired effect
                     </div>
                     <input type="text" class="form-control pull-right" id="controlReservation">
                     <div class="input-group-addon">
-                      <a href="#" id="controlSend">
+                      <a href="#" id="controlReservationEnv">
                         <i class="fa fa-send"></i>
                       </a>
                     </div>

@@ -1,8 +1,7 @@
 function limpiar(){
   exinplusign=0;
   $('#map').show();
-  $('#tablaExt').hide();
-  $('#formExtint').hide();
+  $('#contExt').hide();
   $('#dateRange').hide();
   $('#excesosDiv').hide();
   $('#horarioDiv').hide();

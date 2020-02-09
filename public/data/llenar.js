@@ -90,24 +90,29 @@ function llenarTablas(data,p){
     $('#example').addClass('table table-bordered table-hover');
     $('#example').DataTable();
   }else if(p==3){
-
     construir+='<th>Lugar</th>'
               +'<th>Observaciones</th>'
               +'<th>Fecha</th>'
               +'<th>Checks</th>'
               +'<th>Aplica</th>'
+              +'<th>Acciones</th>'
               +'</tr>'
               +'</thead>'
               +'<tbody id="contenidoExc">';
     data.forEach(function(dat){
-    construir+='<tr>'
-    +'<td>'+conT+'</td>'
-    +'<td>'+dat['lugar']+'</td>'
-    +'<td>'+dat['observacion']+'</td>'
-    +'<td>'+dat['fecha']+'</td>'
-    +'<td>'+dat['check']+'</td>'
-    +'<td>'+dat['aplica']+'</td>'
-    +'</tr>';
+      construir+='<tr>'
+      +'<td>'+conT+'</td>'
+      +'<td>'+dat['lugar']+'</td>'
+      +'<td>'+dat['observacion']+'</td>'
+      +'<td>'+dat['fecha']+'</td>'
+      +'<td>'+dat['check'].length+'</td>'
+      +'<td>'+dat['aplica']+'</td>'
+      +'<td><div class="tools">'
+      +'<button class="fa fa-edit" id="edit" value="funciona otro"></button>'
+      +'<button class="fa fa-trash-o"></button>'
+      +'</div>'
+      +'</td>'
+      +'</tr>';
     conT++;
     });//aqui hay cambios
     construir+='</tbody>'
@@ -119,6 +124,7 @@ function llenarTablas(data,p){
         +'<th>Fecha</th>'
         +'<th>Checks</th>'
         +'<th>Aplica</th>'
+        +'<th>Acciones</th>'
         +'</tr>'
         +'</tfoot>'
         +'</table>';

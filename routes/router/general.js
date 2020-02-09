@@ -1,4 +1,5 @@
 const General=require('../../database/schema/general');
+const Camion=require('../../database/schema/camion');
 const express=require('express');
 const router=express.Router();
 const empty=require('is-empty');
@@ -18,15 +19,15 @@ router.get('/',(req,res)=>{
 
 });
 
-router.get('/probar',(req,res)=>{
+router.post('/probar',(req,res)=>{
     /*General.find().limit(4).skip(0).exec((err,doc)=>{
       res.json(doc);
     });*/
-    var fatos=[{otro:'busca1',lol:'gsrgr',prueba:'busca1'},
+    /*var fatos=[{otro:'busca1',lol:'gsrgr',prueba:'busca1'},
               {otro:'busca1'},
               {otroqueno:'busca3',prueba:'busca1'}];
     let dat=jsonQuery('[*otro=busca1]',{data:fatos}).value;
-    res.json(dat);
+    res.json(dat);*/
     /*var fatos=[{otro:'busca1',lol:'gsrgr'},{otro:'busca1'},{otroqueno:'busca3'}];
     var fatos2=[{otro:'busca1',lol:'gsrgr'},{otro:'busca1'},{otroqueno:'busca3'}];
     fatos=fatos.concat(fatos2);*/
@@ -56,7 +57,21 @@ router.get('/probar',(req,res)=>{
     } finally {
       res.json({message:1});
     }*/
+    let id=req.body.id;//id del documento
+    let elim=req.body.elim;//id dentro de un array
+    Camion.findOne({_id:id},(err,doc)=>{
+        let index=doc.auto.findIndex((item, i)=>{
+          return item._id == elim;
+        });
+        doc.auto.splice(index,1);
+        Camion.findByIdAndUpdate(id,doc,()=>{
+          res.json({data:'eliminado'});
+        });
+
+        //res.json({data:doc2});
+    });
 });
+
 
 router.post('/control',(req,res)=>{
     let id=req.body.id;

@@ -101,6 +101,7 @@ router.post('/autoT',(req,res)=>{
 });
 
 router.post('/auto',(req,res)=>{
+    console.log(req.body);
     let id=req.body.id;
     let arr=[];
     let f=req.body.filtro;
@@ -129,11 +130,17 @@ function filtar(arr,f){
     let dev=[];
     if(f==1){
       arr.forEach((dat)=>{
-        dev.push(dat.exceso);
+        dev.push({
+          fecha:dat.inicio+' / '+dat.fin,
+          total:dat.exceso.length
+        });
       });
     }else if(f==2){
       arr.forEach((dat)=>{
-        dev.push(dat.horario);
+        dev.push({
+          fecha:dat.inicio+' / '+dat.fin,
+          total:dat.horario.length
+        });
       });
     }else if(f==3){
       arr.forEach((dat)=>{
@@ -145,7 +152,7 @@ function filtar(arr,f){
     }else if(f==4){
       arr.forEach((dat)=>{
         dev.push({
-          fecha:dat.inicio+'-'+dat.fin,
+          fecha:dat.inicio+' / '+dat.fin,
           total:parseFloat(dat.expocision)
         });
       });
@@ -965,6 +972,7 @@ router.post('/kmAcc',(req,res)=>{
 
 //expocision
 router.post('/generalExpocision',(req,res)=>{
+    console.log(req.body);
     let arr=[];
     let id=req.body.id;
     try {
@@ -1115,7 +1123,29 @@ router.post('/generalFinal',(req,res)=>{
       let fecha=rango_fecha(inicio,fin);
       Camion.findOne({id:id},(err,doc)=>{
         if(!empty(doc)){
-
+          let con1=con2=con3=0;
+          fecha.forEach((dat) => {
+            let result=jsonQuery('[*fecha='+dat+']',{data:doc.incidente}).value;
+            let result2=jsonQuery('[*fecha='+dat+']',{data:doc.fatal}).value;
+            let result3=jsonQuery('[*fecha='+dat+']',{data:doc.medico}).value;
+            if(!empty(result)){
+              con1+=result.length;
+            }
+            if(!empty(result2)){
+              con2+=result2.length;
+            }
+            if(!empty(result3)){
+              con3+=result3.length;
+            }
+          });
+          res.json({data:[{
+            desc:'cantidad de incidentes',
+            total:con1},{
+            desc:'cantidad accidentes medicos',
+            total:con2},{
+            desc:'cantidad accidentes fatales',
+            total:con3
+          }]});
         }else{
           res.json({message:'camion no existe'});
         }
@@ -1236,23 +1266,10 @@ router.post('/on',(req,res)=>{
 //***********************************incersion control fin ******************************
 
 router.post('/extintor',(req,res)=>{
-    let arr=req.body.data.split(',');
+    let arr=req.body.data2.split(',');
     let id=req.body.id;
     let t=((arr[3]=='Aplica')?true:false);
-    let ob={
-      botella:arr[4],
-      etiqueta:arr[5],
-      mangera:arr[6],
-      boquilla:arr[7],
-      peso:arr[8],
-      manometro:arr[9],
-      seguro:arr[10],
-      ubicacion:arr[11],
-      limpieza:arr[12],
-      area:arr[13],
-      trabajo:arr[14],
-      señalizado:arr[15]
-    };
+    let ob=req.body.data.split(',');
     Camion.findOne({id:id},(err,doc)=>{
       if(!empty(doc)){
         if(empty(doc.extintor)){
@@ -1288,13 +1305,14 @@ router.post('/dataextintor',(req,res)=>{
     let i=req.body.i;
     Camion.findOne({id:id},(err,doc)=>{
       if(!empty(doc)){
-        let arr=[];
+        /*let arr=[];
         for (let j =(doc.extintor.length-1)-(i*40),k=0; j>=0&&k<40 ; j--,k++) {
           arr.push(doc.extintor[j]);
         }
-        res.json(arr);
+        res.json(arr);*/
+        res.json({data:doc.extintor});
       }else{
-        res.json([]);
+        res.json({data:[]});
       }
     });
 });

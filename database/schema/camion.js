@@ -35,7 +35,7 @@ const camion={
       fecha:String,
       observacion:String,
       aplica:Boolean,
-      check:{
+      /*check:{
         botella:String,
         etiqueta:String,
         mangera:String,
@@ -48,7 +48,8 @@ const camion={
         area:String,
         trabajo:String,
         señalizado:String
-      }
+      }*/
+      check:[]
     }],
     //indicador intermedio
     desvioConductor:[{

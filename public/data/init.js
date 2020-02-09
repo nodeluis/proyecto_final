@@ -1,5 +1,4 @@
 $(document).ready(function () {
-  console.log('<%=token%>');
   inicializar();
   limpiar();
   $.get('/general',null,function(response){
@@ -19,8 +18,6 @@ $(document).ready(function () {
                   +'</span>'
                   +'</a>'
                   +'<ul id="'+i+'tremen">'
-                  +'<li><a href="#" id="'+i+'hor"><i class="fa fa-circle-o"></i>Horarios de conducción</a></li>'
-                  +'<li><a href="#"><i class="fa fa-circle-o"></i>Kilometros recorridos</a></li>'
                   +'<li class="treeview"><a href="#" id=""><i class="fa fa-circle-o"></i>Indicadores'
                   +'<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>'
                   +'<ul id="'+i+'tree2">'
@@ -32,7 +29,6 @@ $(document).ready(function () {
                   +'<li><a href="#"><i class="fa fa-circle-o"></i>Alcoholemia</a></li>'
                   +'<li><a href="#"><i class="fa fa-circle-o"></i>Botiquín</a></li>'
                   +'<li><a href="#" id="'+i+'ext"><i class="fa fa-circle-o"></i>Extintores</a></li>'
-                  +'<li><a href="#" id="'+i+'exc"><i class="fa fa-circle-o"></i>excesos de velocidad</a></li>'
                   +'<li><a href="#" id="'+i+'controlar" data-toggle="modal"><i class="fa fa-circle-o"></i>Controlar estado del camion</a></li>'
                   +'</ul>'
                   +'</li>').appendTo('#incamion');
@@ -56,46 +52,6 @@ $(document).ready(function () {
         }
         //poner a la escucha y hacer operaciones
         //4232-ICI
-        $('#'+i+'exc').on('click', function(e){
-          e.preventDefault();
-          id=dato['id'];
-          placa=dato['placa'];
-          daterangenvio=1;
-          limpiar();
-          let postdata={
-            id:dato['id'],
-            i:exinplusign
-          };
-          $.post('/camion/exceso2',postdata,function(resp,status){
-            $('#excesosDiv').show();
-            $('#dateRange').show();
-            console.log(resp);
-            llenarTablas(resp,1);
-          },'json').fail(function(err){
-            console.log(err);
-          });
-        });
-        // horarios de conduccion
-        $('#'+i+'hor').on('click', function(e){
-          e.preventDefault();
-          id=dato['id'];
-          placa=dato['placa'];
-          daterangenvio=2;
-          limpiar();
-          let postdata={
-            id:dato['id'],
-            i:exinplusign
-          };
-          $.post('/camion/horario',postdata,function(resp,status){
-            $('#horarioDiv').show();
-            $('#dateRange').show();
-            console.log(resp);
-            llenarTablas(resp,2);
-          },'json').fail(function(err){
-            console.log(err);
-          });
-        });
-        // horarios de conduccion final
         // extintores
 
         $('#'+i+'ext').on('click', function(e){
@@ -110,11 +66,9 @@ $(document).ready(function () {
             i:exinplusign
           };
           $.post('/camion/dataextintor',postdata,function(resp,status){
-            $('#dateRange').show();
-            $('#formExtint').show();
-            $('#tablaExt').show();
+            $('#contExt').show();
             console.log(resp);
-            llenarTablas(resp,3);
+            llenarTablas(resp.data,3);
           },'json').fail(function(err){
             console.log(err);
           });
@@ -363,7 +317,7 @@ $(document).ready(function () {
             console.log(err);
           });
         });
-        //controlar estado del camion fin
+        //controlar estado del camion finç
       }
   });
 });
