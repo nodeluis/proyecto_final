@@ -720,7 +720,7 @@ router.post('/fatal',(req,res)=>{
           });
           doc.fatal=aux;
         }
-        doc.auto.accFat+=1;
+        doc.auto[doc.auto.length-1].accFat+=1;
         Camion.findByIdAndUpdate(doc._id,doc,()=>{
           console.log('falta conductor success');
           res.json({message:'axidente fatal insertado'});
@@ -807,7 +807,7 @@ router.post('/medico',(req,res)=>{
           });
           doc.medico=aux;
         }
-        doc.auto.accMed+=1;
+        doc.auto[doc.auto.length-1].accMed+=1;
         Camion.findByIdAndUpdate(doc._id,doc,()=>{
           console.log('falta conductor success');
           res.json({message:'accidente con baja medica insertado'});

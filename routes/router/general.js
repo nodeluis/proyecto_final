@@ -536,141 +536,110 @@ router.get('/genFinal',(req,res)=>{
             docs.forEach(dat=> {
               let str=[];
               fecha.forEach(fech => {
-                let resul=jsonQuery('[*fin='+fech+']',{data:dat.auto}).value;
+                let resul=jsonQuery('[*fecha='+fech+']',{data:dat.incidente}).value;
                 if(!empty(resul)){
                   str=str.concat(resul);
                 }
               });
               let sum=0;
               str.forEach((it) => {
-                sum+=it.exceso.length;
+                sum+=it.falta.length;
               });
               camions.push({
                 placa:dat.placa,
                 total:sum
               });
             });
-            res.json({exceso:camions});
+            res.json({incidentes:camions});
           }else if(f==2){
             let camions=[];
             docs.forEach(dat=> {
               let str=[];
               fecha.forEach(fech => {
-                let resul=jsonQuery('[*fin='+fech+']',{data:dat.auto}).value;
+                let resul=jsonQuery('[*fecha='+fech+']',{data:dat.medico}).value;
                 if(!empty(resul)){
                   str=str.concat(resul);
                 }
               });
               let sum=0;
               str.forEach((it) => {
-                sum+=it.horario.length;
+                sum+=it.accidente.length;
               });
               camions.push({
                 placa:dat.placa,
                 total:sum
               });
             });
-            res.json({horario:camions});
+            res.json({medico:camions});
           }else if(f==3){
             let camions=[];
             docs.forEach(dat=> {
               let str=[];
               fecha.forEach(fech => {
-                let resul=jsonQuery('[*fecha='+fech+']',{data:dat.desvioConductor}).value;
+                let resul=jsonQuery('[*fecha='+fech+']',{data:dat.fatal}).value;
                 if(!empty(resul)){
                   str=str.concat(resul);
                 }
               });
               let sum=0;
               str.forEach((it) => {
-                sum+=it.falta.length;
+                sum+=it.accidente.length;
               });
               camions.push({
                 placa:dat.placa,
                 total:sum
               });
             });
-            res.json({desvio:camions});
+            res.json({fatal:camions});
           }else if(f==4){
             let camions=[];
             docs.forEach(dat=> {
               let str=[];
               fecha.forEach(fech => {
-                let resul=jsonQuery('[*fecha='+fech+']',{data:dat.desvioCamion}).value;
-                if(!empty(resul)){
-                  str=str.concat(resul);
+                let resul1=jsonQuery('[*fecha='+fech+']',{data:dat.medico}).value;
+                let resul2=jsonQuery('[*fecha='+fech+']',{data:dat.fatal}).value;
+                if(!empty(resul1)){
+                  str=str.concat(resul1);
+                }
+                if(!empty(resul2)){
+                  str=str.concat(resul2);
                 }
               });
-              let sum=0;
               str.forEach((it) => {
-                sum+=it.falta.length;
-              });
-              camions.push({
-                placa:dat.placa,
-                total:sum
+                let index=camions.findIndex((item, i)=>{
+                  return item.ruta == it.ruta;
+                });
+                if(index==-1){
+                  camions.push({
+                    ruta:it.ruta,
+                    total:1
+                  });
+                }else{
+                  camions[index].total+=1;
+                }
               });
             });
-            res.json({desvioCam:camions});
+            res.json({ruta:camions});
           }else if(f==5){
             let camions=[];
             docs.forEach(dat=> {
               let str=[];
               fecha.forEach(fech => {
-                let resul=jsonQuery('[*fecha='+fech+']',{data:dat.via}).value;
+                let resul=jsonQuery('[*fin='+fech+']',{data:dat.auto}).value;
                 if(!empty(resul)){
                   str=str.concat(resul);
                 }
               });
-              let sum=0;
-              str.forEach((it) => {
-                sum+=it.falta.length;
-              });
-              camions.push({
-                placa:dat.placa,
-                total:sum
-              });
-            });
-            res.json({via:camions});
-          }else if(f==6){
-            let camions=[];
-            docs.forEach(dat=> {
-              let str=[];
-              fecha.forEach(fech => {
-                let resul=jsonQuery('[*fecha='+fech+']',{data:dat.viajeAfectado}).value;
-                if(!empty(resul)){
-                  str=str.concat(resul);
-                }
-              });
-              let sum=0;
-              str.forEach((it) => {
-                sum+=it.falta.length;
-              });
-              camions.push({
-                placa:dat.placa,
-                total:sum
+              str.forEach(dat => {
+                camions=camions.concat({
+                  data:new Date(dat.fin),
+                  km:parseFloat(dat.km),
+                  accMed:dat.accMed,
+                  accFat:dat.accFat
+                });
               });
             });
-            res.json({afectado:camions});
-          }else if(f==7){
-            let camions=[];
-            docs.forEach(dat=> {
-              let str=[];
-              fecha.forEach(fech => {
-                let resul=jsonQuery('[*fecha='+fech+']',{data:dat.otro}).value;
-                if(!empty(resul)){
-                  str=str.concat(resul);
-                }
-              });
-              let sum=0;
-              str.forEach((it) => {
-                sum+=it.falta.length;
-              });
-              camions.push({
-                placa:dat.placa,
-                total:sum
-              });
-            });
-            res.json({otro:camions});
+            res.json({km:camions});
           }
         }else{
           res.json({message:'la db esta vacia'});
@@ -686,113 +655,83 @@ router.get('/genFinal',(req,res)=>{
         let tabla=[];
         if(!empty(docs)){
           docs.forEach(data => {
-            let sum1=0;
-            let sum2=0;
-            data.auto.forEach(dat => {
-              tabla1.push({
-                inicio:dat.inicio,
-                fin:dat.fin,
-                exceso:dat.exceso.length,
-                horario:dat.horario.length,
-                desc:dat.desc
+            let sum=0;
+            data.incidente.forEach(it => {
+              sum+=it.falta.length;
+              tabla.push({
+                fecha:it.fecha,
+                falta:it.falta.length,
+                desc:it.desc
               });
-              sum1+=dat.exceso.length;
-              sum2+=dat.horario.length;
             });
             dat1.push({
               placa:data.placa,
-              total:sum1
+              total:sum
+            });
+            sum=0;
+            data.medico.forEach(it => {
+              sum+=it.accidente.length
+              let index=dat4.findIndex((item, i)=>{
+                return item.ruta == it.ruta;
+              });
+              if(index==-1){
+                dat4.push({
+                  ruta:it.ruta,
+                  total:1
+                });
+              }else{
+                dat4[index].total+=1;
+              }
+              tabla.push({
+                fecha:it.fecha,
+                falta:it.accidente.length,
+                desc:it.desc
+              });
             });
             dat2.push({
               placa:data.placa,
-              total:sum2
+              total:sum
             });
-            let sum=0;
-            let pila=[];
-            data.desvioConductor.forEach(dat => {
-              sum+=dat.falta;
-              pila.push({
-                fecha:dat.fecha,
-                falta:dat.falta.length,
-                desc:dat.desc
+            sum=0;
+            data.fatal.forEach(it => {
+              sum+=it.accidente.length
+              let index=dat4.findIndex((item, i)=>{
+                return item.ruta == it.ruta;
+              });
+              if(index==-1){
+                dat4.push({
+                  ruta:it.ruta,
+                  total:1
+                });
+              }else{
+                dat4[index].total+=1;
+              }
+              tabla.push({
+                fecha:it.fecha,
+                falta:it.accidente.length,
+                desc:it.desc
               });
             });
             dat3.push({
               placa:data.placa,
               total:sum
             });
-            tabla2.concat(pila);
-            sum=0;
-            pila=[];
-            data.desvioCamion.forEach(dat => {
-              sum+=dat.falta;
-              pila.push({
-                fecha:dat.fecha,
-                falta:dat.falta.length,
-                desc:dat.desc
+            data.auto.forEach(dat => {
+              dat5=dat5.concat({
+                data:new Date(dat.fin),
+                km:parseFloat(dat.km),
+                accMed:dat.accMed,
+                accFat:dat.accFat
               });
             });
-            dat4.push({
-              placa:data.placa,
-              total:sum
-            });
-            tabla2.concat(pila);
-            sum=0;
-            pila=[];
-            data.via.forEach(dat => {
-              sum+=dat.falta;
-              pila.push({
-                fecha:dat.fecha,
-                falta:dat.falta.length,
-                desc:dat.desc
-              });
-            });
-            dat5.push({
-              placa:data.placa,
-              total:sum
-            });
-            tabla2.concat(pila);
-            sum=0;
-            pila=[];
-            data.viajeAfectado.forEach(dat => {
-              sum+=dat.falta;
-              pila.push({
-                fecha:dat.fecha,
-                falta:dat.falta.length,
-                desc:dat.desc
-              });
-            });
-            dat6.push({
-              placa:data.placa,
-              total:sum
-            });
-            tabla2.concat(pila);
-            sum=0;
-            pila=[];
-            data.otro.forEach(dat => {
-              sum+=dat.falta;
-              pila.push({
-                fecha:dat.fecha,
-                falta:dat.falta.length,
-                desc:dat.desc
-              });
-            });
-            dat7.push({
-              placa:data.placa,
-              total:sum
-            });
-            tabla2.concat(pila);
           });
           res.json({
-            exceso:dat1,
-            horario:dat2,
-            desvio:dat3,
-            desvioCam:dat4,
-            via:dat5,
-            afectado:dat6,
-            otro:dat7,
-            tab1:tabla1,
-            tab2:tabla2
+            incidente:dat1,
+            medico:dat2,
+            fatal:dat3,
+            ruta:dat4,
+            km:dat5,
+            tabla:tabla
           });
         }else{
           res.json({message:'la db esta vacia'});
