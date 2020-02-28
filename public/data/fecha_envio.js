@@ -415,7 +415,7 @@ $('#fechaGeneralFinalEnv').on('click',function(e){
     console.log(err);
   });
 });
- 
+
 /*//control estado del camion
 $('#controlReservationEnv').on('click',function(e){
   e.preventDefault();

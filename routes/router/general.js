@@ -75,7 +75,7 @@ router.post('/probar',(req,res)=>{
 
 //**********************************general expocision**************************
 
-router.get('/genExpocision',(req,res)=>{
+router.post('/genExpocision',(req,res)=>{
     try {
       let f=req.body.filtro;
       let inicio=req.body.fi;

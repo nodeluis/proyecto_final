@@ -10,21 +10,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <title>Vera Cruz</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="/bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-
-  <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" href="/plugins/iCheck/all.css">
+  <link rel="stylesheet" href="/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="/bower_components/select2/dist/css/select2.min.css">
 
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect. -->
-  <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
+  <link rel="stylesheet" href="/dist/css/skins/skin-blue.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -71,7 +73,7 @@ desired effect
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="/index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
@@ -103,7 +105,7 @@ desired effect
                     <a href="#">
                       <div class="pull-left">
                         <!-- User Image -->
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                       </div>
                       <!-- Message title and timestamp -->
                       <h4>
@@ -188,14 +190,14 @@ desired effect
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img ="/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs">Alexander Pierce</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
                   Alexander Pierce - Web Developer
@@ -245,7 +247,7 @@ desired effect
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Alexander Pierce</p>
@@ -269,7 +271,13 @@ desired effect
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu" data-widget="tree" id="incamion">
         <li class="header">HEADER</li>
-        
+        <li><a href="#"><i class="fa fa-book"></i> <span>Vera Cruz</span></a></li>
+        <li><a href="#" id="Exp"><i class="fa fa-book"></i> <span>Indicadores de Expocision</span></a></li>
+        <li><a href="#"><i class="fa fa-book"></i> <span>Indicadores Intermedios</span></a></li>
+        <li><a href="#"><i class="fa fa-book"></i> <span>Indicadores Finales</span></a></li>
+        <li><a href="#" id="control"><i class="fa fa-book"></i> <span>Control</span></a></li>
+
+
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -299,6 +307,206 @@ desired effect
 
         <div id="map"></div>
 
+        <div class="row" id="expocision">
+          <!-- left column -->
+
+          <div class="col-xs-12">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Tabla general de los Indicadores de Expocision:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+
+                  <!-- date range exceso final -->
+                  <div class="form-group" id="kmTabla">
+                  </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+          </div>
+
+          <div class="col-xs-12">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Estadisticas generales de los kilometros recorridos por camion:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+                  <div class="form-group">
+                      <label>Date range:</label>
+
+                      <div class="input-group">
+                          <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="kmFecha">
+                          <div class="input-group-addon">
+                            <a href="#" id="kmFechaEnv">
+                              <i class="fa fa-send"></i>
+                            </a>
+                          </div>
+                      </div>
+                      <!-- /.input group -->
+                  </div>
+                  <!-- date range exceso final -->
+                  <div class="form-group" id="kmChart1">
+                  </div>
+                  <div class="form-group" id="kmChart2">
+                  </div>
+                  <div class="form-group" id="kmChart3">
+                  </div>
+                  <div class="form-group" id="kmChart4">
+                  </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+          </div>
+
+          <div class="col-xs-12">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Estadisticas generales de las horas de exposicion:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+                  <div class="form-group">
+                      <label>Date range:</label>
+
+                      <div class="input-group">
+                          <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="horFecha">
+                          <div class="input-group-addon">
+                            <a href="#" id="horFechaEnv">
+                              <i class="fa fa-send"></i>
+                            </a>
+                          </div>
+                      </div>
+                      <!-- /.input group -->
+                  </div>
+                  <!-- date range exceso final -->
+                  <div class="form-group" id="horChart1">
+                  </div>
+                  <div class="form-group" id="horChart2">
+                  </div>
+                  <div class="form-group" id="horChart3">
+                  </div>
+                  <div class="form-group" id="horChart4">
+                  </div>
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+            <!-- /.box -->
+          </div>
+
+          <div class="col-xs-12">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Estadisticas generales de la cantidad de viajes por camion:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+                  <div class="form-group">
+                      <label>Date range:</label>
+
+                      <div class="input-group">
+                          <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="viajeFecha">
+                          <div class="input-group-addon">
+                            <a href="#" id="viajeFechaEnv">
+                              <i class="fa fa-send"></i>
+                            </a>
+                          </div>
+                      </div>
+                      <!-- /.input group -->
+                  </div>
+                  <!-- date range exceso final -->
+                  <div class="form-group" id="viajeChart1">
+                  </div>
+                  <div class="form-group" id="viajeChart2">
+                  </div>
+                  <div class="form-group" id="viajeChart3">
+                  </div>
+                  <div class="form-group" id="viajeChart4">
+                  </div>
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+            <!-- /.box -->
+          </div>
+
+          <div class="col-xs-12">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Estadisticas generales de la cantidad de viajes por ruta:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+                  <div class="form-group">
+                      <label>Date range:</label>
+
+                      <div class="input-group">
+                          <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="rutaFecha">
+                          <div class="input-group-addon">
+                            <a href="#" id="rutaFechaEnv">
+                              <i class="fa fa-send"></i>
+                            </a>
+                          </div>
+                      </div>
+                      <!-- /.input group -->
+                  </div>
+                  <!-- date range exceso final -->
+                  <div class="form-group" id="rutaChart">
+                  </div>
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+            <!-- /.box -->
+          </div>
+
+        </div>
 
 
     </section>
@@ -398,11 +606,23 @@ desired effect
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 3 -->
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+<script src="/dist/js/adminlte.min.js"></script>
+
+<script src="/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="/bower_components/moment/min/moment.min.js"></script>
+<script src="/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="/bower_components/select2/dist/js/select2.full.min.js"></script>
+<script src="/plugins/iCheck/icheck.min.js"></script>
+<script src="/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+<script type="text/javascript" src="/data/chart/core.js"></script>
+<script type="text/javascript" src="/data/chart/charts.js"></script>
+<script type="text/javascript" src="/data/chart/animated.js"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
@@ -411,63 +631,21 @@ desired effect
 <!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN86jpZSdHSfpwhlKVv272WTd1lBMr6bc&callback=initMap"></script>-->
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN86jpZSdHSfpwhlKVv272WTd1lBMr6bc"></script>
-<script type="text/javascript" src="javascripts/jquery.googlemap.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.googlemap.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 
+<script type="text/javascript" src="/data2/even_cl.js"></script>
+<script type="text/javascript" src="/data2/clean.js"></script>
+<script type="text/javascript" src="/data2/init.js"></script>
+<script type="text/javascript" src="/data2/tabla.js"></script>
+<script type="text/javascript" src="/data2/chart.js"></script>
+<script type="text/javascript" src="/data2/inicializar.js"></script>
+<script type="text/javascript" src="/data2/fechaOn.js"></script>
 <script>
 
     /*var socket = io.connect('http://192.168.1.4:8000');
     socket.on('actualizar_vista_general', function (resp) {
         console.log(resp);
-    });*/
-
-    /*$(document).ready(function () {
-      //$('#example1').DataTable();
-      var i2='algo';
-      console.log('<%=token%>');
-      $('#excesosDiv').hide();
-      $('#modal_situation').hide();
-      $('<li id="'+i2+'tree">'
-                +'<a href="#"><i id="'+i2+'f1"></i><span>Datos generales</span>'
-                +'<span id="'+i2+'spa">'
-                +'<i id="'+i2+'f2"></i>'
-                +'</span>'
-                +'</a>'
-                +'<ul id="'+i2+'tremen">'
-                +'<li><a href="#" id="'+i2+'cam"><i class="fa fa-circle-o"></i>Camiones</a></li>'
-                +'</ul>'
-                +'</li>').appendTo('#incamion');
-      $('#'+i2+'tree').addClass('treeview');
-      $('#'+i2+'f1').addClass('fa fa-bus');
-      $('#'+i2+'spa').addClass('pull-right-container');
-      $('#'+i2+'f2').addClass('fa fa-angle-left pull-right');
-      $('#'+i2+'tremen').addClass('treeview-menu');
-
-      $.get('/general',null,function(response){
-          $("#map").googleMap({
-            zoom: 8, // Initial zoom level (optional)
-            coords: [-19.578297, -65.758633], // Map center (optional)
-            type: "ROADMAP" // Map type (optional)
-          });
-          for(var i=0;i<response.length;i++){
-            let dato=response[i];
-            $("#map").addMarker({
-              coords: [parseFloat(dato['lat']),parseFloat(dato['lon'])], // GPS coords
-                //coords: [dato['lat'],dato['lon']],
-                //url: 'http://www.tiloweb.com', // Link to redirect onclick (optional)
-                //id: 'marker1', // Unique ID for your marker
-              title:dato['lugar'],
-              icon:'/fonts/icons/camion4.png',
-              text:'<b>Lorem ipsum</b> dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-            });
-          }
-
-      });
-      $('#'+i2+'cam').on('click', function(e){
-        e.preventDefault();
-        var url='veracruz2?token=<%=token%>';
-        $(location).attr('href',url);
-      });
     });*/
 
 </script>
