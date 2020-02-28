@@ -301,17 +301,14 @@ $(document).ready(function () {
           id=dato['id'];
           placa=dato['placa'];
           limpiar();
-          $.get( "/general/control/"+dato['id'], function(resp) {
+          $('#control').show();
+          $.post('/camion/autoMes',{id:id},function(resp,status){
             console.log(resp);
             if(resp.control){
               $('#controlForm1').hide();
             }else{
               $('#controlForm2').hide();
             }
-          });
-          $('#control').show();
-          $.post('/camion/autoMes',{id:dato['id']},function(resp,status){
-            console.log(resp);
             llenarTablas(resp.data,5);
           },'json').fail(function(err){
             console.log(err);

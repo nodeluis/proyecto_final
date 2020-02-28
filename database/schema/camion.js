@@ -97,10 +97,7 @@ const camion={
     }],
     //indicador final
     //propietarios
-    propietario:String,
-    chofer:String,
-    cedula:String,
-    fono:String
+    control:Boolean
 };
 
 const camionModel=mongoose.model('camion',camion);

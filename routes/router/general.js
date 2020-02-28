@@ -1,5 +1,6 @@
 const General=require('../../database/schema/general');
 const Camion=require('../../database/schema/camion');
+const puppeteer=require('puppeteer');
 const express=require('express');
 const router=express.Router();
 const empty=require('is-empty');
@@ -761,13 +762,82 @@ router.post('/control',(req,res)=>{
 
 router.get('/control/:id',(req,res)=>{
     let id=req.params.id;
-    General.findOne({id:id},(err,doc)=>{
+    Camion.findOne({id:id},(err,doc)=>{
       if(!empty(doc)){
         res.json({control:doc.control});
       }else{
         res.json({message:'error no existe camion'});
       }
     });
+});
+
+router.get('/actualizar',async(req,res)=>{
+    const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
+    const page = await browser.newPage();
+    await page.setDefaultNavigationTimeout(0);
+    console.log("Entrando a 200.87.207.36");
+    await page.goto('http://200.87.207.36');
+    //await page.focus('#codigo_usu');
+    await page.type("#codigo_usu", 'veracruz');
+    //await page.focus('#clave_usu');
+    await page.type("#clave_usu", 'ypfbveracruz');
+    await page.click("button")
+    //await page.press('Enter');
+    await page.waitForNavigation();
+    console.log("consultando servicio")
+    await page.goto('http://200.87.207.36//getFlota.php');
+    const data = await page.evaluate(() => {
+    return {
+        json: JSON.parse(document.documentElement.outerText)
+      };
+    });
+    //let f=new Date();
+    //let qu=f.getFullYear()+'-'+((f.getMonth()<9)?'0'+(f.getMonth()+1):(f.getMonth()+1))+'-'+((f.getDate()<10)?'0'+f.getDate():f.getDate());
+    //console.log('esta es la fecha '+qu);
+    //console.log('actualizando datos de cada camion');
+    for (let i = 0; i < data.json.length; i++) {
+      //console.log(data.json[i]);
+      let da=data.json[i];
+      let obj={
+        id:da[0],
+        placa:da[1],
+        lugar:da[4],
+        lat:da[7],
+        lon:da[8]
+      };
+      General.findOne({id:da[0]},async(err,doc)=>{
+        if(!empty(doc)){
+          let idG=doc['_id'];
+          General.findByIdAndUpdate(idG,obj,()=>{
+            console.log('actualizado');
+          });
+        }else{
+          let insert=new General(obj);
+          let resul=await insert.save();
+        }
+      });
+      Camion.findOne({id:da[0]},async(err,doc)=>{
+        if(empty(doc)){
+          let ins=new Camion({
+            id:da[0],
+            placa:da[1],
+            auto:[],
+            extintor:[],
+            desvioConductor:[],
+            desvioCamion:[],
+            via:[],
+            viajeAfectado:[],
+            otro:[],
+            incidente:[],
+            fatal:[],
+            medico:[],
+            control:false
+          });
+          await ins.save();
+        }
+      });
+    }
+    res.json({message:'actualizado'});
 });
 
 router.get('/ver_si_controla/:id',(req,res)=>{

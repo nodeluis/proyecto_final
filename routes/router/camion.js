@@ -202,7 +202,7 @@ router.post('/autoMes',(req,res)=>{
             result=result.concat(dat);
           }
         }
-        res.json({data:result});
+        res.json({data:result,control:doc.control});
       }else{
         res.json({message:'mo existe el camion'});
       }
@@ -1175,11 +1175,10 @@ router.post('/generalFinal',(req,res)=>{
 router.post('/on',(req,res)=>{
     console.log(req.body);
     let id=req.body.id;
-    let t=req.body.t;
     let fecha=req.body.fecha.split(' ');
     Camion.findOne({id:id},async(err,doc)=>{
       if(!empty(doc)){
-        if(t==1){
+        if(doc.control==false){
           let desc=req.body.desc;
           let arr=req.body.ruta.split(',');
           let str='';
@@ -1209,12 +1208,7 @@ router.post('/on',(req,res)=>{
             aux.push(aut);
             doc.auto=aux;
           }
-          General.findOne({id:id},async(err2,doc2)=>{
-            doc2.control=true;
-            General.findByIdAndUpdate(doc2._id,doc2,()=>{
-              console.log('cambiado control a true');
-            });
-          });
+          doc.control=true;
           Camion.findByIdAndUpdate(doc._id,doc,()=>{
             res.json({message:'actualizado camion'});
           });
@@ -1246,12 +1240,7 @@ router.post('/on',(req,res)=>{
           aut.horario=aut.horario.concat(sums.hora);
           aut.expocision+=(sums.expo)/60;
           doc.auto.push(aut);
-          General.findOne({id:id},async(err2,doc2)=>{
-            doc2.control=false;
-            General.findByIdAndUpdate(doc2._id,doc2,()=>{
-              console.log('cambiado control a false');
-            });
-          });
+          doc.control=false;
           Camion.findByIdAndUpdate(doc._id,doc,()=>{
             res.json({message:'actualizado camion'});
           });

@@ -1,6 +1,6 @@
 function limpiar(){
   exinplusign=0;
-  $('#map').show();
+  $('#map').hide();
   $('#contExt').hide();
   $('#dateRange').hide();
   $('#excesosDiv').hide();

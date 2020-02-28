@@ -6,7 +6,6 @@ const general={
     lugar:String,
     lat:String,
     lon:String,
-    control:Boolean
 }
 
 const generalmodel=mongoose.model('general',general);
