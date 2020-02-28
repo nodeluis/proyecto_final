@@ -273,8 +273,8 @@ desired effect
         <li class="header">HEADER</li>
         <li><a href="#"><i class="fa fa-book"></i> <span>Vera Cruz</span></a></li>
         <li><a href="#" id="Exp"><i class="fa fa-book"></i> <span>Indicadores de Expocision</span></a></li>
-        <li><a href="#"><i class="fa fa-book"></i> <span>Indicadores Intermedios</span></a></li>
-        <li><a href="#"><i class="fa fa-book"></i> <span>Indicadores Finales</span></a></li>
+        <li><a href="#" id="Int"><i class="fa fa-book"></i> <span>Indicadores Intermedios</span></a></li>
+        <li><a href="#" id="Fin"><i class="fa fa-book"></i> <span>Indicadores Finales</span></a></li>
         <li><a href="#" id="control"><i class="fa fa-book"></i> <span>Control</span></a></li>
 
 
@@ -508,6 +508,610 @@ desired effect
 
         </div>
 
+        <div class="row" id="intermedio">
+          <!-- left column -->
+
+          <div class="col-xs-12">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Tabla general de los Indicadores intermedios excesos y horarios:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+
+                  <!-- date range exceso final -->
+                  <div class="form-group" id="intermedioTabla1">
+                  </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+          </div>
+
+          <div class="col-xs-12">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Tabla general de los Indicadores intermedios incidentes y accidentes:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+
+                  <!-- date range exceso final -->
+                  <div class="form-group" id="intermedioTabla2">
+                  </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+          </div>
+
+          <div class="col-xs-12">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Estadisticas generales de los excesos de velocidad:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+                  <div class="form-group">
+                      <label>Date range:</label>
+
+                      <div class="input-group">
+                          <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="exFecha">
+                          <div class="input-group-addon">
+                            <a href="#" id="exFechaEnv">
+                              <i class="fa fa-send"></i>
+                            </a>
+                          </div>
+                      </div>
+                      <!-- /.input group -->
+                  </div>
+                  <!-- date range exceso final -->
+                  <div class="form-group" id="exChart1">
+                  </div>
+                  <div class="form-group" id="exChart2">
+                  </div>
+                  <div class="form-group" id="exChart3">
+                  </div>
+                  <div class="form-group" id="exChart4">
+                  </div>
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+            <!-- /.box -->
+          </div>
+
+          <div class="col-xs-12">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Estadisticas generales de los horarios de conduccion inapropiados:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+                  <div class="form-group">
+                      <label>Date range:</label>
+
+                      <div class="input-group">
+                          <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="horarioFecha">
+                          <div class="input-group-addon">
+                            <a href="#" id="horarioFechaEnv">
+                              <i class="fa fa-send"></i>
+                            </a>
+                          </div>
+                      </div>
+                      <!-- /.input group -->
+                  </div>
+                  <!-- date range exceso final -->
+                  <div class="form-group" id="horarioChart1">
+                  </div>
+                  <div class="form-group" id="horarioChart2">
+                  </div>
+                  <div class="form-group" id="horarioChart3">
+                  </div>
+                  <div class="form-group" id="horarioChart4">
+                  </div>
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+            <!-- /.box -->
+          </div>
+
+          <div class="col-xs-12">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Estadisticas generales de los desvios del conductor:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+                  <div class="form-group">
+                      <label>Date range:</label>
+
+                      <div class="input-group">
+                          <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="desvFecha">
+                          <div class="input-group-addon">
+                            <a href="#" id="desvFechaEnv">
+                              <i class="fa fa-send"></i>
+                            </a>
+                          </div>
+                      </div>
+                      <!-- /.input group -->
+                  </div>
+                  <!-- date range exceso final -->
+                  <div class="form-group" id="desvChart1">
+                  </div>
+                  <div class="form-group" id="desvChart2">
+                  </div>
+                  <div class="form-group" id="desvChart3">
+                  </div>
+                  <div class="form-group" id="desvChart4">
+                  </div>
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+            <!-- /.box -->
+          </div>
+
+          <div class="col-xs-12">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Estadisticas generales de los desvios del camion:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+                  <div class="form-group">
+                      <label>Date range:</label>
+
+                      <div class="input-group">
+                          <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="desvCamFecha">
+                          <div class="input-group-addon">
+                            <a href="#" id="desvCamFechaEnv">
+                              <i class="fa fa-send"></i>
+                            </a>
+                          </div>
+                      </div>
+                      <!-- /.input group -->
+                  </div>
+                  <!-- date range exceso final -->
+                  <div class="form-group" id="desvCamChart1">
+                  </div>
+                  <div class="form-group" id="desvCamChart2">
+                  </div>
+                  <div class="form-group" id="desvCamChart3">
+                  </div>
+                  <div class="form-group" id="desvCamChart4">
+                  </div>
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+            <!-- /.box -->
+          </div>
+
+          <div class="col-xs-12">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Estadisticas generales de problemas en las vias:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+                  <div class="form-group">
+                      <label>Date range:</label>
+
+                      <div class="input-group">
+                          <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="viaFecha">
+                          <div class="input-group-addon">
+                            <a href="#" id="viaFechaEnv">
+                              <i class="fa fa-send"></i>
+                            </a>
+                          </div>
+                      </div>
+                      <!-- /.input group -->
+                  </div>
+                  <!-- date range exceso final -->
+                  <div class="form-group" id="viaChart1">
+                  </div>
+                  <div class="form-group" id="viaChart2">
+                  </div>
+                  <div class="form-group" id="viaChart3">
+                  </div>
+                  <div class="form-group" id="viaChart4">
+                  </div>
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+            <!-- /.box -->
+          </div>
+
+          <div class="col-xs-12">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Estadisticas generales de los viajes afectados por las vias:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+                  <div class="form-group">
+                      <label>Date range:</label>
+
+                      <div class="input-group">
+                          <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="afectadoFecha">
+                          <div class="input-group-addon">
+                            <a href="#" id="afectadoFechaEnv">
+                              <i class="fa fa-send"></i>
+                            </a>
+                          </div>
+                      </div>
+                      <!-- /.input group -->
+                  </div>
+                  <!-- date range exceso final -->
+                  <div class="form-group" id="afectadoChart1">
+                  </div>
+                  <div class="form-group" id="afectadoChart2">
+                  </div>
+                  <div class="form-group" id="afectadoChart3">
+                  </div>
+                  <div class="form-group" id="afectadoChart4">
+                  </div>
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+            <!-- /.box -->
+          </div>
+
+          <div class="col-xs-12">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Estadisticas generales de desvios por factores externos:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+                  <div class="form-group">
+                      <label>Date range:</label>
+
+                      <div class="input-group">
+                          <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="otroFecha">
+                          <div class="input-group-addon">
+                            <a href="#" id="otroFechaEnv">
+                              <i class="fa fa-send"></i>
+                            </a>
+                          </div>
+                      </div>
+                      <!-- /.input group -->
+                  </div>
+                  <!-- date range exceso final -->
+                  <div class="form-group" id="otroChart1">
+                  </div>
+                  <div class="form-group" id="otroChart2">
+                  </div>
+                  <div class="form-group" id="otroChart3">
+                  </div>
+                  <div class="form-group" id="otroChart4">
+                  </div>
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+            <!-- /.box -->
+          </div>
+
+        </div>
+
+        <div class="row" id="final">
+          <!-- left column -->
+
+          <div class="col-xs-12">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Tabla general de los Indicadores finales:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+
+                  <!-- date range exceso final -->
+                  <div class="form-group" id="finalTabla">
+                  </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+          </div>
+
+          <div class="col-xs-12">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Estadisticas generales de incidentes:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+                  <div class="form-group">
+                      <label>Date range:</label>
+
+                      <div class="input-group">
+                          <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="incFecha">
+                          <div class="input-group-addon">
+                            <a href="#" id="incFechaEnv">
+                              <i class="fa fa-send"></i>
+                            </a>
+                          </div>
+                      </div>
+                      <!-- /.input group -->
+                  </div>
+                  <!-- date range exceso final -->
+                  <div class="form-group" id="incChart1">
+                  </div>
+                  <div class="form-group" id="incChart2">
+                  </div>
+                  <div class="form-group" id="incChart3">
+                  </div>
+                  <div class="form-group" id="incChart4">
+                  </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+          </div>
+
+          <div class="col-xs-12">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Estadisticas generales de accidentes con baja medica:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+                  <div class="form-group">
+                      <label>Date range:</label>
+
+                      <div class="input-group">
+                          <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="medFecha">
+                          <div class="input-group-addon">
+                            <a href="#" id="medFechaEnv">
+                              <i class="fa fa-send"></i>
+                            </a>
+                          </div>
+                      </div>
+                      <!-- /.input group -->
+                  </div>
+                  <!-- date range exceso final -->
+                  <div class="form-group" id="medChart1">
+                  </div>
+                  <div class="form-group" id="medChart2">
+                  </div>
+                  <div class="form-group" id="medChart3">
+                  </div>
+                  <div class="form-group" id="medChart4">
+                  </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+          </div>
+
+          <div class="col-xs-12">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Estadisticas generales de los accidentes con fatalidad:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+                  <div class="form-group">
+                      <label>Date range:</label>
+
+                      <div class="input-group">
+                          <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="fatFecha">
+                          <div class="input-group-addon">
+                            <a href="#" id="fatFechaEnv">
+                              <i class="fa fa-send"></i>
+                            </a>
+                          </div>
+                      </div>
+                      <!-- /.input group -->
+                  </div>
+                  <!-- date range exceso final -->
+                  <div class="form-group" id="fatChart1">
+                  </div>
+                  <div class="form-group" id="fatChart2">
+                  </div>
+                  <div class="form-group" id="fatChart3">
+                  </div>
+                  <div class="form-group" id="fatChart4">
+                  </div>
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+            <!-- /.box -->
+          </div>
+
+          <div class="col-xs-12">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Estadisticas generales de los accidentes por ruta:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+                  <div class="form-group">
+                      <label>Date range:</label>
+
+                      <div class="input-group">
+                          <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="accRutaFecha">
+                          <div class="input-group-addon">
+                            <a href="#" id="accRutaFechaEnv">
+                              <i class="fa fa-send"></i>
+                            </a>
+                          </div>
+                      </div>
+                      <!-- /.input group -->
+                  </div>
+                  <!-- date range exceso final -->
+                  <div class="form-group" id="accRutaChart">
+                  </div>
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+            <!-- /.box -->
+          </div>
+
+          <div class="col-xs-12">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Estadisticas generales de los accidentes por kilometro recorrido:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+                  <div class="form-group">
+                      <label>Date range:</label>
+
+                      <div class="input-group">
+                          <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="accKmFecha">
+                          <div class="input-group-addon">
+                            <a href="#" id="accKmFechaEnv">
+                              <i class="fa fa-send"></i>
+                            </a>
+                          </div>
+                      </div>
+                      <!-- /.input group -->
+                  </div>
+                  <!-- date range exceso final -->
+                  <div class="form-group" id="accKmChart">
+                  </div>
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+            <!-- /.box -->
+          </div>
+
+        </div>
 
     </section>
     <!-- /.content -->

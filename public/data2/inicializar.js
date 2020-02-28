@@ -44,6 +44,20 @@ function inicializar(){
   $('#viajeFecha').daterangepicker(dateObj);
   $('#rutaFecha').daterangepicker(dateObj);
 
+  $('#exFecha').daterangepicker(dateObj);
+  $('#horarioFecha').daterangepicker(dateObj);
+  $('#desvFecha').daterangepicker(dateObj);
+  $('#desvCamFecha').daterangepicker(dateObj);
+  $('#viaFecha').daterangepicker(dateObj);
+  $('#afectadoFecha').daterangepicker(dateObj);
+  $('#otroFecha').daterangepicker(dateObj);
+
+  $('#incFecha').daterangepicker(dateObj);
+  $('#medFecha').daterangepicker(dateObj);
+  $('#fatFecha').daterangepicker(dateObj);
+  $('#accRutaFecha').daterangepicker(dateObj);
+  $('#accKmFecha').daterangepicker(dateObj);
+
   //puebas en los charts
   //end chart
 }

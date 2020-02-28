@@ -1,5 +1,7 @@
 function clean(){
   $('#expocision').hide();
+  $('#intermedio').hide();
+  $('#final').hide();
   $('#map').hide();
 }
 

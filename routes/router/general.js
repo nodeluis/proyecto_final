@@ -238,7 +238,7 @@ router.post('/genExpocision',(req,res)=>{
 
 //**********************************general intermedio**************************
 
-router.get('/genIntermedio',(req,res)=>{
+router.post('/genIntermedio',(req,res)=>{
     try {
       let f=req.body.filtro;
       let inicio=req.body.fi;
@@ -428,7 +428,7 @@ router.get('/genIntermedio',(req,res)=>{
             let sum=0;
             let pila=[];
             data.desvioConductor.forEach(dat => {
-              sum+=dat.falta;
+              sum+=dat.falta.length;
               pila.push({
                 fecha:dat.fecha,
                 falta:dat.falta.length,
@@ -439,11 +439,11 @@ router.get('/genIntermedio',(req,res)=>{
               placa:data.placa,
               total:sum
             });
-            tabla2.concat(pila);
+            tabla2=tabla2.concat(pila);
             sum=0;
             pila=[];
             data.desvioCamion.forEach(dat => {
-              sum+=dat.falta;
+              sum+=dat.falta.length;
               pila.push({
                 fecha:dat.fecha,
                 falta:dat.falta.length,
@@ -454,11 +454,11 @@ router.get('/genIntermedio',(req,res)=>{
               placa:data.placa,
               total:sum
             });
-            tabla2.concat(pila);
+            tabla2=tabla2.concat(pila);
             sum=0;
             pila=[];
             data.via.forEach(dat => {
-              sum+=dat.falta;
+              sum+=dat.falta.length;
               pila.push({
                 fecha:dat.fecha,
                 falta:dat.falta.length,
@@ -469,11 +469,11 @@ router.get('/genIntermedio',(req,res)=>{
               placa:data.placa,
               total:sum
             });
-            tabla2.concat(pila);
+            tabla2=tabla2.concat(pila);
             sum=0;
             pila=[];
             data.viajeAfectado.forEach(dat => {
-              sum+=dat.falta;
+              sum+=dat.falta.length;
               pila.push({
                 fecha:dat.fecha,
                 falta:dat.falta.length,
@@ -484,11 +484,11 @@ router.get('/genIntermedio',(req,res)=>{
               placa:data.placa,
               total:sum
             });
-            tabla2.concat(pila);
+            tabla2=tabla2.concat(pila);
             sum=0;
             pila=[];
             data.otro.forEach(dat => {
-              sum+=dat.falta;
+              sum+=dat.falta.length;
               pila.push({
                 fecha:dat.fecha,
                 falta:dat.falta.length,
@@ -499,7 +499,7 @@ router.get('/genIntermedio',(req,res)=>{
               placa:data.placa,
               total:sum
             });
-            tabla2.concat(pila);
+            tabla2=tabla2.concat(pila);
           });
           res.json({
             exceso:dat1,
@@ -523,7 +523,7 @@ router.get('/genIntermedio',(req,res)=>{
 
 //**********************************general finales*****************************
 
-router.get('/genFinal',(req,res)=>{
+router.post('/genFinal',(req,res)=>{
     try {
       let f=req.body.filtro;
       let inicio=req.body.fi;
@@ -550,7 +550,7 @@ router.get('/genFinal',(req,res)=>{
                 total:sum
               });
             });
-            res.json({incidentes:camions});
+            res.json({incidente:camions});
           }else if(f==2){
             let camions=[];
             docs.forEach(dat=> {
