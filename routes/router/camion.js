@@ -948,14 +948,18 @@ router.post('/kmAcc',(req,res)=>{
           for (let m = 0; m < p.length; m++) {
             let p2=p[m];
             let dat=jsonQuery('[*fin='+p2+']',{data:doc.auto}).value;
-            try {
-                result=result.concat({
-                  data:new Date(dat.fin),
-                  km:parseFloat(dat.km),
-                  accMed:dat.accMed,
-                  accFat:dat.accFat
+            if(!empty(dat)){
+              dat.forEach(item => {
+                let newDate = new Date(item.fin);
+                newDate.setDate(newDate.getDate());
+                result.push({
+                  date:newDate,
+                  km:parseFloat(item.km),
+                  accMed:item.accMed,
+                  accFat:item.accFat
                 });
-            } catch (e) {}
+              });
+            }
           }
         }
         res.json({data:result});

@@ -260,7 +260,9 @@ $('#Fin').on('click',function(e){
     }
     chart(resp.ruta,2,'accRutaChart');
     addCss('accRutaChart');
-
+    //accKmChart
+    chart(resp.km,3,'accKmChart');
+    addCss('accKmChart');
   },'json').fail(function(err){
     console.log(err);
   });

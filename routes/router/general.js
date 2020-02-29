@@ -632,12 +632,23 @@ router.post('/genFinal',(req,res)=>{
                 }
               });
               str.forEach(dat => {
-                camions=camions.concat({
-                  data:new Date(dat.fin),
-                  km:parseFloat(dat.km),
-                  accMed:dat.accMed,
-                  accFat:dat.accFat
+                let newDate = new Date(dat.fin);
+                newDate.setDate(newDate.getDate());
+                let index=camions.findIndex((item, i)=>{
+                  return item.date.toLocaleString == newDate.toLocaleString;
                 });
+                if(index==-1){
+                  camions.push({
+                    date:newDate,
+                    km:parseFloat(dat.km),
+                    accMed:dat.accMed,
+                    accFat:dat.accFat
+                  });
+                }else{
+                  camions[index].km+=parseFloat(dat.km);
+                  camions[index].accMed+=dat.accMed;
+                  camions[index].accFat+=dat.accFat;
+                }
               });
             });
             res.json({km:camions});
@@ -718,12 +729,23 @@ router.post('/genFinal',(req,res)=>{
               total:sum
             });
             data.auto.forEach(dat => {
-              dat5=dat5.concat({
-                data:new Date(dat.fin),
-                km:parseFloat(dat.km),
-                accMed:dat.accMed,
-                accFat:dat.accFat
+              let newDate = new Date(dat.fin);
+              newDate.setDate(newDate.getDate());
+              let index=dat5.findIndex((item, i)=>{
+                return item.date.toLocaleString == newDate.toLocaleString;
               });
+              if(index==-1){
+                dat5.push({
+                  date:newDate,
+                  km:parseFloat(dat.km),
+                  accMed:dat.accMed,
+                  accFat:dat.accFat
+                });
+              }else{
+                dat5[index].km+=parseFloat(dat.km);
+                dat5[index].accMed+=dat.accMed;
+                dat5[index].accFat+=dat.accFat;
+              }
             });
           });
           res.json({

@@ -278,13 +278,13 @@ $(document).ready(function () {
             console.log(err);
           });*/
 
-          /*$.post('/camion/kmAcc',{id:id},function(resp,status){
+          $.post('/camion/kmAcc',{id:id},function(resp,status){
             console.log(resp);
             llenarchart(resp.data,4,"AccKmChart");
             //"AccKmChart"
           },'json').fail(function(err){
             console.log(err);
-          });*/
+          });
           $.post('/camion/generalFinal',{id:id},function(resp,status){
             console.log(resp);
             llenarchart(resp.data,1,'indicadorGeneralFinal');
