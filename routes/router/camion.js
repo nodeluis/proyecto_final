@@ -607,6 +607,49 @@ router.post('/otroMes',(req,res)=>{
     });
 });
 
+router.post('/intermedioTotal',(req,res)=>{
+    let id=req.body.id;
+    let fecha=[];
+    let fin=(new Date()).toLocaleString();
+    let inicio=new Date();
+    inicio.setDate(inicio.getDate()-150);
+    inicio=inicio.toLocaleString();
+    let ini=inicio.split(',');
+    let fi=fin.split(',');
+    fecha=rango_fecha_mes(ini[0],fi[0]);
+    Camion.findOne({id:id},(err,doc)=>{
+      if(!empty(doc)){
+        let data1=[];
+        let tab1=[];
+        let data2=[];
+        let tab2=[];
+        for (let j = 0; j < fecha.length; j++) {
+          let p=fecha[j];
+          let sum1=0;
+          let imso=p[0].split('-');
+          for (let m = 0; m < p.length; m++) {
+            let p2=p[m];
+            let result1=jsonQuery('[*fin='+p2+']',{data:doc.auto}).value;
+            //aqui falta la tabla para excesos y horarios
+            if(!empty(result1)){
+              result1.forEach(it=> {
+
+              });
+            }
+          }
+          dataChart.push({
+            fecha:imso[1]+'/'+imso[0],
+            total:sum
+          });
+        }
+        res.json({data1:result,data2:dataChart});
+      }else{
+        res.json({message:'no existen camiones'});
+      }
+    });
+
+});
+
 //**********************************intermedios fin**************************************
 
 //**********************************indicadores finales**********************************
@@ -646,19 +689,9 @@ router.post('/incidente',(req,res)=>{
 router.post('/incidenteMes',(req,res)=>{
     let id=req.body.id;
     let fecha=[];
-    try {
-      let inicio=req.body.fi;
-      let fin=req.body.ff;
-      fecha=rango_fecha_mes(inicio,fin);
-    } catch (e) {
-      let fin=(new Date()).toLocaleString();
-      let inicio=new Date();
-      inicio.setDate(inicio.getDate()-150);
-      inicio=inicio.toLocaleString();
-      let ini=inicio.split(',');
-      let fi=fin.split(',');
-      fecha=rango_fecha_mes(ini[0],fi[0]);
-    }
+    let inicio=req.body.fi;
+    let fin=req.body.ff;
+    fecha=rango_fecha_mes(inicio,fin);
     Camion.findOne({id:id},(err,doc)=>{
       if(!empty(doc)){
         let result=[];
@@ -733,19 +766,9 @@ router.post('/fatal',(req,res)=>{
 router.post('/fatalMes',(req,res)=>{
     let id=req.body.id;
     let fecha=[];
-    try {
-      let inicio=req.body.fi;
-      let fin=req.body.ff;
-      fecha=rango_fecha_mes(inicio,fin);
-    } catch (e) {
-      let fin=(new Date()).toLocaleString();
-      let inicio=new Date();
-      inicio.setDate(inicio.getDate()-150);
-      inicio=inicio.toLocaleString();
-      let ini=inicio.split(',');
-      let fi=fin.split(',');
-      fecha=rango_fecha_mes(ini[0],fi[0]);
-    }
+    let inicio=req.body.fi;
+    let fin=req.body.ff;
+    fecha=rango_fecha_mes(inicio,fin);
     Camion.findOne({id:id},(err,doc)=>{
       if(!empty(doc)){
         let result=[];
@@ -820,19 +843,9 @@ router.post('/medico',(req,res)=>{
 router.post('/medicoMes',(req,res)=>{
     let id=req.body.id;
     let fecha=[];
-    try {
-      let inicio=req.body.fi;
-      let fin=req.body.ff;
-      fecha=rango_fecha_mes(inicio,fin);
-    } catch (e) {
-      let fin=(new Date()).toLocaleString();
-      let inicio=new Date();
-      inicio.setDate(inicio.getDate()-150);
-      inicio=inicio.toLocaleString();
-      let ini=inicio.split(',');
-      let fi=fin.split(',');
-      fecha=rango_fecha_mes(ini[0],fi[0]);
-    }
+    let inicio=req.body.fi;
+    let fin=req.body.ff;
+    fecha=rango_fecha_mes(inicio,fin);
     Camion.findOne({id:id},(err,doc)=>{
       if(!empty(doc)){
         let result=[];
@@ -867,19 +880,9 @@ router.post('/medicoMes',(req,res)=>{
 router.post('/accidenteRutaMes',(req,res)=>{
     let id=req.body.id;
     let fecha=[];
-    try {
-      let inicio=req.body.fi;
-      let fin=req.body.ff;
-      fecha=rango_fecha_mes(inicio,fin);
-    } catch (e) {
-      let fin=(new Date()).toLocaleString();
-      let inicio=new Date();
-      inicio.setDate(inicio.getDate()-150);
-      inicio=inicio.toLocaleString();
-      let ini=inicio.split(',');
-      let fi=fin.split(',');
-      fecha=rango_fecha_mes(ini[0],fi[0]);
-    }
+    let inicio=req.body.fi;
+    let fin=req.body.ff;
+    fecha=rango_fecha_mes(inicio,fin);
     Camion.findOne({id:id},(err,doc)=>{
       if(!empty(doc)){
         let result=[];
@@ -926,19 +929,9 @@ router.post('/accidenteRutaMes',(req,res)=>{
 router.post('/kmAcc',(req,res)=>{
     let id=req.body.id;
     let fecha=[];
-    try {
-      let inicio=req.body.fi;
-      let fin=req.body.ff;
-      fecha=rango_fecha_mes(inicio,fin);
-    } catch (e) {
-      let fin=(new Date()).toLocaleString();
-      let inicio=new Date();
-      inicio.setDate(inicio.getDate()-150);
-      inicio=inicio.toLocaleString();
-      let ini=inicio.split(',');
-      let fi=fin.split(',');
-      fecha=rango_fecha_mes(ini[0],fi[0]);
-    }
+    let inicio=req.body.fi;
+    let fin=req.body.ff;
+    fecha=rango_fecha_mes(inicio,fin);
     Camion.findOne({id:id},(err,doc)=>{
       if(!empty(doc)){
         let result=[];
@@ -967,6 +960,121 @@ router.post('/kmAcc',(req,res)=>{
         res.json({message:'mo existe el camion'});
       }
     });
+});
+
+router.post('/finalTotal',(req,res)=>{
+  let id=req.body.id;
+  let fecha=[];
+  let fin=(new Date()).toLocaleString();
+  let inicio=new Date();
+  inicio.setDate(inicio.getDate()-150);
+  inicio=inicio.toLocaleString();
+  let ini=inicio.split(',');
+  let fi=fin.split(',');
+  fecha=rango_fecha_mes(ini[0],fi[0]);
+  Camion.findOne({id:id},(err,doc)=>{
+    if(!empty(doc)){
+      let tab1=[];
+      let data1=[];
+      let tab2=[];
+      let data2=[];
+      let tab3=[];
+      let data3=[];
+      let data4=[];
+      let data5=[];
+      for (let j = 0; j < fecha.length; j++) {
+        let p=fecha[j];
+        let sum1=0;
+        let sum2=0;
+        let sum3=0;
+        let imso=p[0].split('-');
+        for (let m = 0; m < p.length; m++) {
+          let p2=p[m];
+          let result1=jsonQuery('[*fecha='+p2+']',{data:doc.incidente}).value;
+          let result2=jsonQuery('[*fecha='+p2+']',{data:doc.medico}).value;
+          let result3=jsonQuery('[*fecha='+p2+']',{data:doc.fatal}).value;
+          let result4=jsonQuery('[*fin='+p2+']',{data:doc.auto}).value;
+          tab1=tab1.concat(result1);
+          tab2=tab2.concat(result2);
+          tab3=tab3.concat(result3);
+          if(!empty(result1)){
+            result1.forEach((le)=>{
+              sum1+=le.falta.length;
+            });
+          }
+          if(!empty(result2)){
+            result2.forEach((le)=>{
+              sum2+=le.accidente.length;
+              let index=data5.findIndex((item, i)=>{
+                return item.ruta == le.ruta;
+              });
+              if(index==-1){
+                data5.push({
+                  ruta:le.ruta,
+                  cant:1
+                });
+              }else{
+                data5[index].cant+=1;
+              }
+            });
+          }
+          if(!empty(result3)){
+            result3.forEach((le)=>{
+              sum3+=le.accidente.length;
+              let index=data5.findIndex((item, i)=>{
+                return item.ruta == le.ruta;
+              });
+              if(index==-1){
+                data5.push({
+                  ruta:le.ruta,
+                  cant:1
+                });
+              }else{
+                data5[index].cant+=1;
+              }
+            });
+          }
+          if(!empty(result4)){
+            result4.forEach(item => {
+              let newDate = new Date(item.fin);
+              newDate.setDate(newDate.getDate());
+              data4.push({
+                date:newDate,
+                km:parseFloat(item.km),
+                accMed:item.accMed,
+                accFat:item.accFat
+              });
+            });
+          }
+        }
+        data1.push({
+          fecha:imso[1]+'/'+imso[0],
+          total:sum1
+        });
+        data2.push({
+          fecha:imso[1]+'/'+imso[0],
+          total:sum2
+        });
+        data3.push({
+          fecha:imso[1]+'/'+imso[0],
+          total:sum3
+        });
+      }
+      res.json({
+        incidente:data1,
+        inctab:tab1,
+        medico:data2,
+        medtab:tab2,
+        fatal:data3,
+        fattab:tab3,
+        km:data4,
+        ruta:data5,
+        acc:tab2.concat(tab3)
+      });
+    }else{
+      res.json({message:'no existen camiones en la bd'});
+    }
+  });
 });
 
 //**********************************indicadores finales fin******************************

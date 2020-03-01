@@ -239,52 +239,22 @@ $(document).ready(function () {
           $(addcheck(dataIncidente2)).appendTo('#addAccidente');
 
           $('#estadisticas3').show();
-          $.post('/camion/incidenteMes',{id:id},function(resp,status){
+          $.post('/camion/finalTotal',{id:id},function(resp,status){
             console.log(resp);
-            llenarchart(resp.data2,2,'incidenteChartDonut');
-            llenarTablas(resp.data1,16);
-          },'json').fail(function(err){
-            console.log(err);
-          });
-
-          $.post('/camion/fatalMes',{id:id},function(resp,status){
-            console.log(resp);
-            llenarchart(resp.data2,2,'FatalChartDonut');
-            llenarTablas(resp.data1,17);
-          },'json').fail(function(err){
-            console.log(err);
-          });
-
-          $.post('/camion/medicoMes',{id:id},function(resp,status){
-            console.log(resp);
-            llenarchart(resp.data2,2,'DonutMedico');
-            llenarTablas(resp.data1,18);
-          },'json').fail(function(err){
-            console.log(err);
-          });
-
-          $.post('/camion/accidenteRutaMes',{id:id},function(resp,status){
-            console.log(resp);
-            llenarchart(resp.chart,3,'DonutRuta');
-            llenarTablas(resp.falta,19);
-          },'json').fail(function(err){
-            console.log(err);
-          });
-
-          /*$.post('/camion/coleccionChartIncidente',{id:dato['id']},function(resp,status){
-            console.log(resp);
-            llenarchart(resp,1,'incidenteChart');
-          },'json').fail(function(err){
-            console.log(err);
-          });*/
-
-          $.post('/camion/kmAcc',{id:id},function(resp,status){
-            console.log(resp);
-            llenarchart(resp.data,4,"AccKmChart");
+            llenarchart(resp.incidente,2,'incidenteChartDonut');
+            llenarTablas(resp.inctab,16);
+            llenarchart(resp.fatal,2,'FatalChartDonut');
+            llenarTablas(resp.fattab,17);
+            llenarchart(resp.medico,2,'DonutMedico');
+            llenarTablas(resp.medtab,18);
+            llenarchart(resp.ruta,3,'DonutRuta');
+            llenarTablas(resp.acc,19);
+            llenarchart(resp.km,4,"AccKmChart");
             //"AccKmChart"
           },'json').fail(function(err){
             console.log(err);
           });
+
           $.post('/camion/generalFinal',{id:id},function(resp,status){
             console.log(resp);
             llenarchart(resp.data,1,'indicadorGeneralFinal');
