@@ -10,7 +10,7 @@ router.get('/',(req,res)=>{
       if(docs.length>0){
         res.status(200).json(docs);
       }else{
-        res.status(200).json({
+        res.json({
           message:'no existe users en la bd'
         });
       }
@@ -25,7 +25,7 @@ router.post('/',async(req,res)=>{
     };
     const insert=new User(datos);
     const result=await insert.save();
-    res.status(200).json({
+    res.json({
       message:'usuario insertado en la bd'
     });
 });
@@ -65,7 +65,7 @@ router.patch('/:id',(req,res)=>{
     if(datos['password']!=null)
       datos['password']=sha1(datos['password']);
     User.findByIdAndUpdate({_id:id},datos,(err,docs)=>{
-      res.status(200).json({
+      res.json({
         message:'user actualizado'
       });
     });
@@ -74,7 +74,7 @@ router.patch('/:id',(req,res)=>{
 router.delete('/:id',(req,res)=>{
     let id=req.params.id;
     User.findByIdAndRemove({_id:id},(err,docs)=>{
-      res.status(200).json({
+      res.json({
         message:'eliminado'
       });
     });
