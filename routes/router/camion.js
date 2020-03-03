@@ -247,19 +247,9 @@ router.post('/desvio',(req,res)=>{
 router.post('/desvioMes',(req,res)=>{
     let id=req.body.id;
     let fecha=[];
-    try {
-      let inicio=req.body.fi;
-      let fin=req.body.ff;
-      fecha=rango_fecha_mes(inicio,fin);
-    } catch (e) {
-      let fin=(new Date()).toLocaleString();
-      let inicio=new Date();
-      inicio.setDate(inicio.getDate()-150);
-      inicio=inicio.toLocaleString();
-      let ini=inicio.split(',');
-      let fi=fin.split(',');
-      fecha=rango_fecha_mes(ini[0],fi[0]);
-    }
+    let inicio=req.body.fi;
+    let fin=req.body.ff;
+    fecha=rango_fecha_mes(inicio,fin);
     Camion.findOne({id:id},(err,doc)=>{
       if(!empty(doc)){
         let result=[];
@@ -326,19 +316,9 @@ router.post('/desvioCamion',(req,res)=>{
 router.post('/desvioCamionMes',(req,res)=>{
     let id=req.body.id;
     let fecha=[];
-    try {
-      let inicio=req.body.fi;
-      let fin=req.body.ff;
-      fecha=rango_fecha_mes(inicio,fin);
-    } catch (e) {
-      let fin=(new Date()).toLocaleString();
-      let inicio=new Date();
-      inicio.setDate(inicio.getDate()-150);
-      inicio=inicio.toLocaleString();
-      let ini=inicio.split(',');
-      let fi=fin.split(',');
-      fecha=rango_fecha_mes(ini[0],fi[0]);
-    }
+    let inicio=req.body.fi;
+    let fin=req.body.ff;
+    fecha=rango_fecha_mes(inicio,fin);
     Camion.findOne({id:id},(err,doc)=>{
       if(!empty(doc)){
         let result=[];
@@ -405,19 +385,9 @@ router.post('/via',(req,res)=>{
 router.post('/viaMes',(req,res)=>{
     let id=req.body.id;
     let fecha=[];
-    try {
-      let inicio=req.body.fi;
-      let fin=req.body.ff;
-      fecha=rango_fecha_mes(inicio,fin);
-    } catch (e) {
-      let fin=(new Date()).toLocaleString();
-      let inicio=new Date();
-      inicio.setDate(inicio.getDate()-150);
-      inicio=inicio.toLocaleString();
-      let ini=inicio.split(',');
-      let fi=fin.split(',');
-      fecha=rango_fecha_mes(ini[0],fi[0]);
-    }
+    let inicio=req.body.fi;
+    let fin=req.body.ff;
+    fecha=rango_fecha_mes(inicio,fin);
     Camion.findOne({id:id},(err,doc)=>{
       if(!empty(doc)){
         let result=[];
@@ -484,19 +454,9 @@ router.post('/viajeAfectado',(req,res)=>{
 router.post('/viajeAfectadoMes',(req,res)=>{
     let id=req.body.id;
     let fecha=[];
-    try {
-      let inicio=req.body.fi;
-      let fin=req.body.ff;
-      fecha=rango_fecha_mes(inicio,fin);
-    } catch (e) {
-      let fin=(new Date()).toLocaleString();
-      let inicio=new Date();
-      inicio.setDate(inicio.getDate()-150);
-      inicio=inicio.toLocaleString();
-      let ini=inicio.split(',');
-      let fi=fin.split(',');
-      fecha=rango_fecha_mes(ini[0],fi[0]);
-    }
+    let inicio=req.body.fi;
+    let fin=req.body.ff;
+    fecha=rango_fecha_mes(inicio,fin);
     Camion.findOne({id:id},(err,doc)=>{
       if(!empty(doc)){
         let result=[];
@@ -563,19 +523,9 @@ router.post('/otro',(req,res)=>{
 router.post('/otroMes',(req,res)=>{
     let id=req.body.id;
     let fecha=[];
-    try {
-      let inicio=req.body.fi;
-      let fin=req.body.ff;
-      fecha=rango_fecha_mes(inicio,fin);
-    } catch (e) {
-      let fin=(new Date()).toLocaleString();
-      let inicio=new Date();
-      inicio.setDate(inicio.getDate()-150);
-      inicio=inicio.toLocaleString();
-      let ini=inicio.split(',');
-      let fi=fin.split(',');
-      fecha=rango_fecha_mes(ini[0],fi[0]);
-    }
+    let inicio=req.body.fi;
+    let fin=req.body.ff;
+    fecha=rango_fecha_mes(inicio,fin);
     Camion.findOne({id:id},(err,doc)=>{
       if(!empty(doc)){
         let result=[];
@@ -620,29 +570,112 @@ router.post('/intermedioTotal',(req,res)=>{
     Camion.findOne({id:id},(err,doc)=>{
       if(!empty(doc)){
         let data1=[];
-        let tab1=[];
         let data2=[];
-        let tab2=[];
+        let data3=[];
+        let tab3=[];
+        let data4=[];
+        let tab4=[];
+        let data5=[];
+        let tab5=[];
+        let data6=[];
+        let tab6=[];
+        let data7=[];
+        let tab7=[];
         for (let j = 0; j < fecha.length; j++) {
           let p=fecha[j];
-          let sum1=0;
+          let sum3=0;
+          let sum4=0;
+          let sum5=0;
+          let sum6=0;
+          let sum7=0;
           let imso=p[0].split('-');
           for (let m = 0; m < p.length; m++) {
             let p2=p[m];
             let result1=jsonQuery('[*fin='+p2+']',{data:doc.auto}).value;
+            let result2=jsonQuery('[*fecha='+p2+']',{data:doc.desvioConductor}).value;
+            let result4=jsonQuery('[*fecha='+p2+']',{data:doc.desvioCamion}).value;
+            let result5=jsonQuery('[*fecha='+p2+']',{data:doc.via}).value;
+            let result6=jsonQuery('[*fecha='+p2+']',{data:doc.viajeAfectado}).value;
+            let result7=jsonQuery('[*fecha='+p2+']',{data:doc.otro}).value;
             //aqui falta la tabla para excesos y horarios
             if(!empty(result1)){
               result1.forEach(it=> {
-
+                data1.push({
+                  fecha:it.inicio+' / '+it.fin,
+                  total:it.exceso.length
+                });
+                data2.push({
+                  fecha:it.inicio+' / '+it.fin,
+                  total:it.horario.length
+                });
+              });
+            }
+            if(!empty(result2)){
+              tab3=tab3.concat(result2);
+              result2.forEach(it=> {
+                sum3+=it.falta.length;
+              });
+            }
+            if(!empty(result4)){
+              tab4=tab4.concat(result4);
+              result4.forEach(it=> {
+                sum4+=it.falta.length;
+              });
+            }
+            if(!empty(result5)){
+              tab5=tab5.concat(result5);
+              result5.forEach(it=> {
+                sum5+=it.falta.length;
+              });
+            }
+            if(!empty(result6)){
+              tab6=tab6.concat(result6);
+              result6.forEach(it=> {
+                sum6+=it.falta.length;
+              });
+            }
+            if(!empty(result7)){
+              tab7=tab7.concat(result7);
+              result7.forEach(it=> {
+                sum7+=it.falta.length;
               });
             }
           }
-          dataChart.push({
+          data3.push({
             fecha:imso[1]+'/'+imso[0],
-            total:sum
+            total:sum3
+          });
+          data4.push({
+            fecha:imso[1]+'/'+imso[0],
+            total:sum4
+          });
+          data5.push({
+            fecha:imso[1]+'/'+imso[0],
+            total:sum5
+          });
+          data6.push({
+            fecha:imso[1]+'/'+imso[0],
+            total:sum6
+          });
+          data7.push({
+            fecha:imso[1]+'/'+imso[0],
+            total:sum7
           });
         }
-        res.json({data1:result,data2:dataChart});
+        res.json({
+          exceso:data1,
+          horario:data2,
+          desvio:data3,
+          desvtab:tab3,
+          desviocamion:data4,
+          desvcamtab:tab4,
+          via:data5,
+          viatab:tab5,
+          viaje:data6,
+          viajetab:tab6,
+          otro:data7,
+          otrotab:tab7
+        });
       }else{
         res.json({message:'no existen camiones'});
       }
@@ -1480,7 +1513,7 @@ router.post('/ruta',(req,res)=>{
 
 
 function rango_fecha(inicio,fin){
-  let arr=[0,31,28,31,30,31,30,31,31,30,31,30,31];
+  let arr=[0,31,29,31,30,31,30,31,31,30,31,30,31];
   let fi=inicio;
   let ff=fin;
   let f1=fi.split('/');
@@ -1506,7 +1539,7 @@ function rango_fecha(inicio,fin){
 }
 
 function rango_fecha_mes(inicio,fin){
-  let arr=[0,31,28,31,30,31,30,31,31,30,31,30,31];
+  let arr=[0,31,29,31,30,31,30,31,31,30,31,30,31];
   let fi=inicio;
   let ff=fin;
   let f1=fi.split('/');

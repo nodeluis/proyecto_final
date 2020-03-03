@@ -271,7 +271,7 @@ desired effect
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu" data-widget="tree" id="incamion">
         <li class="header">HEADER</li>
-        <li><a href="#"><i class="fa fa-book"></i> <span>Vera Cruz</span></a></li>
+        <li><a href="#" id="veracruz"><i class="fa fa-book"></i> <span>Vera Cruz</span></a></li>
         <li><a href="#" id="Exp"><i class="fa fa-book"></i> <span>Indicadores de Expocision</span></a></li>
         <li><a href="#" id="Int"><i class="fa fa-book"></i> <span>Indicadores Intermedios</span></a></li>
         <li><a href="#" id="Fin"><i class="fa fa-book"></i> <span>Indicadores Finales</span></a></li>
@@ -305,7 +305,33 @@ desired effect
         | Your Page Content Here |
         -------------------------->
 
-        <div id="map"></div>
+        <div class="row" id="home">
+          <!-- left column -->
+
+          <div class="col-xs-12">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Mapa de los camiones funcionando en Monet:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+                <div class="box-body">
+
+                  <!-- date range exceso final -->
+                  <div class="form-group" id="mapHome">
+                  </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+          </div>
+
+        </div>
 
         <div class="row" id="expocision">
           <!-- left column -->
@@ -1088,7 +1114,7 @@ desired effect
 
                   <div id="accKmChart">
                   </div>
-                  
+
                   <div class="form-group">
                       <label>Date range:</label>
 
@@ -1236,7 +1262,7 @@ desired effect
 
 <!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN86jpZSdHSfpwhlKVv272WTd1lBMr6bc&callback=initMap"></script>-->
 
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN86jpZSdHSfpwhlKVv272WTd1lBMr6bc"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3STBc-j4Homm2K_-Kd5zjeNrtL_bL75M"></script>
 <script type="text/javascript" src="/javascripts/jquery.googlemap.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 

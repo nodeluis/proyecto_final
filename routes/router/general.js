@@ -10,7 +10,24 @@ const jsonQuery = require('json-query');
 router.get('/',(req,res)=>{
     General.find({},(err,docs)=>{
       if(!empty(docs)){
-        res.json(docs);
+        Camion.find({},(err2,docs2)=>{
+          let arr=docs;
+          for (let k = 0; k < arr.length; k++) {
+            let index=docs2.findIndex((item, i)=>{
+              return item.id == arr[k].id;
+            });
+            arr[k]={
+              _id:arr[k]._id,
+              id:arr[k].id,
+              lugar:arr[k].lugar,
+              placa:arr[k].placa,
+              lat:arr[k].lat,
+              lon:arr[k].lon,
+              control:docs2[index].control
+            };
+          }
+          res.json(arr);
+        });
       }else{
         res.json({
           message:'no existen datos en la bd'

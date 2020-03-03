@@ -1,16 +1,22 @@
 $(document).ready(function () {
   inicializar();
   limpiar();
+  $('#vista').show();
+  $("#mapVista").googleMap();
+  mapCss('mapVista');
   $.get('/general',null,function(response){
-      $("#map").googleMap({
-        zoom: 8, // Initial zoom level (optional)
-        coords: [-19.578297, -65.758633], // Map center (optional)
-        type: "ROADMAP" // Map type (optional)
-      });
-
-      for(var i=0;i<response.length;i++){
+    for(var i=0;i<response.length;i++){
         let dato=response[i];
-        //ids.push(dato['_id']);
+
+        if(dato.control==true){
+          $("#mapVista").addMarker({
+            coords: [parseFloat(dato['lat']),parseFloat(dato['lon'])], // GPS coords
+            title:dato['placa'],
+            icon:'/fonts/icons/camion4.png',
+            text:dato['lugar']
+          });
+        }
+
         $('<li id="'+i+'tree">'
                   +'<a href="#"><i id="'+i+'f1"></i><span>'+dato['placa']+'</span>'
                   +'<span id="'+i+'spa">'
@@ -39,17 +45,6 @@ $(document).ready(function () {
         $('#'+i+'f2').addClass('fa fa-angle-left pull-right');
         $('#'+i+'tremen').addClass('treeview-menu');
         //insertando punto en el mapa
-        if(dato['control']){
-          $("#map").addMarker({
-            coords: [parseFloat(dato['lat']),parseFloat(dato['lon'])], // GPS coords
-            //coords: [dato['lat'],dato['lon']],
-            //url: 'http://www.tiloweb.com', // Link to redirect onclick (optional)
-            //id: 'marker1', // Unique ID for your marker
-            title:dato['lugar'],
-            icon:'/fonts/icons/camion4.png',
-            text:'<b>Lorem ipsum</b> dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-          });
-        }
         //poner a la escucha y hacer operaciones
         //4232-ICI
         // extintores
@@ -60,7 +55,6 @@ $(document).ready(function () {
           placa=dato['placa'];
           daterangenvio=3;
           limpiar();
-          $('#map').hide();
           let postdata={
             id:dato['id'],
             i:exinplusign
@@ -81,7 +75,6 @@ $(document).ready(function () {
           id=dato['id'];
           placa=dato['placa'];
           limpiar();
-          $('#map').hide();
           $('#expocision').show();
           $.post('/camion/autoT',{id:id},function(resp,status){
             console.log(resp);
@@ -92,6 +85,10 @@ $(document).ready(function () {
             llenarTablas(resp.data.km,6);
             llenarTablas(resp.data.expocision,7);
             llenarTablas(resp.data.frecuencia,8);
+            addCss('DonutKmRecorrido');
+            addCss('DonutHoraCant');
+            addCss('DonutViajeCant');
+            addCss('DonutFrecViaje');
           },'json').fail(function(err){
             console.log(err);
           });
@@ -113,6 +110,9 @@ $(document).ready(function () {
               desc:'Cantidad de viajes',
               total:resp.data[2]
             }],1,'ChartExposicion2');
+            addCss('ChartExposicion');
+            addCss('ChartExposicion1');
+            addCss('ChartExposicion2');
           },'json').fail(function(err){
             console.log(err);
           });
@@ -125,7 +125,6 @@ $(document).ready(function () {
           id=dato['id'];
           placa=dato['placa'];
           limpiar();
-          $('#map').hide();
           $('#intermedio').show();
           let dataIncidente='No paro en el punto de control,Uso del equipo de proteccion personal,No fue inspeccionado,'
           +'No se reporto,Incumplimiento de horario en plan de viaje,Uso de cinturon de seguridad,'
@@ -152,56 +151,32 @@ $(document).ready(function () {
           let dataIncidente5='Clima,Otro';
           $(addcheck(dataIncidente5)).appendTo('#addFormFactExt');
 
-          $.post('/camion/autoT',{id:id},function(resp,status){
+          $.post('/camion/intermedioTotal',{id:id},function(resp,status){
             console.log(resp);
-            llenarchart(resp.data.exceso,2,'DonutExceso');
-            llenarchart(resp.data.horario,2,'DonutHorario');
-            llenarTablas(resp.data.exceso,9);
-            llenarTablas(resp.data.horario,10);
+            llenarchart(resp.exceso,2,'DonutExceso');
+            llenarchart(resp.horario,2,'DonutHorario');
+            llenarTablas(resp.exceso,9);
+            llenarTablas(resp.horario,10);
+            llenarchart(resp.desvio,2,'DonutDesvio');
+            llenarTablas(resp.desvtab,11);
+            llenarchart(resp.desviocamion,2,'DonutDesvioCam');
+            llenarTablas(resp.desvcamtab,12);
+            llenarchart(resp.via,2,'DonutFrecVia');
+            llenarTablas(resp.viatab,13);
+            llenarchart(resp.viaje,2,'DonutFrecViaAf');
+            llenarTablas(resp.viajetab,14);
+            llenarchart(resp.otro,2,'FactExtDonut');
+            llenarTablas(resp.otrotab,15);
+            addCss('DonutExceso');
+            addCss('DonutHorario');
+            addCss('DonutDesvio');
+            addCss('DonutDesvioCam');
+            addCss('DonutFrecVia');
+            addCss('DonutFrecViaAf');
+            addCss('FactExtDonut');
           },'json').fail(function(err){
             console.log(err);
           });
-
-          $.post('/camion/desvioMes',{id:id},function(resp,status){
-            console.log(resp);
-            llenarchart(resp.data2,2,'DonutDesvio');
-            llenarTablas(resp.data1,11);
-          },'json').fail(function(err){
-            console.log(err);
-          });
-
-          $.post('/camion/desvioCamionMes',{id:id},function(resp,status){
-            console.log(resp);
-            llenarchart(resp.data2,2,'DonutDesvioCam');
-            llenarTablas(resp.data1,12);
-          },'json').fail(function(err){
-            console.log(err);
-          });
-
-          $.post('/camion/viaMes',{id:id},function(resp,status){
-            console.log(resp);
-            llenarchart(resp.data2,2,'DonutFrecVia');
-            llenarTablas(resp.data1,13);
-          },'json').fail(function(err){
-            console.log(err);
-          });
-
-          $.post('/camion/viajeAfectadoMes',{id:id},function(resp,status){
-            console.log(resp);
-            llenarchart(resp.data2,2,'DonutFrecViaAf');
-            llenarTablas(resp.data1,14);
-          },'json').fail(function(err){
-            console.log(err);
-          });
-
-          $.post('/camion/otroMes',{id:id},function(resp,status){
-            console.log(resp);
-            llenarchart(resp.data2,2,'FactExtDonut');
-            llenarTablas(resp.data1,15);
-          },'json').fail(function(err){
-            console.log(err);
-          });
-
           $.post('/camion/generalIntermedio',{id:id},function(resp,status){
             console.log(resp);
             let chartData1=[{desc:'total excesos de velocidad',total:resp.data[0]},
@@ -212,6 +187,8 @@ $(document).ready(function () {
                             {desc:'total desvios por factores externos',total:resp.data[6]},];
             llenarchart(chartData1,1,'ChartIntermedio');
             llenarchart(chartData2,1,'ChartIntermedio2');
+            addCss('ChartIntermedio');
+            addCss('ChartIntermedio2');
           },'json').fail(function(err){
             console.log(err);
           });
@@ -224,7 +201,6 @@ $(document).ready(function () {
           id=dato['id'];
           placa=dato['placa'];
           limpiar();
-          $('#map').hide();
           //llenar form
           let dataIncidente='Fallas electricas,Fallas en el motor,Problemas en la caja,'
           +'Problemas en la caja,Problemas en los globos,Problemas en el compresor de aire,'
@@ -250,6 +226,11 @@ $(document).ready(function () {
             llenarchart(resp.ruta,3,'DonutRuta');
             llenarTablas(resp.acc,19);
             llenarchart(resp.km,4,"AccKmChart");
+            addCss('incidenteChartDonut');
+            addCss('FatalChartDonut');
+            addCss('DonutMedico');
+            addCss('DonutRuta');
+            addCss('AccKmChart');
             //"AccKmChart"
           },'json').fail(function(err){
             console.log(err);
@@ -258,6 +239,7 @@ $(document).ready(function () {
           $.post('/camion/generalFinal',{id:id},function(resp,status){
             console.log(resp);
             llenarchart(resp.data,1,'indicadorGeneralFinal');
+            addCss('indicadorGeneralFinal');
             //"AccKmChart"
           },'json').fail(function(err){
             console.log(err);

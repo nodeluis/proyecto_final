@@ -5,6 +5,12 @@ $('#control').on('click',function(e){
   $(location).attr('href',url);
 });
 
+//home veracruz
+
+$('#veracruz').on('click',function(e){
+  e.preventDefault();
+  $('#home').show();
+});
 
 //expocision button
 $('#Exp').on('click',function(e){

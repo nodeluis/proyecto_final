@@ -1,6 +1,6 @@
 function limpiar(){
   exinplusign=0;
-  $('#map').hide();
+  $('#vista').hide();
   $('#contExt').hide();
   $('#dateRange').hide();
   $('#excesosDiv').hide();
@@ -58,9 +58,19 @@ function limpiar(){
   $('#tablaPorRut').empty();
   $('#indicadorGeneralFinal').empty();
   //$('#map').googleMap();
-  $("#map").googleMap({
-    zoom: 8, // Initial zoom level (optional)
-    coords: [-19.578297, -65.758633], // Map center (optional)
-    type: "ROADMAP" // Map type (optional)
+}
+
+function addCss(id){
+  $('#'+id).css({
+    "width": "100%",
+    "height": "300px"
+  });
+}
+
+
+function mapCss(id){
+  $('#'+id).css({
+    "width": "100%",
+    "height": "400px"
   });
 }

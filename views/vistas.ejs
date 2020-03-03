@@ -296,39 +296,33 @@ desired effect
         <!-- date range exceso -->
         <!-- date range exceso final -->
 
-        <div id="map"></div>
+        <div class="row" id="vista">
+          <!-- left column -->
 
-        <div class="row" id="excesosDiv">
           <div class="col-xs-12">
-            <div class="box">
-              <div class="box-header">
-                <h3 class="box-title">Tabla de excesos de velocidad</h3>
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Mapa de los camiones que estan siendo monitoreados por el administrador:</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
               </div>
               <!-- /.box-header -->
-              <div class="box-body" id="contenidoExceso"></div>
-              <!-- /.box-body -->
+              <!-- form start -->
+
+                <div class="box-body">
+
+                  <!-- date range exceso final -->
+                  <div class="form-group" id="mapVista">
+                  </div>
+                </div>
+                <!-- /.box-body -->
             </div>
             <!-- /.box -->
           </div>
-          <!-- /.col -->
-        </div>
 
-        <!-- horarios de conduccion -->
-        <div class="row" id="horarioDiv">
-          <div class="col-xs-12">
-            <div class="box">
-              <div class="box-header">
-                <h3 class="box-title">Tabla de horarios de conducción inhadecuados</h3>
-              </div>
-              <!-- /.box-header -->
-              <div class="box-body" id="contenidoHorario"></div>
-              <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
-          </div>
-          <!-- /.col -->
         </div>
-        <!-- horarios de conduccion final-->
 
         <!-- tabla check list extintores del camion -->
         <div class="row" id="contExt">
@@ -637,11 +631,6 @@ desired effect
         </div>
         <!-- tabla check list extintores del camion fin -->
 
-        <!-- formulario extintores del camion -->
-
-        <!-- formulario extintores del camion  fin-->
-
-
         <!-- formularios tablas y charts-->
 
         <div class="row" id="expocision">
@@ -799,7 +788,7 @@ desired effect
           <!--/.col (right) -->
 
           <div class="col-xs-12">
-            <div class="box box-warning">
+            <div class="box box-info">
               <div class="box-header with-border">
                 <h3 class="box-title">Cuadro de estadisticas de los indicadores de exposicion:</h3>
                 <div class="box-tools pull-right">
@@ -839,7 +828,7 @@ desired effect
           </div>
 
           <div class="col-xs-12">
-            <div class="box box-warning">
+            <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title">Tabla de kilometros recorridos por viaje:</h3>
                 <div class="box-tools pull-right">
@@ -858,7 +847,7 @@ desired effect
             <!-- /.box -->
           </div>
           <div class="col-xs-12">
-            <div class="box box-warning">
+            <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title">Tabla de horas de exposicion por viaje:</h3>
                 <div class="box-tools pull-right">
@@ -877,7 +866,7 @@ desired effect
             <!-- /.box -->
           </div>
           <div class="col-xs-12">
-            <div class="box box-warning">
+            <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title">Tabla de rutas por viaje:</h3>
                 <div class="box-tools pull-right">
@@ -897,7 +886,7 @@ desired effect
             <!-- /.box -->
           </div>
           <div class="col-xs-12">
-            <div class="box box-warning">
+            <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title">Tabla de volumen transportado por viaje:</h3>
                 <div class="box-tools pull-right">
@@ -1438,7 +1427,7 @@ desired effect
           <!--/.col (right) -->
 
           <div class="col-xs-12">
-            <div class="box box-warning">
+            <div class="box box-info">
               <div class="box-header with-border">
                 <h3 class="box-title">Cuadro de estadisticas de los indicadores intermedios:</h3>
                 <div class="box-tools pull-right">
@@ -1477,7 +1466,7 @@ desired effect
           </div>
 
           <div class="col-xs-12">
-            <div class="box box-warning">
+            <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title">Tabla de excesos de velocidad por viaje::</h3>
                 <div class="box-tools pull-right">
@@ -1497,7 +1486,7 @@ desired effect
           </div>
 
           <div class="col-xs-12">
-            <div class="box box-warning">
+            <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title">Tabla de horarios inapropiados de conduccion por viaje:</h3>
                 <div class="box-tools pull-right">
@@ -1517,7 +1506,7 @@ desired effect
           </div>
 
           <div class="col-xs-12">
-            <div class="box box-warning">
+            <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title">Tabla de desvios factor conductor por meses:</h3>
                 <div class="box-tools pull-right">
@@ -1537,7 +1526,7 @@ desired effect
           </div>
 
           <div class="col-xs-12">
-            <div class="box box-warning">
+            <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title">Tabla de desvios factor camion por meses:</h3>
                 <div class="box-tools pull-right">
@@ -1557,7 +1546,7 @@ desired effect
           </div>
 
           <div class="col-xs-12">
-            <div class="box box-warning">
+            <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title">Tabla de problema en las vias por meses:</h3>
                 <div class="box-tools pull-right">
@@ -1577,7 +1566,7 @@ desired effect
           </div>
 
           <div class="col-xs-12">
-            <div class="box box-warning">
+            <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title">Tabla de viajes afectados por problema en las vias por meses:</h3>
                 <div class="box-tools pull-right">
@@ -1597,7 +1586,7 @@ desired effect
           </div>
 
           <div class="col-xs-12">
-            <div class="box box-warning">
+            <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title">Tabla de desvio por factores externos por meses:</h3>
                 <div class="box-tools pull-right">
@@ -2049,7 +2038,7 @@ desired effect
 
           <!--/.col (right) -->
           <div class="col-xs-12">
-            <div class="box box-warning">
+            <div class="box box-info">
               <div class="box-header with-border">
                 <h3 class="box-title">Cuadro de estadisticas de accidentes por km recorrido:</h3>
                 <div class="box-tools pull-right">
@@ -2087,7 +2076,7 @@ desired effect
           </div>
 
           <div class="col-xs-12">
-            <div class="box box-warning">
+            <div class="box box-info">
               <div class="box-header with-border">
                 <h3 class="box-title">Cuadro de estadisticas de los indicadores finales por categoria:</h3>
                 <div class="box-tools pull-right">
@@ -2125,7 +2114,7 @@ desired effect
           </div>
 
           <div class="col-xs-12">
-            <div class="box box-warning">
+            <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title">Tabla de porcentaje de incidentes por meses:</h3>
                 <div class="box-tools pull-right">
@@ -2145,7 +2134,7 @@ desired effect
           </div>
 
           <div class="col-xs-12">
-            <div class="box box-warning">
+            <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title">Tabla de porcentaje de accidentes c/sin fatalidad por meses:</h3>
                 <div class="box-tools pull-right">
@@ -2165,7 +2154,7 @@ desired effect
           </div>
 
           <div class="col-xs-12">
-            <div class="box box-warning">
+            <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title">Tabla de accidente con baja medica:</h3>
                 <div class="box-tools pull-right">
@@ -2185,7 +2174,7 @@ desired effect
           </div>
 
           <div class="col-xs-12">
-            <div class="box box-warning">
+            <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title">Tabla de porcentaje de accidentes por rutas:</h3>
                 <div class="box-tools pull-right">
@@ -2536,7 +2525,7 @@ desired effect
 <script src="https://www.amcharts.com/lib/4/charts.js"></script>
 <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>-->
 
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN86jpZSdHSfpwhlKVv272WTd1lBMr6bc"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3STBc-j4Homm2K_-Kd5zjeNrtL_bL75M"></script>
 <script type="text/javascript" src="/javascripts/jquery.googlemap.js"></script>
 <script type="text/javascript" src="/data/init.js"></script>
 <script type="text/javascript" src="/data/clean.js"></script>

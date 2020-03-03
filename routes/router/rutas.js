@@ -14,7 +14,7 @@ module.exports=[{
   key:'Cbba-La Paz',
   value:392
 },{
-  key:'Cbba-Orudo',
+  key:'Cbba-Oruro',
   value:208
 },{
   key:'Cbba-Potosi',
