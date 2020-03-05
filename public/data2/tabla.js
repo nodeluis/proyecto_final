@@ -147,5 +147,44 @@ function llenarTab(data,f,id){
     $(construir).appendTo('#'+id);
     $('#example'+f).addClass('table table-bordered table-hover');
     $('#example'+f).DataTable(dataTableLenguaje);
+  }else if(f==5){
+    let construir='<table id="example'+f+'">'
+                  +'<thead>'
+                  +'<tr>'
+                  +'<th>Nro</th>';
+    construir+='<th>Placa</th>'
+              +'<th>Lugar</th>'
+              +'<th>Velocidad</th>'
+              +'<th>Fecha</th>'
+              +'<th>Hora</th>'
+              +'</tr>'
+              +'</thead>'
+              +'<tbody>';
+    data.forEach(function(dat){
+      construir+='<tr>'
+        +'<td>'+con+'</td>'
+        +'<td>'+dat['placa']+'</td>'
+        +'<td>'+dat['lugar']+'</td>'
+        +'<td>'+dat['velocidad']+'</td>'
+        +'<td>'+dat['fecha']+'</td>'
+        +'<td>'+dat['hora']+'</td>'
+        +'</tr>';
+      con++;
+    });//aqui hay cambios
+    construir+='</tbody>'
+              +'<tfoot>'
+              +'<tr>'
+              +'<th>Nro</th>'
+              +'<th>Placa</th>'
+              +'<th>Lugar</th>'
+              +'<th>Velocidad</th>'
+              +'<th>Fecha</th>'
+              +'<th>Hora</th>'
+              +'</tr>'
+              +'</tfoot>'
+              +'</table>';
+    $(construir).appendTo('#'+id);
+    $('#example'+f).addClass('table table-bordered table-hover');
+    $('#example'+f).DataTable(dataTableLenguaje);
   }
 }

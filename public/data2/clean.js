@@ -47,6 +47,37 @@ function llenarBodyPerfil(id,data){
     +'</ul>').appendTo('#'+id);
 }
 
+function actualizarMapa(){
+  addCharge('mapCharge');
+  mapCss('mapHome');
+  $.ajax({
+    url: '/general/actualizar',
+    headers: {
+        'token':token
+    },
+    method: 'GET',
+    dataType: 'json',
+    data:null,
+    success: function(resp){
+      console.log(resp);
+      removeCharge('mapCharge');
+      $("#mapHome").empty();
+      $("#mapHome").googleMap();
+      resp.data.forEach(dato=> {
+        $("#mapHome").addMarker({
+          coords: [parseFloat(dato['lat']),parseFloat(dato['lon'])], // GPS coords
+            //coords: [dato['lat'],dato['lon']],
+            //url: 'http://www.tiloweb.com', // Link to redirect onclick (optional)
+            //id: 'marker1', // Unique ID for your marker
+          title:dato['placa'],
+          icon:'/fonts/icons/camion4.png',
+          text:dato['lugar']
+        });
+      });
+    }
+  });
+}
+
 var tamMax=8;
 var dataTableLenguaje={
 language: {

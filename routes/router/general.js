@@ -815,8 +815,7 @@ router.post('/traerFalta',(req,res)=>{
     console.log(req.body);
     let fecha=req.body.fecha.split(' ');
     let fecha2=req.body.fecha2.split(' ');
-    let sk=req.body.sk;
-    General.find({}).select('id').skip(parseInt(sk)).limit(5).exec(async(err,docs)=>{
+    General.find({}).select('id placa').exec(async(err,docs)=>{
       if(!empty(docs)){
         const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
         const page = await browser.newPage();
@@ -829,6 +828,7 @@ router.post('/traerFalta',(req,res)=>{
         await page.waitForNavigation();
         console.log("consultando servicio");
         let arr=[];
+        console.log(docs);
         for (let k = 0; k < docs.length; k++) {
           await page.goto('http://200.87.207.36//googleMapsGenerarRecorrido.php?IdMov='+docs[k].id+'&fechaDesde='+fecha[0]+'%20'+fecha[1]+'&fechaHasta='+fecha2[0]+'%20'+fecha2[1]);
           const data = await page.evaluate(() => {
@@ -836,9 +836,22 @@ router.post('/traerFalta',(req,res)=>{
               json: JSON.parse(document.documentElement.outerText)
             };
           });
-          let sums=f5(data.json);
-          console.log(data.json);
-          arr=arr.concat(sums.exceso);
+          if(!empty(data.json)){
+            data.json.forEach(dat => {
+              if(dat['Velocidad']>70){
+                let sep=dat['Fecha'].split(' ');
+                arr.push({
+                  placa:docs[k].placa,
+                  lat:dat['Latitud'],
+                  lon:dat['Longitud'],
+                  lugar:dat['Referencia'],
+                  velocidad:dat['Velocidad'],
+                  fecha:sep[0],
+                  hora:sep[1]
+                });
+              }
+            });
+          }
         }
         console.log("final");
         await browser.close();
@@ -869,53 +882,55 @@ router.get('/actualizar',async(req,res)=>{
         json: JSON.parse(document.documentElement.outerText)
       };
     });
-    //let f=new Date();
-    //let qu=f.getFullYear()+'-'+((f.getMonth()<9)?'0'+(f.getMonth()+1):(f.getMonth()+1))+'-'+((f.getDate()<10)?'0'+f.getDate():f.getDate());
-    //console.log('esta es la fecha '+qu);
-    //console.log('actualizando datos de cada camion');
-    for (let i = 0; i < data.json.length; i++) {
-      //console.log(data.json[i]);
-      let da=data.json[i];
-      let obj={
-        id:da[0],
-        placa:da[1],
-        lugar:da[4],
-        lat:da[7],
-        lon:da[8]
-      };
-      General.findOne({id:da[0]},async(err,doc)=>{
-        if(!empty(doc)){
-          let idG=doc['_id'];
-          General.findByIdAndUpdate(idG,obj,()=>{
-            console.log('actualizado');
-          });
-        }else{
-          let insert=new General(obj);
-          let resul=await insert.save();
-        }
-      });
-      Camion.findOne({id:da[0]},async(err,doc)=>{
-        if(empty(doc)){
-          let ins=new Camion({
-            id:da[0],
-            placa:da[1],
-            auto:[],
-            extintor:[],
-            desvioConductor:[],
-            desvioCamion:[],
-            via:[],
-            viajeAfectado:[],
-            otro:[],
-            incidente:[],
-            fatal:[],
-            medico:[],
-            control:false
-          });
-          await ins.save();
-        }
-      });
+    let arr=[];
+    if(!empty(data.json)){
+      for (let i = 0; i < data.json.length; i++) {
+        //console.log(data.json[i]);
+        let da=data.json[i];
+        let obj={
+          id:da[0],
+          placa:da[1],
+          lugar:da[4],
+          lat:da[7],
+          lon:da[8]
+        };
+        arr.push(obj);
+        General.findOne({id:da[0]},async(err,doc)=>{
+          if(!empty(doc)){
+            let idG=doc['_id'];
+            General.findByIdAndUpdate(idG,obj,()=>{
+              console.log('actualizado');
+            });
+          }else{
+            let insert=new General(obj);
+            let resul=await insert.save();
+          }
+        });
+        Camion.findOne({id:da[0]},async(err,doc)=>{
+          if(empty(doc)){
+            let ins=new Camion({
+              id:da[0],
+              placa:da[1],
+              auto:[],
+              extintor:[],
+              desvioConductor:[],
+              desvioCamion:[],
+              via:[],
+              viajeAfectado:[],
+              otro:[],
+              incidente:[],
+              fatal:[],
+              medico:[],
+              control:false
+            });
+            await ins.save();
+          }
+        });
+      }
     }
-    res.json({message:'actualizado'});
+    console.log("final");
+    await browser.close();
+    res.json({data:arr});
 });
 
 router.get('/ver_si_controla/:id',(req,res)=>{

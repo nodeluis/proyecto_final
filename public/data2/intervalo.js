@@ -1,6 +1,5 @@
-//20min 7200000 3seg 60000
+//20min 7200000 3seg 60000 ->240000
 addCharge('monitoreoCharge');
-var conSkip=0;
 var fechEnv2;
 var fechEnv=(new Date()).toLocaleString();
 fechEnv=manip(fechEnv);
@@ -8,7 +7,6 @@ setInterval(function(){
   fechEnv2=(new Date()).toLocaleString();
   fechEnv2=manip(fechEnv2);
   let dataFalt={
-    sk:conSkip,
     fecha:fechEnv,
     fecha2:fechEnv2
   };
@@ -22,16 +20,15 @@ setInterval(function(){
     data:dataFalt,
     success: function(resp){
       console.log(resp);
+      //monitoreoTab
+      $('#monitoreoTab').empty();
+      llenarTab(resp.data,5,'monitoreoTab');
     }
   });
   removeCharge('monitoreoCharge');
-  if(conSkip<35){
-    conSkip+=5;
-  }else{
-    conSkip=0;
-  }
+  actualizarMapa();
   fechEnv=fechEnv2;
-}, 120000);
+},7200000);
 
 
 function manip(f){
