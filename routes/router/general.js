@@ -6,6 +6,7 @@ const router=express.Router();
 const empty=require('is-empty');
 //const JsonFind = require('json-find');
 const jsonQuery = require('json-query');
+const f5=require('./f5');
 
 router.get('/',(req,res)=>{
     General.find({},(err,docs)=>{
@@ -806,6 +807,44 @@ router.get('/control/:id',(req,res)=>{
         res.json({control:doc.control});
       }else{
         res.json({message:'error no existe camion'});
+      }
+    });
+});
+
+router.post('/traerFalta',(req,res)=>{
+    console.log(req.body);
+    let fecha=req.body.fecha.split(' ');
+    let fecha2=req.body.fecha2.split(' ');
+    let sk=req.body.sk;
+    General.find({}).select('id').skip(parseInt(sk)).limit(5).exec(async(err,docs)=>{
+      if(!empty(docs)){
+        const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
+        const page = await browser.newPage();
+        await page.setDefaultNavigationTimeout(0);
+        console.log("Entrando a 200.87.207.36");
+        await page.goto('http://200.87.207.36');
+        await page.type("#codigo_usu", 'veracruz');
+        await page.type("#clave_usu", 'ypfbveracruz');
+        await page.click("button");
+        await page.waitForNavigation();
+        console.log("consultando servicio");
+        let arr=[];
+        for (let k = 0; k < docs.length; k++) {
+          await page.goto('http://200.87.207.36//googleMapsGenerarRecorrido.php?IdMov='+docs[k].id+'&fechaDesde='+fecha[0]+'%20'+fecha[1]+'&fechaHasta='+fecha2[0]+'%20'+fecha2[1]);
+          const data = await page.evaluate(() => {
+          return {
+              json: JSON.parse(document.documentElement.outerText)
+            };
+          });
+          let sums=f5(data.json);
+          console.log(data.json);
+          arr=arr.concat(sums.exceso);
+        }
+        console.log("final");
+        await browser.close();
+        res.json({data:arr});
+      }else{
+        res.json({message:'vacio'});
       }
     });
 });

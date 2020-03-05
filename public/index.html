@@ -3,10 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Log in</title>
+  <title>Vera Cruz s.r.l.</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
+  <link rel="shortcut icon" href="/fonts/icons/tittle.png" type="image/png"/>
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
@@ -125,7 +126,8 @@
         password:$('#pw').val()
       };
       $.post(url, datos, function(response,status) {
-        var url = "/home2";
+        console.log(response);
+        var url = '/home2?token='+response['token']+'&id='+response['id'];
         $(location).attr('href',url);
       },'json').fail(function(err){
         $('#btnp').attr('data-target','#modal-danger');

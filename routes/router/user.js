@@ -20,6 +20,7 @@ router.get('/',(req,res)=>{
 router.post('/',async(req,res)=>{
     const datos={
       nombre:req.body.nombre,
+      apellido:req.body.apellido,
       email:req.body.email,
       password:sha1(req.body.password)
     };
@@ -48,7 +49,8 @@ router.post('/login',(req,res)=>{
           });
           res.json({
             message:'auth succes',
-            token:token
+            token:token,
+            id:doc._id
           });
       }else{
         res.json({
@@ -60,15 +62,45 @@ router.post('/login',(req,res)=>{
 });
 
 router.patch('/:id',(req,res)=>{
+    console.log(req.body);
     let id=req.params.id;
-    let datos=req.body;
-    if(datos['password']!=null)
-      datos['password']=sha1(datos['password']);
-    User.findByIdAndUpdate({_id:id},datos,(err,docs)=>{
-      res.json({
-        message:'user actualizado'
-      });
+    User.findOne({_id:id},(err,doc)=>{
+      if(!empty(doc)){
+        if(doc.password==sha1(req.body.password)){
+          if(!empty(req.body.password2)){
+            let data={
+              nombre:req.body.nombre,
+              apellido:req.body.apellido,
+              email:req.body.email,
+              password:sha1(req.body.password2)
+            };
+            User.findByIdAndUpdate({_id:id},data,(err2,doc2)=>{
+              res.json({
+                message:'user actualizado',
+                doc:doc2
+              });
+            });
+          }else{
+            let data={
+              nombre:req.body.nombre,
+              apellido:req.body.apellido,
+              email:req.body.email,
+            };
+            User.findByIdAndUpdate({_id:id},data,(err2,doc2)=>{
+              res.json({
+                message:'user actualizado',
+                doc:doc2
+              });
+            });
+          }
+        }else{
+          res.json({message:'contraseña incorrecta'});
+        }
+      }else{
+        res.json({message:'el usuario no existe'});
+      }
     });
+
 });
 
 router.delete('/:id',(req,res)=>{
@@ -80,5 +112,20 @@ router.delete('/:id',(req,res)=>{
     });
 });
 
+router.post('/dato',(req,res)=>{
+    console.log(req.headers.token);
+    let id=req.body.id;
+    User.findOne({_id:id},(err,doc)=>{
+      if(empty(doc)){
+        res.json({message:'no existe el usuario'});
+      }else{
+        res.json({
+          nombre:doc.nombre,
+          apellido:doc.apellido,
+          email:doc.email
+        });
+      }
+    });
+});
 
 module.exports=router;

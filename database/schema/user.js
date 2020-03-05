@@ -2,6 +2,7 @@ const mongoose=require('../connect');
 
 const user={
     nombre:String,
+    apellido:String,
     email:String,
     password:String,
 };

@@ -41,7 +41,7 @@ function llenarTab(data,f,id){
               +'</table>';
     $(construir).appendTo('#'+id);
     $('#example'+f).addClass('table table-bordered table-hover');
-    $('#example'+f).DataTable();
+    $('#example'+f).DataTable(dataTableLenguaje);
   }else if(f==2){
     let construir='<table id="example'+f+'">'
                   +'<thead>'
@@ -80,7 +80,7 @@ function llenarTab(data,f,id){
               +'</table>';
     $(construir).appendTo('#'+id);
     $('#example'+f).addClass('table table-bordered table-hover');
-    $('#example'+f).DataTable();
+    $('#example'+f).DataTable(dataTableLenguaje);
   }else if(f==3){
     let construir='<table id="example'+f+'">'
                   +'<thead>'
@@ -113,7 +113,7 @@ function llenarTab(data,f,id){
               +'</table>';
     $(construir).appendTo('#'+id);
     $('#example'+f).addClass('table table-bordered table-hover');
-    $('#example'+f).DataTable();
+    $('#example'+f).DataTable(dataTableLenguaje);
   }else if(f==4){
     let construir='<table id="example'+f+'">'
                   +'<thead>'
@@ -146,6 +146,6 @@ function llenarTab(data,f,id){
               +'</table>';
     $(construir).appendTo('#'+id);
     $('#example'+f).addClass('table table-bordered table-hover');
-    $('#example'+f).DataTable();
+    $('#example'+f).DataTable(dataTableLenguaje);
   }
 }

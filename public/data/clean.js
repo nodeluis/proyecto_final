@@ -74,3 +74,13 @@ function mapCss(id){
     "height": "400px"
   });
 }
+
+function addCharge(id){
+  $('#'+id).addClass('overlay');
+  $('<i class="fa fa-refresh fa-spin"></i>').appendTo('#'+id);
+}
+
+function removeCharge(id){
+  $('#'+id).removeClass('overlay');
+  $('#'+id).empty();
+}

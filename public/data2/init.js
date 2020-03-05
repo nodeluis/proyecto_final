@@ -1,9 +1,11 @@
 $(document).ready(function () {
   //$('#example1').DataTable();
   clean();
+  $('<h1>Vera Cruz s.r.l.<small>Ubicación de camiones registrados en Monet</small></h1>').appendTo('#headerDesc');
   inicializar();
+  addCharge('mapCharge');
   $.get('/general',null,function(response){
-      console.log(response);
+      removeCharge('mapCharge');
       $('#home').show();
       $("#mapHome").googleMap();
       mapCss('mapHome');
