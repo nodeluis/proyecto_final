@@ -116,6 +116,7 @@
     });
   });
 
+
   $(document).ready(function () {
 
     $( "#form" ).on( "submit", function( event ) {
@@ -128,6 +129,10 @@
       $.post(url, datos, function(response,status) {
         console.log(response);
         var url = '/home2?token='+response['token']+'&id='+response['id'];
+
+        document.cookie='token='+response['token']+';';
+        document.cookie='id='+response['id']+';';
+        
         $(location).attr('href',url);
       },'json').fail(function(err){
         $('#btnp').attr('data-target','#modal-danger');

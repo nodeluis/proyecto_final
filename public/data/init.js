@@ -2,12 +2,18 @@ $(document).ready(function () {
   inicializar();
   limpiar();
   $('#vista').show();
+  addCharge('mapCharge');
   $.get('/general',null,function(response){
     updateMapa()
     for(var i=0;i<response.length;i++){
         let dato=response[i];
+        menuArr.push({
+          id:i+'show',
+          placa:dato['placa'].toLowerCase(),
+          state:false
+        });
         $('<li id="'+i+'tree">'
-                  +'<a href="#"><i id="'+i+'f1"></i><span>'+dato['placa']+'</span>'
+                  +'<a href="#" id="'+i+'show"><i id="'+i+'f1"></i><span>'+dato['placa']+'</span>'
                   +'<span id="'+i+'spa">'
                   +'<i id="'+i+'f2"></i>'
                   +'</span>'
@@ -24,7 +30,7 @@ $(document).ready(function () {
                   +'<li><a href="#"><i class="fa fa-circle-o"></i>Alcoholemia</a></li>'
                   +'<li><a href="#"><i class="fa fa-circle-o"></i>Botiquín</a></li>'
                   +'<li><a href="#" id="'+i+'ext"><i class="fa fa-circle-o"></i>Extintores</a></li>'
-                  +'<li><a href="#" id="'+i+'controlar" data-toggle="modal"><i class="fa fa-circle-o"></i>Controlar estado del camion</a></li>'
+                  +'<li><a href="#" id="'+i+'controlar"><i class="fa fa-circle-o"></i>Controlar estado del camion</a></li>'
                   +'</ul>'
                   +'</li>').appendTo('#incamion');
         $('#'+i+'tree').addClass('treeview');
@@ -330,9 +336,9 @@ $(document).ready(function () {
           $.post('/camion/autoMes',{id:id},function(resp,status){
             console.log(resp);
             if(resp.control){
-              $('#controlForm1').hide();
+              $('#controlF1').hide();
             }else{
-              $('#controlForm2').hide();
+              $('#controlF2').hide();
             }
             llenarTablas(resp.data,5);
             removeCharge('tabControlCharge');
@@ -343,5 +349,4 @@ $(document).ready(function () {
         //controlar estado del camion finç
       }
   });
-  removeCharge('mapCharge');
 });

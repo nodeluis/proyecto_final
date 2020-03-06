@@ -92,11 +92,11 @@ desired effect
     <section class="sidebar">
 
       <!-- search form (Optional) -->
-      <form action="#" method="get" class="sidebar-form">
+      <form action="#" class="sidebar-form" id="search-btn">
         <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Buscar...">
+          <input type="text" name="q" class="form-control" placeholder="Buscar..." id="textoBusqueda">
           <span class="input-group-btn">
-              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+              <button type="submit" name="search" class="btn btn-flat"><i class="fa fa-search"></i>
               </button>
             </span>
         </div>
@@ -1059,7 +1059,7 @@ desired effect
             </form>
 
             <form role="form" id="formDesvCam">
-              <div class="box box-primary collapsed-box">
+              <div class="box box-primary">
                 <div class="box-header with-border">
                   <h3 class="box-title">Formulario de desvio/falta factor camion</h3>
                   <div class="box-tools pull-right">
@@ -1112,7 +1112,7 @@ desired effect
             </form>
 
             <form role="form" id="formProbVia">
-              <div class="box box-primary collapsed-box">
+              <div class="box box-primary">
                 <div class="box-header with-border">
                   <h3 class="box-title">Formulario de problema en las vias</h3>
                   <div class="box-tools pull-right">
@@ -1163,7 +1163,7 @@ desired effect
             </form>
 
             <form role="form" id="formAfecVia">
-              <div class="box box-primary collapsed-box">
+              <div class="box box-primary">
                 <div class="box-header with-border">
                   <h3 class="box-title">Formulario de viajes afectados por problema en las vias</h3>
                   <div class="box-tools pull-right">
@@ -1214,7 +1214,7 @@ desired effect
             </form>
 
             <form role="form" id="formFactExt">
-              <div class="box box-primary collapsed-box">
+              <div class="box box-primary">
                 <div class="box-header with-border">
                   <h3 class="box-title">Formulario de desvios por factores externos</h3>
                   <div class="box-tools pull-right">
@@ -2043,9 +2043,7 @@ desired effect
           <!-- left column -->
           <div class="col-md-6">
             <!-- general form elements -->
-            <form role="form" id="controlForm1">
-
-              <div class="box box-primary">
+              <div class="box box-primary" id="controlF1">
                 <div class="box-header with-border">
                   <h3 class="box-title">Nuevo viaje del camion</h3>
                   <div class="box-tools pull-right">
@@ -2120,30 +2118,20 @@ desired effect
                         <option>Aguahi</option>
                       </select>
                     </div>
-                    <!--<div class="input-group margin">
-                      <input type="text" class="form-control" id="plusIncidente">
-                          <span class="input-group-btn">
-                            <button type="button" class="btn btn-info btn-flat" id="plusIncidenteButton"><i class="fa fa-plus"></i></button>
-                          </span>
-                    </div>-->
 
                     <div class="form-group">
                       <label>Descripcion:</label>
                       <textarea class="form-control" rows="3" placeholder="Descripcion ..." id="controlDescripcion"></textarea>
                     </div>
 
+                    <div class="form-group">
+                      <button type="button" class="btn btn-primary" id="controlForm1">Enviar</button>
+                    </div>
+
                   </div>
                   <!-- /.box-body -->
-
-                  <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Enviar</button>
-                  </div>
-
               </div>
-            </form>
-            <form role="form" id="controlForm2">
-
-              <div class="box box-primary">
+              <div class="box box-primary" id="controlF2">
                 <div class="box-header with-border">
                   <h3 class="box-title">Nuevo viaje del camion</h3>
                   <div class="box-tools pull-right">
@@ -2161,16 +2149,13 @@ desired effect
                       <h4><i class="icon fa fa-check"></i> Aviso!</h4>
                       Este camion esta siendo controlado actualmente.
                     </div>
+                    <div class="form-group">
+                      <button type="button" class="btn btn-primary" id="controlForm2">Terminar Control</button>
+                    </div>
 
                   </div>
                   <!-- /.box-body -->
-
-                  <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Terminar Control</button>
-                  </div>
-
               </div>
-            </form>
           </div>
           <!--/.col (left) -->
           <!-- right column -->
@@ -2362,10 +2347,13 @@ desired effect
 <script type="text/javascript" src="/data/addCheck.js"></script>
 
 <script>
-    var exinplusign=0;
+    //var exinplusign=0;
     var id='';
     var placa='';
-    var daterangenvio="";
+    //var daterangenvio="";
+    var menuArr=[];
+
+    console.log(document.cookie);
 
 </script>
 </body>

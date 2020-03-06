@@ -3,61 +3,48 @@ addCharge('monitoreoCharge');
 var fechEnv2;
 var fechEnv=(new Date()).toLocaleString();
 fechEnv=manip(fechEnv);
-barraDeProgreso();
+var conBar=0;
 setInterval(function(){
-  fechEnv2=(new Date()).toLocaleString();
-  fechEnv2=manip(fechEnv2);
-  let dataFalt={
-    fecha:fechEnv,
-    fecha2:fechEnv2
-  };
-  $.ajax({
-    url: '/general/traerFalta',
-    headers: {
-        'token':token
-    },
-    method: 'POST',
-    dataType: 'json',
-    data:dataFalt,
-    success: function(resp){
-      console.log(resp);
-      //monitoreoTab
-      $('#monitoreoTab').empty();
-      llenarTab(resp.data,5,'monitoreoTab');
-    }
-  });
-  removeCharge('monitoreoCharge');
-  actualizarMapa();
-  fechEnv=fechEnv2;
-  barraDeProgreso();
-},240000);
-
-function barraDeProgreso(){
-  let conBar=0;
   $('#progressBar').empty();
   $('<h4 class="control-sidebar-subheading">'
   +'Progreso'
   +'<span class="pull-right-container">'
-  +'<span class="label label-danger pull-right">'+conBar+'%</span>'
+  +'<span class="label label-danger pull-right">'+parseInt(conBar)+'%</span>'
   +'</span>'
   +'</h4>'
   +'<div class="progress progress-xxs">'
   +'<div class="progress-bar progress-bar-danger" style="width: '+conBar+'%"></div>'
   +'</div>').appendTo('#progressBar');
-  setInterval(function(){
-    conBar=(conBar<100?conBar+12.5:0);
-    $('#progressBar').empty();
-    $('<h4 class="control-sidebar-subheading">'
-    +'Progreso'
-    +'<span class="pull-right-container">'
-    +'<span class="label label-danger pull-right">'+parseInt(conBar)+'%</span>'
-    +'</span>'
-    +'</h4>'
-    +'<div class="progress progress-xxs">'
-    +'<div class="progress-bar progress-bar-danger" style="width: '+conBar+'%"></div>'
-    +'</div>').appendTo('#progressBar');
-  },30000);
-}
+  if(conBar<100){
+    conBar+=2;
+  }else{
+    conBar=0;
+    fechEnv2=(new Date()).toLocaleString();
+    fechEnv2=manip(fechEnv2);
+    let dataFalt={
+      fecha:fechEnv,
+      fecha2:fechEnv2
+    };
+    $.ajax({
+      url: '/general/traerFalta',
+      headers: {
+          'token':token
+      },
+      method: 'POST',
+      dataType: 'json',
+      data:dataFalt,
+      success: function(resp){
+        console.log(resp);
+        //monitoreoTab
+        $('#monitoreoTab').empty();
+        llenarTab(resp.data,5,'monitoreoTab');
+      }
+    });
+    removeCharge('monitoreoCharge');
+    actualizarMapa();
+    fechEnv=fechEnv2;
+  }
+},4000)
 
 
 function manip(f){
