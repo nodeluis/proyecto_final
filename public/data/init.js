@@ -2,21 +2,10 @@ $(document).ready(function () {
   inicializar();
   limpiar();
   $('#vista').show();
-  $("#mapVista").googleMap();
-  mapCss('mapVista');
   $.get('/general',null,function(response){
+    updateMapa()
     for(var i=0;i<response.length;i++){
         let dato=response[i];
-
-        if(dato.control==true){
-          $("#mapVista").addMarker({
-            coords: [parseFloat(dato['lat']),parseFloat(dato['lon'])], // GPS coords
-            title:dato['placa'],
-            icon:'/fonts/icons/camion4.png',
-            text:dato['lugar']
-          });
-        }
-
         $('<li id="'+i+'tree">'
                   +'<a href="#"><i id="'+i+'f1"></i><span>'+dato['placa']+'</span>'
                   +'<span id="'+i+'spa">'
@@ -55,6 +44,7 @@ $(document).ready(function () {
           placa=dato['placa'];
           daterangenvio=3;
           limpiar();
+          $('<h1>'+placa+'<small>Extintores</small></h1>').appendTo('#headerDesc');
           let postdata={
             id:dato['id'],
             i:exinplusign
@@ -75,16 +65,34 @@ $(document).ready(function () {
           id=dato['id'];
           placa=dato['placa'];
           limpiar();
+          $('#headerDesc').empty();
+          $('<h1>'+placa+'<small>Indicador de Exposición</small></h1>').appendTo('#headerDesc');
           $('#expocision').show();
+          addCharge('kmRecorridoCharge');
+          addCharge('viajeChartCharge');
+          addCharge('horaDonutCharge');
+          addCharge('frecViajeCharge');
+
+          addCharge('tabkmCharge');
+          addCharge('tabHoraCharge');
+          addCharge('tabrutaCharge');
+          addCharge('tabVolCharge');
           $.post('/camion/autoT',{id:id},function(resp,status){
             console.log(resp);
             llenarchart(resp.data.km,2,'DonutKmRecorrido');
+            removeCharge('kmRecorridoCharge');
             llenarchart(resp.data.expocision,2,'DonutHoraCant');
+            removeCharge('horaDonutCharge');
             llenarchart(resp.data.km,2,'DonutViajeCant');
+            removeCharge('viajeChartCharge');
             llenarchart(resp.data.frecuencia,3,'DonutFrecViaje');
+            removeCharge('frecViajeCharge');
             llenarTablas(resp.data.km,6);
+            removeCharge('tabkmCharge');
             llenarTablas(resp.data.expocision,7);
+            removeCharge('tabHoraCharge');
             llenarTablas(resp.data.frecuencia,8);
+            removeCharge('tabrutaCharge');
             addCss('DonutKmRecorrido');
             addCss('DonutHoraCant');
             addCss('DonutViajeCant');
@@ -92,6 +100,7 @@ $(document).ready(function () {
           },'json').fail(function(err){
             console.log(err);
           });
+          addCharge('generalExpoCharge');
           $.post('/camion/generalExpocision',{id:id},function(resp,status){
             console.log(resp);
             let dataExpo=[{
@@ -113,6 +122,7 @@ $(document).ready(function () {
             addCss('ChartExposicion');
             addCss('ChartExposicion1');
             addCss('ChartExposicion2');
+            removeCharge('generalExpoCharge');
           },'json').fail(function(err){
             console.log(err);
           });
@@ -125,6 +135,8 @@ $(document).ready(function () {
           id=dato['id'];
           placa=dato['placa'];
           limpiar();
+          $('#headerDesc').empty();
+          $('<h1>'+placa+'<small>Indicador intermedio</small></h1>').appendTo('#headerDesc');
           $('#intermedio').show();
           let dataIncidente='No paro en el punto de control,Uso del equipo de proteccion personal,No fue inspeccionado,'
           +'No se reporto,Incumplimiento de horario en plan de viaje,Uso de cinturon de seguridad,'
@@ -151,22 +163,52 @@ $(document).ready(function () {
           let dataIncidente5='Clima,Otro';
           $(addcheck(dataIncidente5)).appendTo('#addFormFactExt');
 
+          addCharge('exceCharge');
+          addCharge('horarioCharge');
+          addCharge('desvioCharge');
+          addCharge('desvCamCharge');
+          addCharge('viaCharge');
+          addCharge('viaAfecCharge');
+          addCharge('factCharge');
+
+          addCharge('tabExCharge');
+          addCharge('tabhorCharge');
+          addCharge('tabDesvCharge');
+          addCharge('tabDesvCamCharge');
+          addCharge('tabViaCharge');
+          addCharge('tabProbViaCharge');
+          addCharge('tabFactCharge');
+
           $.post('/camion/intermedioTotal',{id:id},function(resp,status){
             console.log(resp);
             llenarchart(resp.exceso,2,'DonutExceso');
+            removeCharge('exceCharge');
             llenarchart(resp.horario,2,'DonutHorario');
+            removeCharge('horarioCharge');
             llenarTablas(resp.exceso,9);
+            removeCharge('tabExCharge');
             llenarTablas(resp.horario,10);
+            removeCharge('tabhorCharge');
             llenarchart(resp.desvio,2,'DonutDesvio');
+            removeCharge('desvioCharge');
             llenarTablas(resp.desvtab,11);
+            removeCharge('tabDesvCharge');
             llenarchart(resp.desviocamion,2,'DonutDesvioCam');
+            removeCharge('desvCamCharge');
             llenarTablas(resp.desvcamtab,12);
+            removeCharge('tabDesvCamCharge');
             llenarchart(resp.via,2,'DonutFrecVia');
+            removeCharge('viaCharge');
             llenarTablas(resp.viatab,13);
+            removeCharge('tabViaCharge');
             llenarchart(resp.viaje,2,'DonutFrecViaAf');
+            removeCharge('viaAfecCharge');
             llenarTablas(resp.viajetab,14);
+            removeCharge('tabProbViaCharge');
             llenarchart(resp.otro,2,'FactExtDonut');
+            removeCharge('factCharge');
             llenarTablas(resp.otrotab,15);
+            removeCharge('tabFactCharge');
             addCss('DonutExceso');
             addCss('DonutHorario');
             addCss('DonutDesvio');
@@ -177,6 +219,7 @@ $(document).ready(function () {
           },'json').fail(function(err){
             console.log(err);
           });
+          addCharge('generalIntermedioCharge');
           $.post('/camion/generalIntermedio',{id:id},function(resp,status){
             console.log(resp);
             let chartData1=[{desc:'total excesos de velocidad',total:resp.data[0]},
@@ -189,6 +232,7 @@ $(document).ready(function () {
             llenarchart(chartData2,1,'ChartIntermedio2');
             addCss('ChartIntermedio');
             addCss('ChartIntermedio2');
+            removeCharge('generalIntermedioCharge');
           },'json').fail(function(err){
             console.log(err);
           });
@@ -201,6 +245,7 @@ $(document).ready(function () {
           id=dato['id'];
           placa=dato['placa'];
           limpiar();
+          $('#vista').show();
           //llenar form
           let dataIncidente='Fallas electricas,Fallas en el motor,Problemas en la caja,'
           +'Problemas en la caja,Problemas en los globos,Problemas en el compresor de aire,'
@@ -214,18 +259,41 @@ $(document).ready(function () {
           let dataIncidente2='Accidente con fatalidad,Accidente sin fatalidad';
           $(addcheck(dataIncidente2)).appendTo('#addAccidente');
 
+          $('#headerDesc').empty();
+          $('<h1>'+placa+'<small>Indicador final</small></h1>').appendTo('#headerDesc');
           $('#estadisticas3').show();
+
+          addCharge('incCharge');
+          addCharge('fatalCharge');
+          addCharge('medicoCharge');
+          addCharge('rutaCharge');
+          addCharge('accKmCharge');
+
+          addCharge('tabIncCharge');
+          addCharge('tabfatCharge');
+          addCharge('tabMedCharge');
+          addCharge('tabRutCharge');
+
           $.post('/camion/finalTotal',{id:id},function(resp,status){
             console.log(resp);
             llenarchart(resp.incidente,2,'incidenteChartDonut');
+            removeCharge('incCharge');
             llenarTablas(resp.inctab,16);
+            removeCharge('tabIncCharge');
             llenarchart(resp.fatal,2,'FatalChartDonut');
+            removeCharge('fatalCharge');
             llenarTablas(resp.fattab,17);
+            removeCharge('tabfatCharge');
             llenarchart(resp.medico,2,'DonutMedico');
+            removeCharge('medicoCharge');
             llenarTablas(resp.medtab,18);
+            removeCharge('tabMedCharge');
             llenarchart(resp.ruta,3,'DonutRuta');
+            removeCharge('rutaCharge');
             llenarTablas(resp.acc,19);
+            removeCharge('tabRutCharge');
             llenarchart(resp.km,4,"AccKmChart");
+            removeCharge('accKmCharge');
             addCss('incidenteChartDonut');
             addCss('FatalChartDonut');
             addCss('DonutMedico');
@@ -235,12 +303,13 @@ $(document).ready(function () {
           },'json').fail(function(err){
             console.log(err);
           });
-
+          addCharge('generalFinalCharge');
           $.post('/camion/generalFinal',{id:id},function(resp,status){
             console.log(resp);
             llenarchart(resp.data,1,'indicadorGeneralFinal');
             addCss('indicadorGeneralFinal');
             //"AccKmChart"
+            removeCharge('generalFinalCharge');
           },'json').fail(function(err){
             console.log(err);
           });
@@ -253,7 +322,11 @@ $(document).ready(function () {
           id=dato['id'];
           placa=dato['placa'];
           limpiar();
+          $('#vista').show();
+          $('#headerDesc').empty();
+          $('<h1>'+placa+'<small>Control camión</small></h1>').appendTo('#headerDesc');
           $('#control').show();
+          addCharge('tabControlCharge');
           $.post('/camion/autoMes',{id:id},function(resp,status){
             console.log(resp);
             if(resp.control){
@@ -262,6 +335,7 @@ $(document).ready(function () {
               $('#controlForm2').hide();
             }
             llenarTablas(resp.data,5);
+            removeCharge('tabControlCharge');
           },'json').fail(function(err){
             console.log(err);
           });
@@ -269,4 +343,5 @@ $(document).ready(function () {
         //controlar estado del camion finç
       }
   });
+  removeCharge('mapCharge');
 });

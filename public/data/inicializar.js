@@ -104,3 +104,30 @@ function inicializar(){
   //puebas en los charts
   //end chart
 }
+
+function updateMapa(){
+  $("#mapVista").googleMap();
+  mapCss('mapVista');
+  addCharge('mapCharge');
+  $.ajax({
+    url: '/general/mapaUp',
+    headers: {
+        'token':''
+    },
+    method: 'GET',
+    dataType: 'json',
+    data: null,
+    success: function(resp){
+      console.log(resp);
+      resp.data.forEach((dato, i) => {
+        $("#mapVista").addMarker({
+          coords: [parseFloat(dato['lat']),parseFloat(dato['lon'])], // GPS coords
+          title:dato['placa'],
+          icon:'/fonts/icons/camion4.png',
+          text:dato['ruta']
+        });
+      });
+      removeCharge('mapCharge');
+    }
+  });
+}

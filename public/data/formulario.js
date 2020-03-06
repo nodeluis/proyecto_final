@@ -28,9 +28,10 @@ $('#formDesvCon').submit(function(e) {
   $('input[type=checkbox]:checked',$(this)).each(function() {
       inc.push($(this).val());
   });
+  addCharge('formDesvCharge');
   $.post('/camion/desvio',{data:inc+'',id:id,desc:$('#descripcionDesvCon',).val(),fecha:$('#fechaDesvCon').val()},function(resp,status){
     console.log(resp);
-
+    removeCharge('formDesvCharge');
   },'json').fail(function(err){
     console.log(err);
   });
@@ -46,9 +47,10 @@ $('#formDesvCam').submit(function(e) {
   $('input[type=checkbox]:checked',$(this)).each(function() {
       inc.push($(this).val());
   });
+  addCharge('formDesvCamCharge');
   $.post('/camion/desvioCamion',{data:inc+'',id:id,desc:$('#descripcionDesvCam',).val(),fecha:$('#fechaDesvCam').val()},function(resp,status){
     console.log(resp);
-
+    removeCharge('formDesvCamCharge');
   },'json').fail(function(err){
     console.log(err);
   });
@@ -65,9 +67,10 @@ $('#formProbVia').submit(function(e) {
   $('input[type=checkbox]:checked',$(this)).each(function() {
       inc.push($(this).val());
   });
+  addCharge('formViaCharge');
   $.post('/camion/via',{data:inc+'',id:id,desc:$('#descripcionProbVia',).val(),fecha:$('#fechaProbVia').val()},function(resp,status){
     console.log(resp);
-
+    addCharge('formRemoveCharge');
   },'json').fail(function(err){
     console.log(err);
   });
@@ -84,9 +87,10 @@ $('#formAfecVia').submit(function(e) {
   $('input[type=checkbox]:checked',$(this)).each(function() {
       inc.push($(this).val());
   });
+  addCharge('formAfecViaCharge');
   $.post('/camion/viajeAfectado',{data:inc+'',id:id,desc:$('#descripcionAfecVia',).val(),fecha:$('#fechaAfecVia').val()},function(resp,status){
     console.log(resp);
-
+    removeCharge('formAfecViaCharge');
   },'json').fail(function(err){
     console.log(err);
   });
@@ -103,9 +107,10 @@ $('#formFactExt').submit(function(e) {
   $('input[type=checkbox]:checked',$(this)).each(function() {
       inc.push($(this).val());
   });
+  addCharge('formFactExtCharge');
   $.post('/camion/otro',{data:inc+'',id:id,desc:$('#descripcionFactExt',).val(),fecha:$('#fechaFactExt').val()},function(resp,status){
     console.log(resp);
-
+    removeCharge('formFactExtCharge');
   },'json').fail(function(err){
     console.log(err);
   });
@@ -121,9 +126,10 @@ $('#formIncidente').submit(function(e) {
   $('input[type=checkbox]:checked',$(this)).each(function() {
       inc.push($(this).val());
   });
+  addCharge('formIncCharge');
   $.post('/camion/incidente',{data:inc+'',id:id,fecha:$('#fechaIncidente').val(),desc:$('#descripcionIncidente').val()},function(resp,status){
     console.log(resp);
-
+    removeCharge('formIncCharge');
   },'json').fail(function(err){
     console.log(err);
   });
@@ -137,10 +143,11 @@ $('#formAccidente').submit(function(e) {
   $('input[type=checkbox]:checked',$(this)).each(function() {
       inc.push($(this).val());
   });
+  addCharge('formFatCharge');
   let select_button_text = $('#selectAccidente option:selected').toArray().map(item => item.value);
   $.post('/camion/fatal',{accidente:inc+'',id:id,desc:$('#descripcionAccidente',).val(),fecha:$('#fechaAccidente').val(),ruta:select_button_text+''},function(resp,status){
     console.log(resp);
-
+    removeCharge('formFatCharge');
   },'json').fail(function(err){
     console.log(err);
   });
@@ -156,9 +163,10 @@ $('#formMedico').submit(function(e) {
       inc.push($(this).val());
   });
   let select_button_text = $('#selectMedica option:selected').toArray().map(item => item.value);
+  addCharge('formMedCharge');
   $.post('/camion/medico',{accidente:inc+'',id:id,desc:$('#descripcionMedica',).val(),fecha:$('#fechaMedica').val(),ruta:select_button_text+''},function(resp,status){
     console.log(resp);
-
+    removeCharge('formMedCharge');
   },'json').fail(function(err){
     console.log(err);
   });
@@ -205,26 +213,41 @@ $('#controlForm1').submit(function(e) {
   },'json').fail(function(err){
     console.log(err);
   });
+  $('#controlForm1').hide();
+  $('#controlForm2').show();
+  updateMapa();
   $(this).trigger("reset");
 });
 
 $('#controlForm2').submit(function(e) {
-    e.preventDefault();
-    //#expocisionSelect
+  e.preventDefault();
+  //#expocisionSelect
 
-    let fech=(new Date()).toLocaleString();
-    fech=manip(fech);
-    let envi={id:id,
-              fecha:fech
-            }
-    console.log(envi);
-    $.post('/camion/on',envi,function(resp,status){
-      console.log(resp);
+  let fech=(new Date()).toLocaleString();
+  fech=manip(fech);
+  let envi={id:id,
+            fecha:fech
+          }
+  console.log(envi);
+  $.post('/camion/on',envi,function(resp,status){
+    console.log(resp);
 
-    },'json').fail(function(err){
-      console.log(err);
-    });
+  },'json').fail(function(err){
+    console.log(err);
+  });
   $(this).trigger("reset");
+  addCharge('tabControlCharge');
+  $('#controlForm2').hide();
+  $('#controlForm1').show();
+  $.post('/camion/autoMes',{id:id},function(resp,status){
+    console.log(resp);
+    $('#controlBodyTable').empty();
+    llenarTablas(resp.data,5);
+    removeCharge('tabControlCharge');
+    updateMapa();
+  },'json').fail(function(err){
+    console.log(err);
+  });
 });
 
 function manip(f){

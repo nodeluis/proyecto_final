@@ -7,28 +7,12 @@ const empty=require('is-empty');
 //const JsonFind = require('json-find');
 const jsonQuery = require('json-query');
 const f5=require('./f5');
+const _=require('lodash');
 
 router.get('/',(req,res)=>{
     General.find({},(err,docs)=>{
       if(!empty(docs)){
-        Camion.find({},(err2,docs2)=>{
-          let arr=docs;
-          for (let k = 0; k < arr.length; k++) {
-            let index=docs2.findIndex((item, i)=>{
-              return item.id == arr[k].id;
-            });
-            arr[k]={
-              _id:arr[k]._id,
-              id:arr[k].id,
-              lugar:arr[k].lugar,
-              placa:arr[k].placa,
-              lat:arr[k].lat,
-              lon:arr[k].lon,
-              control:docs2[index].control
-            };
-          }
-          res.json(arr);
-        });
+          res.json(docs);
       }else{
         res.json({
           message:'no existen datos en la bd'
@@ -36,6 +20,28 @@ router.get('/',(req,res)=>{
       }
     });
 
+});
+
+router.get('/mapaUp',(req,res)=>{
+    Camion.find({control:true}).select('auto.ruta auto.fin id placa').exec(async(errs,docs)=>{
+      if(!empty(docs)){
+        let arr=[];
+        for (let i = 0; i < docs.length; i++) {
+          let dat=docs[i];
+          let vac=_.find(dat.auto,(o)=>{return o.fin==''});
+          let prom=await General.findOne({id:dat.id}).select('lat lon');
+          arr.push({
+            placa:dat.placa,
+            ruta:vac.ruta,
+            lat:prom.lat,
+            lon:prom.lon,
+          });
+        }
+        res.json({data:arr});
+      }else{
+        res.json({data:[]});
+      }
+    });
 });
 
 router.post('/probar',(req,res)=>{

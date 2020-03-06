@@ -62,12 +62,14 @@ $('#fechaKmRecorridoEnv').on('click',function(e){
     ff:envio[1],
     filtro:3
   };
+  addCharge('kmRecorridoCharge');
   $.post('/camion/auto',postdata,function(resp,status){
     console.log(resp);
     $('#DonutKmRecorrido').empty();
     $('#tablaKmViaje').empty();
     llenarchart(resp.data,2,'DonutKmRecorrido');
     llenarTablas(resp.data,6);
+    removeCharge('kmRecorridoCharge');
   },'json').fail(function(err){
     console.log(err);
   });
@@ -84,12 +86,14 @@ $('#fechaHoraCantEnv').on('click',function(e){
     ff:envio[1],
     filtro:4
   };
+  addCharge('horaDonutCharge');
   $.post('/camion/auto',postdata,function(resp,status){
     console.log(resp);
     $('#DonutHoraCant').empty();
     $('#tablaExposicion').empty();
     llenarchart(resp.data,2,'DonutHoraCant');
     llenarTablas(resp.data,7);
+    removeCharge('horaDonutCharge');
   },'json').fail(function(err){
     console.log(err);
   });
@@ -105,12 +109,14 @@ $('#fechaFrecViajeEnv').on('click',function(e){
     ff:envio[1],
     filtro:6
   };
+  addCharge('frecViajeCharge');
   $.post('/camion/auto',postdata,function(resp,status){
     console.log(resp);
     $('#DonutFrecViaje').empty();
     $('#tablaRutaViaje').empty();
     llenarchart(resp.data,3,'DonutFrecViaje');
     llenarTablas(resp.data,8);
+    removeCharge('frecViajeCharge');
   },'json').fail(function(err){
     console.log(err);
   });
@@ -125,6 +131,7 @@ $('#fechaChartExposicionEnv').on('click',function(e){
     fi:envio[0],
     ff:envio[1]
   };
+  addCharge('generalExpoCharge');
   $.post('/camion/generalExpocision',postdata,function(resp,status){
     console.log(resp);
     $('#ChartExposicion').empty();
@@ -142,6 +149,7 @@ $('#fechaChartExposicionEnv').on('click',function(e){
       desc:'Cantidad de viajes',
       total:resp.data[2]
     }],1,'ChartExposicion2');
+    removeCharge('generalExpoCharge');
   },'json').fail(function(err){
     console.log(err);
   });
@@ -159,12 +167,14 @@ $('#fechaExcesoEnv').on('click',function(e){
     ff:envio[1],
     filtro:1
   };
+  addCharge('exceCharge');
   $.post('/camion/auto',postdata,function(resp,status){
     console.log(resp);
     $('#DonutExceso').empty();
     $('#tablaExViaje').empty();
     llenarchart(resp.data,2,'DonutExceso');
     llenarTablas(resp.data,9);
+    removeCharge('exceCharge');
   },'json').fail(function(err){
     console.log(err);
   });
@@ -180,12 +190,14 @@ $('#fechaHorarioEnv').on('click',function(e){
     ff:envio[1],
     filtro:2
   };
+  addCharge('horarioCharge');
   $.post('/camion/auto',postdata,function(resp,status){
     console.log(resp);
     $('#DonutHorario').empty();
     $('#tablaHoViaje').empty();
     llenarchart(resp.data,2,'DonutHorario');
     llenarTablas(resp.data,10);
+    removeCharge('horarioCharge');
   },'json').fail(function(err){
     console.log(err);
   });
@@ -200,12 +212,14 @@ $('#fechaDonutDesvioEnv').on('click',function(e){
     fi:envio[0],
     ff:envio[1]
   };
+  addCharge('desvioCharge');
   $.post('/camion/desvioMes',postdata,function(resp,status){
     console.log(resp);
     $('#DonutDesvio').empty();
     $('#tablaDesvCond').empty();
     llenarchart(resp.data2,2,'DonutDesvio');
     llenarTablas(resp.data1,11);
+    removeCharge('desvioCharge');
   },'json').fail(function(err){
     console.log(err);
   });
@@ -220,12 +234,14 @@ $('#fechaDonutDesvioCamEnv').on('click',function(e){
     fi:envio[0],
     ff:envio[1]
   };
+  addCharge('desvCamCharge');
   $.post('/camion/desvioCamionMes',postdata,function(resp,status){
     console.log(resp);
     $('#DonutDesvioCam').empty();
     $('#tablaDesvCam').empty();
     llenarchart(resp.data2,2,'DonutDesvioCam');
     llenarTablas(resp.data1,12);
+    removeCharge('desvCamCharge');
   },'json').fail(function(err){
     console.log(err);
   });
@@ -240,12 +256,14 @@ $('#fechaDonutFrecViaEnv').on('click',function(e){
     fi:envio[0],
     ff:envio[1]
   };
+  addCharge('viaCharge');
   $.post('/camion/viaMes',postdata,function(resp,status){
     console.log(resp);
     $('#DonutFrecVia').empty();
     $('#tablaProbVia').empty();
     llenarchart(resp.data2,2,'DonutFrecVia');
     llenarTablas(resp.data1,13);
+    removeCharge('viaCharge');
   },'json').fail(function(err){
     console.log(err);
   });
@@ -260,12 +278,14 @@ $('#fechaDonutfrecViaAfEnv').on('click',function(e){
     fi:envio[0],
     ff:envio[1]
   };
+  addCharge('viaAfecCharge');
   $.post('/camion/viajeAfectadoMes',postdata,function(resp,status){
     console.log(resp);
     $('#DonutFrecViaAf').empty();
     $('#tablaAfecVia').empty();
     llenarchart(resp.data2,2,'DonutFrecViaAf');
     llenarTablas(resp.data1,14);
+    removeCharge('viaAfecCharge');
   },'json').fail(function(err){
     console.log(err);
   });
@@ -280,12 +300,14 @@ $('#fechaFactExtDonutEnv').on('click',function(e){
     fi:envio[0],
     ff:envio[1]
   };
+  addCharge('factCharge');
   $.post('/camion/otroMes',postdata,function(resp,status){
     console.log(resp);
     $('#FactExtDonut').empty();
     $('#tablaFactExt').empty();
     llenarchart(resp.data2,2,'FactExtDonut');
     llenarTablas(resp.data1,15);
+    removeCharge('factCharge');
   },'json').fail(function(err){
     console.log(err);
   });
@@ -300,6 +322,7 @@ $('#fechaChartIntermedioEnv').on('click',function(e){
     fi:envio[0],
     ff:envio[1]
   };
+  addCharge('generalIntermedioCharge');
   $.post('/camion/generalIntermedio',postdata,function(resp,status){
     console.log(resp);
     let chartData1=[{desc:'total excesos de velocidad',total:resp.data[0]},
@@ -312,6 +335,7 @@ $('#fechaChartIntermedioEnv').on('click',function(e){
     $('#ChartIntermedio2').empty();
     llenarchart(chartData1,1,'ChartIntermedio');
     llenarchart(chartData2,1,'ChartIntermedio2');
+    removeCharge('generalIntermedioCharge');
   },'json').fail(function(err){
     console.log(err);
   });
@@ -327,12 +351,14 @@ $('#fechaIncidenteDonutEnv').on('click',function(e){
     fi:envio[0],
     ff:envio[1]
   };
+  addCharge('incCharge');
   $.post('/camion/incidenteMes',postdata,function(resp,status){
     console.log(resp);
     $('#incidenteChartDonut').empty();
     $('#tablaPorcInc').empty();
     llenarchart(resp.data2,2,'incidenteChartDonut');
     llenarTablas(resp.data1,16);
+    removeCharge('incCharge');
   },'json').fail(function(err){
     console.log(err);
   });
@@ -347,12 +373,14 @@ $('#fechaFatalEnv').on('click',function(e){
     fi:envio[0],
     ff:envio[1]
   };
+  addCharge('fatalCharge');
   $.post('/camion/fatalMes',postdata,function(resp,status){
     console.log(resp);
     $('#FatalChartDonut').empty();
     $('#tablaPorAcc').empty();
     llenarchart(resp.data2,2,'FatalChartDonut');
     llenarTablas(resp.data1,17);
+    removeCharge('fatalCharge');
   },'json').fail(function(err){
     console.log(err);
   });
@@ -367,12 +395,14 @@ $('#fechaDonutMedicoEnv').on('click',function(e){
     fi:envio[0],
     ff:envio[1]
   };
+  addCharge('medicoCharge');
   $.post('/camion/medicoMes',postdata,function(resp,status){
     console.log(resp);
     $('#DonutMedico').empty();
     $('#tablaAccMed').empty();
     llenarchart(resp.data2,2,'DonutMedico');
     llenarTablas(resp.data1,18);
+    removeCharge('medicoCharge');
   },'json').fail(function(err){
     console.log(err);
   });
@@ -387,12 +417,14 @@ $('#fechaRutaEnv').on('click',function(e){
     fi:envio[0],
     ff:envio[1]
   };
+  addCharge('rutaCharge');
   $.post('/camion/accidenteRutaMes',postdata,function(resp,status){
     console.log(resp);
     $('#DonutRuta').empty();
     $('#tablaPorRut').empty();
     llenarchart(resp.chart,3,'DonutRuta');
     llenarTablas(resp.falta,19);
+    removeCharge('rutaCharge');
   },'json').fail(function(err){
     console.log(err);
   });
@@ -407,10 +439,12 @@ $('#fechaGeneralFinalEnv').on('click',function(e){
     fi:envio[0],
     ff:envio[1]
   };
+  addCharge('generalFinalCharge');
   $.post('/camion/generalFinal',postdata,function(resp,status){
     console.log(resp);
     $('#indicadorGeneralFinal').empty();
     llenarchart(resp.data,1,'indicadorGeneralFinal');
+    removeCharge('generalFinalCharge');
   },'json').fail(function(err){
     console.log(err);
   });

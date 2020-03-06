@@ -388,3 +388,8 @@ $('#formUpdate').submit(function(e) {
     $(this).trigger("reset");
   }
 });
+//forzar actualizado de datos
+$('#setMapUpdate').on('click',function(e){
+  e.preventDefault();
+  actualizarMapa();
+});

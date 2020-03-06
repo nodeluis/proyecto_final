@@ -47,7 +47,7 @@ function llenarTablas(data,p){
               +'</table>';
     $(construir).appendTo('#contenidoExceso');
     $('#example').addClass('table table-bordered table-hover');
-    $('#example').DataTable();
+    $('#example').DataTable(dataTableLenguaje);
   }else if(p==2){
         construir+='<th>Placa</th>'
                   +'<th>Lugar</th>'
@@ -88,7 +88,7 @@ function llenarTablas(data,p){
               +'</table>';
     $(construir).appendTo('#contenidoHorario');
     $('#example').addClass('table table-bordered table-hover');
-    $('#example').DataTable();
+    $('#example').DataTable(dataTableLenguaje);
   }else if(p==3){
     construir+='<th>Lugar</th>'
               +'<th>Observaciones</th>'
@@ -130,7 +130,7 @@ function llenarTablas(data,p){
         +'</table>';
     $(construir).appendTo('#bodyExt');
     $('#example').addClass('table table-bordered table-hover');
-    $('#example').DataTable();
+    $('#example').DataTable(dataTableLenguaje);
   }else if(p==4){
     construir+='<th>Descripcion</th>'
               +'<th>Infracciones</th>'
@@ -160,7 +160,7 @@ function llenarTablas(data,p){
         +'</table>';
     $(construir).appendTo('#tablaEstadistica3');
     $('#example').addClass('table table-bordered table-hover');
-    $('#example').DataTable();
+    $('#example').DataTable(dataTableLenguaje);
   }else if(p==5){
         construir+='<th>Fecha inicio</th>'
                   +'<th>Fecha fin</th>'
@@ -204,7 +204,7 @@ function llenarTablas(data,p){
               +'</table>';
     $(construir).appendTo('#controlBodyTable');
     $('#example').addClass('table table-bordered table-hover');
-    $('#example').DataTable();
+    $('#example').DataTable(dataTableLenguaje);
   }else if(p==6){
     construir+='<th>Fecha inicio</th>'
               +'<th>Fecha fin</th>'
@@ -234,7 +234,7 @@ function llenarTablas(data,p){
               +'</table>';
     $(construir).appendTo('#tablaKmViaje');
     $('#example').addClass('table table-bordered table-hover');
-    $('#example').DataTable();
+    $('#example').DataTable(dataTableLenguaje);
   }else if(p==7){
     let construir3='<table id="example3">'
                   +'<thead>'
@@ -268,7 +268,7 @@ function llenarTablas(data,p){
               +'</table>';
     $(construir3).appendTo('#tablaExposicion');
     $('#example3').addClass('table table-bordered table-hover');
-    $('#example3').DataTable();
+    $('#example3').DataTable(dataTableLenguaje);
   }else if(p==8){
     let construir2='<table id="example2">'
                   +'<thead>'
@@ -298,7 +298,7 @@ function llenarTablas(data,p){
               +'</table>';
     $(construir2).appendTo('#tablaRutaViaje');
     $('#example2').addClass('table table-bordered table-hover');
-    $('#example2').DataTable();
+    $('#example2').DataTable(dataTableLenguaje);
   }else if(p==9){
     let construir1='<table id="example1">'
                   +'<thead>'
@@ -332,7 +332,7 @@ function llenarTablas(data,p){
               +'</table>';
     $(construir1).appendTo('#tablaExViaje');
     $('#example1').addClass('table table-bordered table-hover');
-    $('#example1').DataTable();
+    $('#example1').DataTable(dataTableLenguaje);
   }else if(p==10){
     let construir2='<table id="example2">'
                   +'<thead>'
@@ -366,7 +366,7 @@ function llenarTablas(data,p){
               +'</table>';
     $(construir2).appendTo('#tablaHoViaje');
     $('#example2').addClass('table table-bordered table-hover');
-    $('#example2').DataTable();
+    $('#example2').DataTable(dataTableLenguaje);
   }else if(p==11){
     let construir3='<table id="example3">'
                   +'<thead>'
@@ -399,7 +399,7 @@ function llenarTablas(data,p){
               +'</table>';
     $(construir3).appendTo('#tablaDesvCond');
     $('#example3').addClass('table table-bordered table-hover');
-    $('#example3').DataTable();
+    $('#example3').DataTable(dataTableLenguaje);
   }else if(p==12){
     let construir4='<table id="example4">'
                   +'<thead>'
@@ -432,7 +432,7 @@ function llenarTablas(data,p){
               +'</table>';
     $(construir4).appendTo('#tablaDesvCam');
     $('#example4').addClass('table table-bordered table-hover');
-    $('#example4').DataTable();
+    $('#example4').DataTable(dataTableLenguaje);
   }else if(p==13){
     let construir5='<table id="example5">'
                   +'<thead>'
@@ -465,7 +465,7 @@ function llenarTablas(data,p){
               +'</table>';
     $(construir5).appendTo('#tablaProbVia');
     $('#example5').addClass('table table-bordered table-hover');
-    $('#example5').DataTable();
+    $('#example5').DataTable(dataTableLenguaje);
   }else if(p==14){
     let construir6='<table id="example6">'
                   +'<thead>'
@@ -498,7 +498,7 @@ function llenarTablas(data,p){
               +'</table>';
     $(construir6).appendTo('#tablaAfecVia');
     $('#example6').addClass('table table-bordered table-hover');
-    $('#example6').DataTable();
+    $('#example6').DataTable(dataTableLenguaje);
   }else if(p==15){
     let construir7='<table id="example7">'
                   +'<thead>'
@@ -531,7 +531,7 @@ function llenarTablas(data,p){
               +'</table>';
     $(construir7).appendTo('#tablaFactExt');
     $('#example7').addClass('table table-bordered table-hover');
-    $('#example7').DataTable();
+    $('#example7').DataTable(dataTableLenguaje);
   }else if(p==16){
     let construir1='<table id="example1">'
                   +'<thead>'
@@ -564,7 +564,7 @@ function llenarTablas(data,p){
               +'</table>';
     $(construir1).appendTo('#tablaPorcInc');
     $('#example1').addClass('table table-bordered table-hover');
-    $('#example1').DataTable();
+    $('#example1').DataTable(dataTableLenguaje);
   }else if(p==17){
     let construir2='<table id="example2">'
                   +'<thead>'
@@ -600,7 +600,7 @@ function llenarTablas(data,p){
               +'</table>';
     $(construir2).appendTo('#tablaPorAcc');
     $('#example2').addClass('table table-bordered table-hover');
-    $('#example2').DataTable();
+    $('#example2').DataTable(dataTableLenguaje);
   }else if(p==18){
     let construir3='<table id="example3">'
                   +'<thead>'
@@ -636,7 +636,7 @@ function llenarTablas(data,p){
               +'</table>';
     $(construir3).appendTo('#tablaAccMed');
     $('#example3').addClass('table table-bordered table-hover');
-    $('#example3').DataTable();
+    $('#example3').DataTable(dataTableLenguaje);
   }else if(p==19){
     let construir4='<table id="example4">'
                   +'<thead>'
@@ -672,6 +672,6 @@ function llenarTablas(data,p){
               +'</table>';
     $(construir4).appendTo('#tablaPorRut');
     $('#example4').addClass('table table-bordered table-hover');
-    $('#example4').DataTable();
+    $('#example4').DataTable(dataTableLenguaje);
   }
 }

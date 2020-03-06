@@ -3,6 +3,7 @@ addCharge('monitoreoCharge');
 var fechEnv2;
 var fechEnv=(new Date()).toLocaleString();
 fechEnv=manip(fechEnv);
+barraDeProgreso();
 setInterval(function(){
   fechEnv2=(new Date()).toLocaleString();
   fechEnv2=manip(fechEnv2);
@@ -28,7 +29,35 @@ setInterval(function(){
   removeCharge('monitoreoCharge');
   actualizarMapa();
   fechEnv=fechEnv2;
-},7200000);
+  barraDeProgreso();
+},240000);
+
+function barraDeProgreso(){
+  let conBar=0;
+  $('#progressBar').empty();
+  $('<h4 class="control-sidebar-subheading">'
+  +'Progreso'
+  +'<span class="pull-right-container">'
+  +'<span class="label label-danger pull-right">'+conBar+'%</span>'
+  +'</span>'
+  +'</h4>'
+  +'<div class="progress progress-xxs">'
+  +'<div class="progress-bar progress-bar-danger" style="width: '+conBar+'%"></div>'
+  +'</div>').appendTo('#progressBar');
+  setInterval(function(){
+    conBar=(conBar<100?conBar+12.5:0);
+    $('#progressBar').empty();
+    $('<h4 class="control-sidebar-subheading">'
+    +'Progreso'
+    +'<span class="pull-right-container">'
+    +'<span class="label label-danger pull-right">'+parseInt(conBar)+'%</span>'
+    +'</span>'
+    +'</h4>'
+    +'<div class="progress progress-xxs">'
+    +'<div class="progress-bar progress-bar-danger" style="width: '+conBar+'%"></div>'
+    +'</div>').appendTo('#progressBar');
+  },30000);
+}
 
 
 function manip(f){
